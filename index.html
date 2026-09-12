@@ -180,6 +180,20 @@
         .footer-col a:hover { color: #22c55e; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 40px; padding-top: 24px; text-align: center; font-size: 0.8rem; color: #475569; max-width: 1200px; margin-left: auto; margin-right: auto; }
 
+        /* PROFILE SECTION */
+        .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .profile-photo-wrap { display: flex; justify-content: center; }
+        .profile-photo { width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 4px solid #22c55e; box-shadow: 0 20px 60px rgba(34, 197, 94, 0.2); }
+        .profile-info .section-label { text-align: left; }
+        .profile-info .section-title { text-align: left; margin-bottom: 16px; }
+        .profile-info .section-desc { text-align: left; margin-bottom: 0; }
+        .profile-links { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+        .profile-link { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 10px 24px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; color: #1a1a2e; text-decoration: none; transition: all 0.3s; }
+        .profile-link:hover { background: #22c55e; color: #fff; border-color: #22c55e; transform: translateY(-2px); }
+
+        /* TOOLS GREEN TOP BORDER */
+        .tools-accent { border-top: 3px solid #22c55e; }
+
         /* TABLET */
         @media (max-width: 1024px) {
             .hero h1 { font-size: 3rem; }
@@ -226,6 +240,10 @@
 
             .features-grid, .case-grid, .cert-grid { grid-template-columns: 1fr; }
             .feature-card { padding: 28px; min-height: 0; }
+            .profile-grid { grid-template-columns: 1fr; text-align: center; }
+            .profile-photo { width: 240px; height: 240px; }
+            .profile-info .section-label, .profile-info .section-title, .profile-info .section-desc { text-align: center; }
+            .profile-links { justify-content: center; }
 
             .tool-chip { padding: 10px 18px; font-size: 0.85rem; }
 
@@ -310,6 +328,27 @@
         </div>
     </section>
 
+    <!-- PROFILE - White -->
+    <section class="section-white" id="about">
+        <div class="section-inner">
+            <div class="profile-grid">
+                <div class="profile-photo-wrap">
+                    <img src="images/profile.png" alt="Amir Ali - SEO Specialist" class="profile-photo" width="300" height="300" loading="eager">
+                </div>
+                <div class="profile-info">
+                    <div class="section-label">ABOUT ME</div>
+                    <div class="section-title">Amir Ali</div>
+                    <p class="section-desc">SEO Specialist & AI Content Strategist with 4+ years of experience building organic search engines for B2B and e-commerce brands across USA, UAE, and UK markets. I combine technical SEO infrastructure with AI-powered content workflows that scale.</p>
+                    <div class="profile-links">
+                        <a href="https://www.linkedin.com/in/amir-ali-23a3b1204" target="_blank" class="profile-link">LinkedIn</a>
+                        <a href="mailto:amirali115c@gmail.com" class="profile-link">Email</a>
+                        <a href="https://wa.link/6gski2" target="_blank" class="profile-link">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FEATURES - Light -->
     <section class="section-light" id="skills">
         <div class="section-inner">
@@ -358,7 +397,7 @@
     </section>
 
     <!-- TOOLS - White -->
-    <section class="section-white">
+    <section class="section-white tools-accent">
         <div class="section-inner">
             <div class="pre-title" style="font-size:1rem; font-style:italic; color:#64748b; margin-bottom:8px;">Tools I Use Daily</div>
             <div class="section-title">My Tech Stack</div>
