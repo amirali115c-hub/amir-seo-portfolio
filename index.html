@@ -191,6 +191,21 @@
         .profile-link { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 10px 24px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; color: #1a1a2e; text-decoration: none; transition: all 0.3s; }
         .profile-link:hover { background: #22c55e; color: #fff; border-color: #22c55e; transform: translateY(-2px); }
 
+        /* EXPERTISE SECTION */
+        .expertise-grid { display: grid; grid-template-columns: 340px 1fr; gap: 60px; align-items: start; }
+        .expertise-left { text-align: center; position: sticky; top: 100px; }
+        .expertise-photo { width: 280px; height: 280px; border-radius: 16px; object-fit: cover; border: 3px solid #22c55e; box-shadow: 0 20px 60px rgba(34, 197, 94, 0.15); margin-bottom: 20px; }
+        .expertise-name { font-size: 1.4rem; font-weight: 800; color: #1a1a2e; margin-bottom: 4px; }
+        .expertise-role { font-size: 0.95rem; color: #64748b; margin-bottom: 20px; }
+        .expertise-stats { display: flex; gap: 16px; justify-content: center; }
+        .expertise-stat { background: #f1f5f9; border-radius: 10px; padding: 14px 20px; text-align: center; flex: 1; }
+        .expertise-stat-num { display: block; font-size: 1.3rem; font-weight: 900; color: #22c55e; }
+        .expertise-stat-label { display: block; font-size: 0.75rem; color: #64748b; font-weight: 500; margin-top: 2px; }
+        .expertise-right .section-label { text-align: left; }
+        .expertise-right .section-title { text-align: left; }
+        .expertise-right .section-desc { text-align: left; }
+        .expertise-right .features-grid { grid-template-columns: 1fr 1fr; }
+
         /* TOOLS GREEN TOP BORDER */
         .tools-accent { border-top: 3px solid #22c55e; }
 
@@ -244,6 +259,10 @@
             .profile-photo { width: 240px; height: 240px; }
             .profile-info .section-label, .profile-info .section-title, .profile-info .section-desc { text-align: center; }
             .profile-links { justify-content: center; }
+            .expertise-grid { grid-template-columns: 1fr; }
+            .expertise-left { position: static; }
+            .expertise-photo { width: 220px; height: 220px; }
+            .expertise-right .features-grid { grid-template-columns: 1fr; }
 
             .tool-chip { padding: 10px 18px; font-size: 0.85rem; }
 
@@ -328,63 +347,56 @@
         </div>
     </section>
 
-    <!-- PROFILE - White -->
-    <section class="section-white" id="about">
-        <div class="section-inner">
-            <div class="profile-grid">
-                <div class="profile-photo-wrap">
-                    <img src="images/profile.png" alt="Amir Ali - SEO Specialist" class="profile-photo" width="300" height="300" loading="eager">
-                </div>
-                <div class="profile-info">
-                    <div class="section-label">ABOUT ME</div>
-                    <div class="section-title">Amir Ali</div>
-                    <p class="section-desc">SEO Specialist & AI Content Strategist with 4+ years of experience building organic search engines for B2B and e-commerce brands across USA, UAE, and UK markets. I combine technical SEO infrastructure with AI-powered content workflows that scale.</p>
-                    <div class="profile-links">
-                        <a href="https://www.linkedin.com/in/amir-ali-23a3b1204" target="_blank" class="profile-link">LinkedIn</a>
-                        <a href="mailto:amirali115c@gmail.com" class="profile-link">Email</a>
-                        <a href="https://wa.link/6gski2" target="_blank" class="profile-link">WhatsApp</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- FEATURES - Light -->
     <section class="section-light" id="skills">
         <div class="section-inner">
-            <div class="section-label">CORE EXPERTISE</div>
-            <div class="section-title">What I Do Best</div>
-            <p class="section-desc">From technical SEO infrastructure to AI-powered content workflows, I cover the full spectrum of organic search growth.</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">&#128269;</div>
-                    <h3>Technical SEO & Auditing</h3>
-                    <p>Technical audits with Screaming Frog, crawl diagnostics, JSON-LD Schema, Core Web Vitals, and indexation control.</p>
+            <div class="expertise-grid">
+                <div class="expertise-left">
+                    <img src="images/profile.png" alt="Amir Ali - SEO Specialist" class="expertise-photo" width="300" height="300" loading="eager">
+                    <h3 class="expertise-name">Amir Ali</h3>
+                    <p class="expertise-role">SEO Specialist & AI Content Strategist</p>
+                    <div class="expertise-stats">
+                        <div class="expertise-stat"><span class="expertise-stat-num">4+</span><span class="expertise-stat-label">Years</span></div>
+                        <div class="expertise-stat"><span class="expertise-stat-num">13</span><span class="expertise-stat-label">Clients</span></div>
+                        <div class="expertise-stat"><span class="expertise-stat-num">12</span><span class="expertise-stat-label">Industries</span></div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128200;</div>
-                    <h3>Semantic SEO & GEO</h3>
-                    <p>Topical authority mapping, entity extraction, GEO optimization for AI search engines, and E-E-A-T briefs.</p>
-                </div>
-                <div class="feature-card featured">
-                    <div class="feature-icon">&#129302;</div>
-                    <h3>AI Workflows</h3>
-                    <p>Custom Claude and OpenCode workflows, MCP integrations, Python indexing pipelines, and automated content scoring.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128202;</div>
-                    <h3>Internal Linking</h3>
-                    <p>Strategic internal linking architecture, PageRank flow optimization, and hub page construction for topical clusters.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#9881;</div>
-                    <h3>On-Page Optimization</h3>
-                    <p>Meta tags, heading hierarchy, content restructuring, keyword mapping, and product page optimization at scale.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128736;</div>
-                    <h3>Schema & Structured Data</h3>
-                    <p>JSON-LD implementation, product schema, FAQ schema, breadcrumb markup, and rich result optimization.</p>
+                <div class="expertise-right">
+                    <div class="section-label">EXPERTISE</div>
+                    <div class="section-title">What I Do Best</div>
+                    <p class="section-desc">From technical SEO infrastructure to AI-powered content workflows, I cover the full spectrum of organic search growth.</p>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128269;</div>
+                            <h3>Technical SEO</h3>
+                            <p>Audits, crawl diagnostics, JSON-LD Schema, Core Web Vitals, and indexation control.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128200;</div>
+                            <h3>Semantic SEO & GEO</h3>
+                            <p>Topical authority, entity extraction, GEO optimization, and E-E-A-T briefs.</p>
+                        </div>
+                        <div class="feature-card featured">
+                            <div class="feature-icon">&#129302;</div>
+                            <h3>AI Workflows</h3>
+                            <p>Custom Claude workflows, MCP integrations, Python pipelines, and content scoring.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128202;</div>
+                            <h3>Internal Linking</h3>
+                            <p>Strategic architecture, PageRank flow, and hub page construction.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">&#9881;</div>
+                            <h3>On-Page Optimization</h3>
+                            <p>Meta tags, headings, content restructuring, and keyword mapping at scale.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128736;</div>
+                            <h3>Schema & Structured Data</h3>
+                            <p>JSON-LD, product schema, FAQ schema, and rich result optimization.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
