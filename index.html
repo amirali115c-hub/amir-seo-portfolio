@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amir Ali | SEO Specialist & Technical SEO Strategist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Gradient text utility */
+        .gradient-text {
+            background: linear-gradient(135deg, #00d2ff, #7b2ff7, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Animated gradient background blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            animation: float 8s ease-in-out infinite;
+        }
+        .blob-1 { width: 500px; height: 500px; background: #7b2ff7; top: -150px; left: -100px; }
+        .blob-2 { width: 400px; height: 400px; background: #00d2ff; top: 200px; right: -100px; animation-delay: 2s; }
+        .blob-3 { width: 350px; height: 350px; background: #ff0080; bottom: -100px; left: 30%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #fff; }
+        .hire-btn {
+            background: linear-gradient(135deg, #7b2ff7, #ff0080);
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .hire-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(123, 47, 247, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 900px; }
+        .badge {
+            display: inline-block;
+            background: rgba(123, 47, 247, 0.15);
+            border: 1px solid rgba(123, 47, 247, 0.3);
+            color: #b388ff;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: #999;
+            max-width: 650px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            background: linear-gradient(135deg, #00d2ff, #7b2ff7);
+            color: #fff;
+            border: none;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 210, 255, 0.3);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 80px auto 0;
+        }
+        .stat-item {
+            padding: 32px 20px;
+            text-align: center;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: #888;
+            font-weight: 500;
+        }
+
+        /* Section styles */
+        section {
+            position: relative;
+            padding: 120px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #7b2ff7;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        .section-desc {
+            font-size: 1.1rem;
+            color: #888;
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 60px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .skill-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 32px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .skill-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(123, 47, 247, 0.3);
+        }
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        .skill-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .skill-card p {
+            font-size: 0.9rem;
+            color: #888;
+            line-height: 1.6;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .skill-tag {
+            background: rgba(123, 47, 247, 0.1);
+            color: #b388ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Tools Section */
+        .tools-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .tool-chip {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #ccc;
+            transition: all 0.3s;
+        }
+        .tool-chip:hover {
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(123, 47, 247, 0.1));
+            border-color: rgba(123, 47, 247, 0.3);
+            color: #fff;
+        }
+
+        /* Experience Section */
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .exp-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: background 0.3s;
+        }
+        .exp-item:hover { background: rgba(255,255,255,0.01); }
+        .exp-date {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+            padding-top: 4px;
+        }
+        .exp-role {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .exp-company {
+            font-size: 1rem;
+            color: #7b2ff7;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .exp-desc {
+            font-size: 0.95rem;
+            color: #888;
+            line-height: 1.7;
+        }
+        .exp-desc li {
+            margin-bottom: 8px;
+            list-style: none;
+            padding-left: 20px;
+            position: relative;
+        }
+        .exp-desc li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #00d2ff, #7b2ff7);
+            border-radius: 50%;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .portfolio-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 28px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 210, 255, 0.3);
+        }
+        .portfolio-num {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .portfolio-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .portfolio-card .industry {
+            font-size: 0.85rem;
+            color: #7b2ff7;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .portfolio-links {
+            display: flex;
+            gap: 12px;
+        }
+        .portfolio-links a {
+            font-size: 0.8rem;
+            color: #00d2ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .portfolio-links a:hover { color: #fff; }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .cert-card {
+            background: linear-gradient(135deg, rgba(123, 47, 247, 0.08), rgba(0, 210, 255, 0.05));
+            border: 1px solid rgba(123, 47, 247, 0.15);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+        }
+        .cert-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .cert-card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .cert-card p {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 120px 20px;
+            position: relative;
+        }
+        .cta-section .blob { opacity: 0.2; }
+        .cta-content { position: relative; z-index: 2; }
+        .cta-content h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+        .cta-content p {
+            font-size: 1.15rem;
+            color: #888;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #555;
+            font-size: 0.85rem;
+        }
+        .social-links { display: flex; gap: 20px; }
+        .social-links a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-links a:hover { color: #fff; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { padding: 16px 24px; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            section { padding: 80px 24px; }
+            .skills-grid, .portfolio-grid, .cert-grid { grid-template-columns: 1fr; }
+            .exp-item { grid-template-columns: 1fr; gap: 12px; }
+            .section-title { font-size: 2rem; }
+            footer { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo gradient-text">Amir Ali</div>
+        <ul class="nav-links">
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+        </ul>
+        <a href="mailto:amirali115c@gmail.com" class="hire-btn">Hire Me</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+
+        <div class="hero-content">
+            <div class="badge">OPEN TO FULL-TIME REMOTE & FREELANCE</div>
+            <h1>I Build Content That<br><span class="gradient-text">Ranks & Converts</span></h1>
+            <p>SEO Specialist & Technical SEO Strategist with 4+ years driving organic growth across USA & UAE markets. From technical audits to AI-powered content workflows.</p>
+            <div class="hero-buttons">
+                <a href="https://www.clienvora.com/portfolio/" class="btn-primary" target="_blank">View Portfolio</a>
+                <a href="mailto:amirali115c@gmail.com" class="btn-secondary">Get In Touch</a>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number gradient-text">500K+</div>
+                    <div class="stat-label">Monthly Organic Visitors</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number gradient-text">47</div>
+                    <div class="stat-label">Page 1 Rankings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number gradient-text">34%</div>
+                    <div class="stat-label">Conversion Rate Boost</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number gradient-text">13</div>
+                    <div class="stat-label">Clients Across 12 Industries</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-label">CORE EXPERTISE</div>
+        <div class="section-title">What I Do Best</div>
+        <p class="section-desc">From technical SEO infrastructure to AI-powered content workflows, I cover the full spectrum of organic search growth.</p>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon" style="background: linear-gradient(135deg, #7b2ff7, #ff0080);">&#128269;</div>
+                <h3>Technical SEO & Auditing</h3>
+                <p>Deep site audits with Screaming Frog, crawl budget optimization, and indexation control.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Screaming Frog</span>
+                    <span class="skill-tag">Core Web Vitals</span>
+                    <span class="skill-tag">JSON-LD Schema</span>
+                    <span class="skill-tag">301 Redirects</span>
+                    <span class="skill-tag">Migration QA</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon" style="background: linear-gradient(135deg, #00d2ff, #7b2ff7);">&#128200;</div>
+                <h3>On-Page & Content Strategy</h3>
+                <p>Entity-first content architectures, topic clustering, and E-E-A-T compliant briefs.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Keyword Research</span>
+                    <span class="skill-tag">Topic Clusters</span>
+                    <span class="skill-tag">E-E-A-T</span>
+                    <span class="skill-tag">Content Briefs</span>
+                    <span class="skill-tag">Internal Linking</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon" style="background: linear-gradient(135deg, #ff0080, #ff6b6b);">&#129302;</div>
+                <h3>AI Workflows & GEO</h3>
+                <p>Custom AI execution workflows, GEO optimization for AI search engines, and automated pipelines.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Claude / OpenCode</span>
+                    <span class="skill-tag">MCPs</span>
+                    <span class="skill-tag">GEO / AEO</span>
+                    <span class="skill-tag">Python Scripts</span>
+                    <span class="skill-tag">Google Indexing API</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools">
+        <div class="section-label">TOOLS & PLATFORMS</div>
+        <div class="section-title">My Tech Stack</div>
+        <div class="tools-row">
+            <span class="tool-chip">Ahrefs</span>
+            <span class="tool-chip">SEMrush</span>
+            <span class="tool-chip">SurferSEO</span>
+            <span class="tool-chip">Screaming Frog</span>
+            <span class="tool-chip">Google Search Console</span>
+            <span class="tool-chip">GA4</span>
+            <span class="tool-chip">Google Tag Manager</span>
+            <span class="tool-chip">Looker Studio</span>
+            <span class="tool-chip">WordPress</span>
+            <span class="tool-chip">Shopify</span>
+            <span class="tool-chip">HubSpot</span>
+            <span class="tool-chip">Claude / OpenCode</span>
+            <span class="tool-chip">Python</span>
+            <span class="tool-chip">Google Indexing API</span>
+            <span class="tool-chip">n8n</span>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-label">EXPERIENCE</div>
+        <div class="section-title">Where I've Worked</div>
+        <p class="section-desc">4+ years across agencies, B2B brands, and e-commerce clients in USA, UAE, and Pakistan markets.</p>
+
+        <div class="experience-list">
+            <div class="exp-item">
+                <div class="exp-date">2025 - Present</div>
+                <div>
+                    <div class="exp-role">Freelance SEO Specialist & AI Workflow Strategist</div>
+                    <div class="exp-company">Independent | Remote (USA & UAE Clients)</div>
+                    <ul class="exp-desc">
+                        <li>End-to-end SEO campaigns: technical audits, crawl error resolution, indexing fixes with Screaming Frog</li>
+                        <li>Nested JSON-LD Schema.org graphs and entity-first content architectures for AI search engines</li>
+                        <li>Custom AI workflows using Claude, OpenCode, and MCPs for automated content scoring and E-E-A-T briefs</li>
+                        <li>Automated page indexing pipelines with Python scripts and Google Indexing API</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-item">
+                <div class="exp-date">Aug 2024 - Aug 2025</div>
+                <div>
+                    <div class="exp-role">SEO & On-Page Specialist</div>
+                    <div class="exp-company">Carbon Reprographics | Remote (USA)</div>
+                    <ul class="exp-desc">
+                        <li>Optimized 120 e-commerce articles, product pages, and category descriptions across jewelry, automotive, and home decor</li>
+                        <li>Restructured 85 product descriptions into benefit-driven narratives with optimized meta tags</li>
+                        <li>Built 180K monthly organic visitors through keyword research and internal link strategies</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-item">
+                <div class="exp-date">Jan 2023 - Dec 2024</div>
+                <div>
+                    <div class="exp-role">SEO Content Strategist</div>
+                    <div class="exp-company">Three Angle Marketing | Remote (Dubai, UAE)</div>
+                    <ul class="exp-desc">
+                        <li>Optimized 150 location-specific SEO articles and landing pages for real estate and tourism clients</li>
+                        <li>Generated 250K qualified visitors annually through international search intent targeting</li>
+                        <li>Structured content for direct answer extraction across competitive Dubai search niches</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-item">
+                <div class="exp-date">Mar 2022 - Dec 2022</div>
+                <div>
+                    <div class="exp-role">SEO Content Associate</div>
+                    <div class="exp-company">The Neo Solutions | Lahore, Pakistan</div>
+                    <ul class="exp-desc">
+                        <li>Wrote 80 thought leadership articles and service pages for B2B consultancy</li>
+                        <li>Built online authority attracting 15K monthly visitors and enterprise inquiries</li>
+                        <li>Produced 35 outreach-ready guest articles for third-party industry platforms</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-item">
+                <div class="exp-date">Jun 2021 - Feb 2022</div>
+                <div>
+                    <div class="exp-role">SEO Content Associate</div>
+                    <div class="exp-company">Mugshel Pvt Ltd | Lahore, Pakistan</div>
+                    <ul class="exp-desc">
+                        <li>Optimized product catalog copy and category landing pages for B2B packaging solutions</li>
+                        <li>Wrote 60 product descriptions translating technical specs into customer-centered copy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="section-label">CLIENT PORTFOLIO</div>
+        <div class="section-title">Clients I've Worked With</div>
+        <p class="section-desc">13 clients across 12 industries. Every site carries content I researched, wrote, and published.</p>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <div class="portfolio-num">01</div>
+                <h3>Image Academy Houston</h3>
+                <div class="industry">Education</div>
+                <div class="portfolio-links">
+                    <a href="https://imageacademy.org/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/1Z0GHDxSkqWW4aUYCgzs9AYmcvH82niI2" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-num">02</div>
+                <h3>Lucho</h3>
+                <div class="industry">E-commerce</div>
+                <div class="portfolio-links">
+                    <a href="https://lucho.com/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/1gYztwrhL2vc-UcbM2npZEelLntLGobxI" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-num">03</div>
+                <h3>Lashes By Aree</h3>
+                <div class="industry">Beauty</div>
+                <div class="portfolio-links">
+                    <a href="https://lashesbyaree.com/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/1M0X4BoP6ImbVXb52DbrChPH0uUK6pV6n" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-num">04</div>
+                <h3>Swiss Ice Co</h3>
+                <div class="industry">Food & Bev</div>
+                <div class="portfolio-links">
+                    <a href="https://swissiceco.com/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/1kW-8IkoiPyoVUMB8tLQqs2KZT_qex622" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-num">05</div>
+                <h3>Crown Jewels and Coin</h3>
+                <div class="industry">Jewelry</div>
+                <div class="portfolio-links">
+                    <a href="https://crownjewelsandcoin.com/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/17AeZt0GrN8HElZr0yV4GNWzhs_HgHpP_" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-num">06</div>
+                <h3>Three Angle Marketing</h3>
+                <div class="industry">Marketing</div>
+                <div class="portfolio-links">
+                    <a href="https://threeanglemarketing.com/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/1N5bJb13QL0ZHznhBjZPn6PDLM2guNt68" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-num">07</div>
+                <h3>Mukhtar Car Auctions</h3>
+                <div class="industry">Automotive</div>
+                <div class="portfolio-links">
+                    <a href="https://mukhtarcarauctions.com/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/1A7kYK3a1X1q-xYB060ZMc7a_cAFQMuMm" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-num">08</div>
+                <h3>MAP Building Contracting LLC</h3>
+                <div class="industry">Construction</div>
+                <div class="portfolio-links">
+                    <a href="https://mapconstructionllc.com/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/1qjHPbIuWqxXHuviz4FtNIaRY13d5VseU" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-num">09</div>
+                <h3>The Neo Consultancy</h3>
+                <div class="industry">Consultancy</div>
+                <div class="portfolio-links">
+                    <a href="https://www.theneoconsultancy.com/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/1rldPUO4K8_KTEuuQ-oeFpF_hIC0DRvSI" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-num">10</div>
+                <h3>The Neo Solutions</h3>
+                <div class="industry">B2B Services</div>
+                <div class="portfolio-links">
+                    <a href="https://theneosolutions.com/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/1WQN80h1UqoHWSpONjO2Nqp-foSxavTMh" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-num">11</div>
+                <h3>Starlight Customs</h3>
+                <div class="industry">Automotive</div>
+                <div class="portfolio-links">
+                    <a href="https://starlightcustoms.co.uk/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/1Hn2tS9mWXXnEtTuybLEF6jRbG9Ad-4cE" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-num">12</div>
+                <h3>Elite Web Pro</h3>
+                <div class="industry">Web Services</div>
+                <div class="portfolio-links">
+                    <a href="https://elitewebpro.com/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/1Sz8XUinyvz2Bdn2YBtfbUFbuZRnuHrTH" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-num">13</div>
+                <h3>Professional Logo Design</h3>
+                <div class="industry">Design Services</div>
+                <div class="portfolio-links">
+                    <a href="https://professionallogodesign.net/" target="_blank">Live Site</a>
+                    <a href="https://drive.google.com/drive/folders/1DotZyfzlWTDa1K18y6RhfrOteZp8lbMq" target="_blank">Writing Samples</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="section-label">CERTIFICATIONS</div>
+        <div class="section-title">Verified Expertise</div>
+
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-icon">&#127942;</div>
+                <h3>HubSpot SEO Certification I</h3>
+                <p>HubSpot Academy</p>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">&#127942;</div>
+                <h3>HubSpot SEO Certification II</h3>
+                <p>HubSpot Academy</p>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">&#127942;</div>
+                <h3>Content Marketing Certification</h3>
+                <p>HubSpot Academy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="cta-content">
+            <h2>Let's Build Something<br><span class="gradient-text">That Ranks</span></h2>
+            <p>Open to full-time remote and freelance opportunities for USA, UAE, and UK markets.</p>
+            <div class="cta-buttons">
+                <a href="mailto:amirali115c@gmail.com" class="btn-primary">Email Me</a>
+                <a href="https://www.linkedin.com/in/amir-ali-23a3b1204" class="btn-secondary" target="_blank">LinkedIn</a>
+                <a href="https://www.clienvora.com/portfolio/" class="btn-secondary" target="_blank">Full Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div>&copy; 2026 Amir Ali. All rights reserved.</div>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/amir-ali-23a3b1204" target="_blank">LinkedIn</a>
+            <a href="mailto:amirali115c@gmail.com">Email</a>
+            <a href="https://www.clienvora.com/" target="_blank">Clienvora</a>
+        </div>
+    </footer>
+
+</body>
+</html>
