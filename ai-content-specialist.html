@@ -162,6 +162,8 @@
 
         /* MOBILE */
         @media (max-width: 768px) {
+            html { overflow-x: hidden; }
+            body { overflow-x: hidden; }
             nav { padding: 0 20px; height: 60px; }
             .logo { font-size: 1.1rem; }
             .nav-links { display: none; }
@@ -200,8 +202,6 @@
             .footer-inner { grid-template-columns: 1fr; gap: 32px; }
             footer { padding: 40px 24px; }
             .footer-bottom { font-size: 0.75rem; }
-            .cursor, .cursor-dot { display: none; }
-            * { cursor: auto; }
         }
 
         /* SMALL PHONES */
@@ -209,6 +209,8 @@
             .hero h1 { font-size: 1.8rem; }
             .section-title { font-size: 1.6rem; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .feature-card { padding: 20px; }
+            .feature-card h3 { font-size: 1.1rem; }
         }
     </style>
 </head>
