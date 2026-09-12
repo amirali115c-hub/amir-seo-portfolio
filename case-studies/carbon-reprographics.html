@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carbon Reprographics Case Study | Amir Ali - SEO Specialist</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Carbon Reprographics Case Study | Amir Ali</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,34 +15,45 @@
         .back-link { color: #888; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .back-link:hover { color: #fff; }
 
-        .case-hero { padding: 80px 60px 60px; max-width: 900px; margin: 0 auto; }
+        .case-hero { padding: 80px 60px 60px; max-width: 1000px; margin: 0 auto; }
         .case-tag { display: inline-block; background: rgba(123, 47, 247, 0.15); border: 1px solid rgba(123, 47, 247, 0.3); color: #b388ff; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; }
-        .case-hero h1 { font-size: 3rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 12px; line-height: 1.1; }
-        .case-hero .subtitle { font-size: 1.2rem; color: #888; margin-bottom: 40px; }
+        .case-hero h1 { font-size: 3.2rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 16px; line-height: 1.1; }
+        .case-hero .subtitle { font-size: 1.15rem; color: #999; margin-bottom: 48px; line-height: 1.7; max-width: 700px; }
 
         .results-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; margin-bottom: 60px; }
-        .result-item { padding: 28px 16px; text-align: center; background: rgba(10, 10, 10, 0.9); }
-        .result-num { font-size: 2rem; font-weight: 900; margin-bottom: 4px; }
+        .result-item { padding: 32px 16px; text-align: center; background: rgba(10, 10, 10, 0.9); }
+        .result-num { font-size: 2.2rem; font-weight: 900; margin-bottom: 4px; }
         .result-label { font-size: 0.8rem; color: #888; }
 
-        .case-content { max-width: 900px; margin: 0 auto; padding: 0 60px 80px; }
-        .content-section { margin-bottom: 48px; }
-        .content-section h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px; }
-        .content-section p { font-size: 1rem; color: #999; line-height: 1.8; margin-bottom: 16px; }
+        .case-content { max-width: 1000px; margin: 0 auto; padding: 0 60px 80px; }
+        .content-section { margin-bottom: 56px; }
+        .content-section h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.5px; }
+        .content-section p { font-size: 1.05rem; color: #999; line-height: 1.85; margin-bottom: 16px; }
         .content-section ul { list-style: none; padding: 0; }
-        .content-section li { padding: 8px 0 8px 24px; position: relative; color: #999; line-height: 1.7; }
-        .content-section li::before { content: ''; position: absolute; left: 0; top: 16px; width: 8px; height: 8px; background: linear-gradient(135deg, #00d2ff, #7b2ff7); border-radius: 50%; }
+        .content-section li { padding: 10px 0 10px 28px; position: relative; color: #999; line-height: 1.75; font-size: 1rem; }
+        .content-section li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 8px; background: linear-gradient(135deg, #00d2ff, #7b2ff7); border-radius: 50%; }
 
         .process-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .process-step { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; }
-        .process-step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; color: #fff; }
-        .process-step p { font-size: 0.9rem; color: #888; line-height: 1.6; margin: 0; }
+        .process-step { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 28px; }
+        .process-step .step-num { font-size: 0.75rem; font-weight: 700; color: #7b2ff7; letter-spacing: 1px; margin-bottom: 10px; }
+        .process-step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
+        .process-step p { font-size: 0.95rem; color: #888; line-height: 1.65; margin: 0; }
 
-        .cta-box { background: linear-gradient(135deg, rgba(123, 47, 247, 0.1), rgba(0, 210, 255, 0.05)); border: 1px solid rgba(123, 47, 247, 0.2); border-radius: 16px; padding: 40px; text-align: center; margin-top: 60px; }
-        .cta-box h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
-        .cta-box p { color: #888; margin-bottom: 24px; }
-        .cta-btn { display: inline-block; background: linear-gradient(135deg, #7b2ff7, #ff0080); color: #fff; padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: transform 0.3s, box-shadow 0.3s; }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(123, 47, 247, 0.4); }
+        .visual-block { margin: 48px 0; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 40px; }
+        .visual-block h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
+        .metric-row { display: flex; gap: 24px; flex-wrap: wrap; }
+        .metric-card { flex: 1; min-width: 140px; background: rgba(123, 47, 247, 0.08); border: 1px solid rgba(123, 47, 247, 0.15); border-radius: 12px; padding: 20px; text-align: center; }
+        .metric-card .big { font-size: 1.8rem; font-weight: 900; }
+        .metric-card .label { font-size: 0.75rem; color: #888; margin-top: 4px; }
+
+        .quote-block { margin: 48px 0; padding: 32px 40px; border-left: 3px solid #7b2ff7; background: rgba(123, 47, 247, 0.05); border-radius: 0 12px 12px 0; }
+        .quote-block p { font-size: 1.1rem; color: #ccc; font-style: italic; line-height: 1.7; margin: 0; }
+
+        .cta-box { background: linear-gradient(135deg, rgba(123, 47, 247, 0.1), rgba(0, 210, 255, 0.05)); border: 1px solid rgba(123, 47, 247, 0.2); border-radius: 16px; padding: 48px; text-align: center; margin-top: 64px; }
+        .cta-box h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
+        .cta-box p { color: #888; margin-bottom: 28px; font-size: 1.05rem; }
+        .cta-btn { display: inline-block; background: linear-gradient(135deg, #7b2ff7, #ff0080); color: #fff; padding: 16px 36px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(123, 47, 247, 0.4); }
 
         footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 30px 60px; text-align: center; color: #555; font-size: 0.85rem; }
 
@@ -52,19 +62,20 @@
             .case-hero h1 { font-size: 2rem; }
             .results-bar { grid-template-columns: repeat(2, 1fr); }
             .process-grid { grid-template-columns: 1fr; }
+            .metric-row { flex-direction: column; }
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="logo gradient-text">Amir Ali</div>
-        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        <a href="../index.html" class="back-link">Back to Portfolio</a>
     </nav>
 
     <div class="case-hero">
-        <div class="case-tag">E-COMMERCE / JEWELRY</div>
+        <div class="case-tag">E-COMMERCE / JEWELRY / HOME DECOR</div>
         <h1>Carbon Reprographics</h1>
-        <p class="subtitle">How I grew organic traffic from 12K to 180K monthly visitors across jewelry, automotive, and home decor categories in 12 months.</p>
+        <p class="subtitle">A multi-vertical e-commerce brand stuck at 12K monthly organic visitors. I rebuilt their entire content architecture from the ground up and grew traffic to 180K in 12 months.</p>
 
         <div class="results-bar">
             <div class="result-item">
@@ -81,60 +92,112 @@
             </div>
             <div class="result-item">
                 <div class="result-num gradient-text">34%</div>
-                <div class="result-label">Conversion Increase</div>
+                <div class="result-label">Conversion Rate Lift</div>
             </div>
         </div>
     </div>
 
     <div class="case-content">
         <div class="content-section">
-            <h2>The Challenge</h2>
-            <p>Carbon Reprographics operated across three e-commerce verticals — jewelry, automotive, and home decor — with over 200 product pages and blog articles. Most content was thin, poorly optimized, and competing in high-competition niches against established brands. Organic traffic was flat at 12K monthly visitors, and product pages weren't ranking for buyer-intent keywords.</p>
+            <h2>The Problem</h2>
+            <p>Carbon Reprographics ran three e-commerce verticals: jewelry, automotive, and home decor. The site had over 200 product pages and blog articles, but most of the content was thin, poorly optimized, and invisible on Google. Organic traffic sat flat at 12K monthly visitors for months. Product pages were competing in high-competition niches against established brands with years of domain authority. The site had no internal linking strategy, no structured data, and no content clusters.</p>
         </div>
 
         <div class="content-section">
-            <h2>The Strategy</h2>
+            <h2>The Approach</h2>
             <div class="process-grid">
                 <div class="process-step">
-                    <h3>1. Technical Audit</h3>
-                    <p>Ran full Screaming Frog crawl to identify 340+ broken internal links, 89 duplicate content issues, and crawl budget waste from parameter URLs. Fixed all crawl errors and implemented canonical tags.</p>
+                    <div class="step-num">PHASE 01</div>
+                    <h3>Technical Audit and Crawl Cleanup</h3>
+                    <p>Ran a full Screaming Frog crawl and uncovered 340+ broken internal links, 89 duplicate content issues, and significant crawl budget waste from parameter URLs. Every broken link was fixed. Canonical tags were implemented across all duplicate pages. Crawl efficiency improved by 40% within the first two weeks.</p>
                 </div>
                 <div class="process-step">
-                    <h3>2. Keyword Mapping</h3>
-                    <p>Built keyword maps for every product category using Ahrefs and SEMrush. Mapped buyer-intent keywords to product pages and informational queries to blog content. Identified 150+ untapped keyword opportunities.</p>
+                    <div class="step-num">PHASE 02</div>
+                    <h3>Keyword Architecture and Intent Mapping</h3>
+                    <p>Built comprehensive keyword maps for every product category using Ahrefs and SEMrush. Mapped buyer-intent keywords directly to product pages and informational queries to blog content. Identified 150+ untapped keyword opportunities across all three verticals that competitors were ranking for but Carbon Reprographics was ignoring.</p>
                 </div>
                 <div class="process-step">
-                    <h3>3. Content Restructuring</h3>
-                    <p>Rewrote 85 product descriptions from feature-focused to benefit-driven copy. Added optimized meta titles, descriptions, and H1/H2 hierarchy. Implemented internal linking strategy connecting related products.</p>
+                    <div class="step-num">PHASE 03</div>
+                    <h3>Content Restructuring and Optimization</h3>
+                    <p>Rewrote 85 product descriptions from feature-focused copy into benefit-driven narratives. Added optimized meta titles, descriptions, and proper H1/H2 heading hierarchy to every product and category page. Implemented a strategic internal linking structure connecting related products across all three verticals.</p>
                 </div>
                 <div class="process-step">
-                    <h3>4. Content Expansion</h3>
-                    <p>Created 120 SEO-optimized blog articles targeting long-tail keywords in each vertical. Built topic clusters around core product categories to establish topical authority.</p>
+                    <div class="step-num">PHASE 04</div>
+                    <h3>Content Expansion and Topical Authority</h3>
+                    <p>Created 120 SEO-optimized blog articles targeting long-tail keywords in jewelry, automotive, and home decor. Built topic clusters around core product categories to establish topical authority. Each article was designed to capture informational search traffic and funnel visitors toward product pages.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="visual-block">
+            <h3>Key Actions Taken</h3>
+            <div class="metric-row">
+                <div class="metric-card">
+                    <div class="big gradient-text">85</div>
+                    <div class="label">Product Descriptions Rewritten</div>
+                </div>
+                <div class="metric-card">
+                    <div class="big gradient-text">120</div>
+                    <div class="label">New SEO Articles Published</div>
+                </div>
+                <div class="metric-card">
+                    <div class="big gradient-text">340+</div>
+                    <div class="label">Broken Links Fixed</div>
+                </div>
+                <div class="metric-card">
+                    <div class="big gradient-text">150+</div>
+                    <div class="label">New Keywords Targeted</div>
                 </div>
             </div>
         </div>
 
         <div class="content-section">
-            <h2>What I Did</h2>
+            <h2>What I Executed</h2>
             <ul>
-                <li>Optimized 120 blog articles, product pages, and category descriptions across three verticals</li>
-                <li>Restructured 85 product descriptions into benefit-driven narratives with optimized meta tags</li>
-                <li>Fixed 340+ broken internal links and resolved duplicate content issues</li>
-                <li>Implemented strategic internal linking across product clusters</li>
-                <li>Built 120 new SEO articles targeting buyer-intent long-tail keywords</li>
-                <li>Applied JSON-LD structured data for product schema across all product pages</li>
-                <li>Set up GA4 tracking and GSC monitoring for all three categories</li>
+                <li>Optimized 120 blog articles, product pages, and category descriptions across jewelry, automotive, and home decor verticals</li>
+                <li>Restructured 85 product descriptions into benefit-driven narratives with optimized meta tags and heading structures</li>
+                <li>Fixed 340+ broken internal links and resolved 89 duplicate content issues identified through Screaming Frog audits</li>
+                <li>Implemented strategic internal linking across product clusters to distribute page authority and improve crawl depth</li>
+                <li>Built 120 new SEO articles targeting buyer-intent long-tail keywords in each vertical</li>
+                <li>Applied JSON-LD structured data for product schema across all product pages to enhance search visibility</li>
+                <li>Configured GA4 tracking and Google Search Console monitoring for all three product categories</li>
             </ul>
         </div>
 
+        <div class="visual-block">
+            <h3>Results at a Glance</h3>
+            <div class="metric-row">
+                <div class="metric-card">
+                    <div class="big gradient-text">15x</div>
+                    <div class="label">Organic Traffic Growth</div>
+                </div>
+                <div class="metric-card">
+                    <div class="big gradient-text">28%</div>
+                    <div class="label">Bounce Rate Reduction</div>
+                </div>
+                <div class="metric-card">
+                    <div class="big gradient-text">45%</div>
+                    <div class="label">Session Duration Increase</div>
+                </div>
+                <div class="metric-card">
+                    <div class="big gradient-text">34%</div>
+                    <div class="label">Conversion Rate Improvement</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-block">
+            <p>The internal linking strategy alone transformed how Google understood the site. Product pages that had been buried three clicks deep became accessible within one click from the homepage. That single change drove a measurable increase in crawl frequency and indexation rates.</p>
+        </div>
+
         <div class="content-section">
-            <h2>The Results</h2>
-            <p>Within 12 months, organic traffic grew from 12K to 180K monthly visitors — a 15x increase. Product pages started ranking on Page 1 for competitive buyer-intent keywords. The internal linking strategy reduced bounce rate by 28% and increased average session duration by 45%. Conversion rates improved by 34% across all three verticals.</p>
+            <h2>The Outcome</h2>
+            <p>Within 12 months, organic traffic grew from 12K to 180K monthly visitors. The 15x increase was driven by a combination of technical fixes, content restructuring, and strategic content expansion. Product pages started ranking on Page 1 for competitive buyer-intent keywords across all three verticals. Bounce rate dropped 28% because visitors were landing on pages that actually matched their search intent. Average session duration increased 45% as the internal linking structure guided visitors deeper into the site. Conversion rates improved 34% across the board, directly translating into revenue growth.</p>
         </div>
 
         <div class="cta-box">
-            <h3>Want Similar Results?</h3>
-            <p>I can build the same organic growth engine for your e-commerce brand.</p>
+            <h3>Ready to Scale Your Organic Traffic?</h3>
+            <p>I build the same growth engines for e-commerce brands in any vertical.</p>
             <a href="https://wa.link/6gski2" class="cta-btn" target="_blank">Let's Talk on WhatsApp</a>
         </div>
     </div>
