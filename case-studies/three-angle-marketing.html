@@ -5,147 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Three Angle Marketing Case Study | Amir Ali</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; }
-        .gradient-text { background: linear-gradient(135deg, #00d2ff, #7b2ff7, #ff0080); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-        nav { padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .logo { font-size: 1.3rem; font-weight: 800; }
-        .back-link { color: #888; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
-        .back-link:hover { color: #fff; }
-
-        .case-hero { padding: 80px 60px 60px; max-width: 1000px; margin: 0 auto; }
-        .case-tag { display: inline-block; background: rgba(123, 47, 247, 0.15); border: 1px solid rgba(123, 47, 247, 0.3); color: #b388ff; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; }
-        .case-hero h1 { font-size: 3.2rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 16px; line-height: 1.1; }
-        .case-hero .subtitle { font-size: 1.15rem; color: #999; margin-bottom: 48px; line-height: 1.7; max-width: 700px; }
-
-        .results-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; margin-bottom: 60px; }
-        .result-item { padding: 32px 16px; text-align: center; background: rgba(10, 10, 10, 0.9); }
-        .result-num { font-size: 2.2rem; font-weight: 900; margin-bottom: 4px; }
-        .result-label { font-size: 0.8rem; color: #888; }
-
-        .case-content { max-width: 1000px; margin: 0 auto; padding: 0 60px 80px; }
-        .content-section { margin-bottom: 56px; }
-        .content-section h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.5px; }
-        .content-section p { font-size: 1.05rem; color: #999; line-height: 1.85; margin-bottom: 16px; }
-        .content-section ul { list-style: none; padding: 0; }
-        .content-section li { padding: 10px 0 10px 28px; position: relative; color: #999; line-height: 1.75; font-size: 1rem; }
-        .content-section li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 8px; background: linear-gradient(135deg, #00d2ff, #7b2ff7); border-radius: 50%; }
-
-        .process-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .process-step { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 28px; }
-        .process-step .step-num { font-size: 0.75rem; font-weight: 700; color: #7b2ff7; letter-spacing: 1px; margin-bottom: 10px; }
-        .process-step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
-        .process-step p { font-size: 0.95rem; color: #888; line-height: 1.65; margin: 0; }
-
-        .visual-block { margin: 48px 0; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 40px; }
-        .visual-block h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
-        .metric-row { display: flex; gap: 24px; flex-wrap: wrap; }
-        .metric-card { flex: 1; min-width: 140px; background: rgba(123, 47, 247, 0.08); border: 1px solid rgba(123, 47, 247, 0.15); border-radius: 12px; padding: 20px; text-align: center; }
-        .metric-card .big { font-size: 1.8rem; font-weight: 900; }
-        .metric-card .label { font-size: 0.75rem; color: #888; margin-top: 4px; }
-
-        .keywords-block { margin: 48px 0; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 40px; }
-        .keywords-block h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
-        .keyword-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .keyword-chip { background: rgba(0, 210, 255, 0.08); border: 1px solid rgba(0, 210, 255, 0.2); color: #00d2ff; padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; }
-        .keyword-chip .rank { color: #b388ff; font-weight: 700; margin-right: 6px; }
-
-        .quote-block { margin: 48px 0; padding: 32px 40px; border-left: 3px solid #7b2ff7; background: rgba(123, 47, 247, 0.05); border-radius: 0 12px 12px 0; }
-        .quote-block p { font-size: 1.1rem; color: #ccc; font-style: italic; line-height: 1.7; margin: 0; }
-
-        .cta-box { background: linear-gradient(135deg, rgba(123, 47, 247, 0.1), rgba(0, 210, 255, 0.05)); border: 1px solid rgba(123, 47, 247, 0.2); border-radius: 16px; padding: 48px; text-align: center; margin-top: 64px; }
-        .cta-box h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
-        .cta-box p { color: #888; margin-bottom: 28px; font-size: 1.05rem; }
-        .cta-btn { display: inline-block; background: linear-gradient(135deg, #7b2ff7, #ff0080); color: #fff; padding: 16px 36px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s, box-shadow 0.3s; }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(123, 47, 247, 0.4); }
-
-        footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 30px 60px; text-align: center; color: #555; font-size: 0.85rem; }
-
-        @media (max-width: 768px) {
-            nav, .case-hero, .case-content, footer { padding-left: 24px; padding-right: 24px; }
-            .case-hero h1 { font-size: 2rem; }
-            .results-bar { grid-template-columns: 1fr; }
-            .process-grid { grid-template-columns: 1fr; }
-            .metric-row { flex-direction: column; }
-        }
-    </style>
+    <link rel="stylesheet" href="case-style.css">
 </head>
 <body>
-    <nav>
-        <div class="logo gradient-text">Amir Ali</div>
+    <nav class="cs-nav">
+        <a href="../index.html" class="logo">Amir Ali</a>
         <a href="../index.html" class="back-link">Back to Portfolio</a>
+        <a href="https://wa.link/6gski2" class="hire-btn" target="_blank">Hire Me</a>
     </nav>
 
-    <div class="case-hero">
-        <div class="case-tag">REAL ESTATE / TOURISM / DUBAI, UAE</div>
-        <h1>Three Angle Marketing</h1>
-        <p class="subtitle">A digital marketing agency in Dubai managing SEO for real estate and tourism clients. I optimized 150 location-specific pages, fixed technical issues, and built internal linking structures that improved search visibility in competitive Dubai niches.</p>
-
-        <div class="results-bar">
-            <div class="result-item">
-                <div class="result-num gradient-text">150</div>
-                <div class="result-label">Pages Optimized</div>
-            </div>
-            <div class="result-item">
-                <div class="result-num gradient-text">8</div>
-                <div class="result-label">Keywords Ranking Page 1</div>
-            </div>
-            <div class="result-item">
-                <div class="result-num gradient-text">12</div>
-                <div class="result-label">Property Launches Supported</div>
+    <!-- Hero -->
+    <section class="cs-hero">
+        <div class="cs-hero-rays"></div>
+        <div class="cs-hero-inner">
+            <div class="cs-tag">Real Estate / Tourism / Dubai, UAE</div>
+            <h1>Three Angle Marketing</h1>
+            <p class="cs-subtitle">A digital marketing agency in Dubai managing SEO for real estate and tourism clients. I optimized 150 location-specific pages, fixed technical issues, and built internal linking structures that improved search visibility in competitive Dubai niches.</p>
+            <div class="cs-results">
+                <div class="cs-result">
+                    <div class="cs-result-num">150</div>
+                    <div class="cs-result-label">Pages Optimized</div>
+                </div>
+                <div class="cs-result">
+                    <div class="cs-result-num">8</div>
+                    <div class="cs-result-label">Keywords Ranking Page 1</div>
+                </div>
+                <div class="cs-result">
+                    <div class="cs-result-num">12</div>
+                    <div class="cs-result-label">Property Launches Supported</div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="case-content">
-        <div class="content-section">
-            <h2>The Problem</h2>
-            <p>Three Angle Marketing managed SEO for real estate and tourism clients in Dubai. The websites had generic content that was not location-optimized. Pages were competing against massive property portals with huge budgets. Technical SEO was inconsistent across client sites with duplicate content, weak heading hierarchies, and no internal linking strategy connecting related location pages. The agency needed a systematic technical approach to improve search visibility for their clients.</p>
+    <!-- The Problem - Light -->
+    <section class="cs-section cs-section-light">
+        <div class="cs-section-inner">
+            <div class="cs-label">THE PROBLEM</div>
+            <div class="cs-section-title">Lost in a Competitive Market</div>
+            <p>Three Angle Marketing managed SEO for real estate and tourism clients in Dubai. The websites had generic content that was not location-optimized. Pages were competing against massive property portals with huge budgets.</p>
+            <p>Technical SEO was inconsistent across client sites with duplicate content, weak heading hierarchies, and no internal linking strategy connecting related location pages. The agency needed a systematic technical approach to improve search visibility for their clients.</p>
         </div>
+    </section>
 
-        <div class="content-section">
-            <h2>The Approach</h2>
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="step-num">PHASE 01</div>
+    <!-- The Approach - White -->
+    <section class="cs-section cs-section-white">
+        <div class="cs-section-inner">
+            <div class="cs-label">THE APPROACH</div>
+            <div class="cs-section-title">A Systematic Location-First Strategy</div>
+            <div class="cs-process-grid">
+                <div class="cs-process-card">
+                    <div class="step-num">Phase 01</div>
                     <h3>Technical Audit Across Client Sites</h3>
                     <p>Ran Screaming Frog audits across all client websites to identify duplicate content, missing meta tags, broken links, and heading hierarchy issues. Created a unified technical fix log with severity rankings and implementation priorities for each client.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-num">PHASE 02</div>
+                <div class="cs-process-card">
+                    <div class="step-num">Phase 02</div>
                     <h3>Location Page Architecture and On-Page SEO</h3>
                     <p>Created 150 location-specific pages targeting Dubai neighborhoods, property types, and tourist attractions. Each page was optimized with proper heading hierarchy, meta titles, meta descriptions, and entity-first content structure for direct answer extraction.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-num">PHASE 03</div>
+                <div class="cs-process-card">
+                    <div class="step-num">Phase 03</div>
                     <h3>Internal Linking for Location Clusters</h3>
                     <p>Built internal linking structures connecting related location pages, neighborhood guides, and property type content. Created hub pages for each real estate area and tourism category that distributed link authority to deeper location pages.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-num">PHASE 04</div>
+                <div class="cs-process-card">
+                    <div class="step-num">Phase 04</div>
                     <h3>Content Scoring and Optimization</h3>
                     <p>Implemented content scoring system to evaluate each page against competitors. Adjusted content depth, keyword density, and entity coverage based on scoring. Maintained tracking spreadsheets to monitor ranking movements and on-page improvements.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="keywords-block">
-            <h3>Keywords Now Ranking on Page 1</h3>
-            <div class="keyword-list">
-                <span class="keyword-chip"><span class="rank">#4</span> Dubai Marina apartments for sale</span>
-                <span class="keyword-chip"><span class="rank">#6</span> Downtown Dubai real estate</span>
-                <span class="keyword-chip"><span class="rank">#3</span> Palm Jumeirah property listings</span>
-                <span class="keyword-chip"><span class="rank">#7</span> Dubai tourism guide for tourists</span>
-                <span class="keyword-chip"><span class="rank">#5</span> Business Bay office spaces</span>
-                <span class="keyword-chip"><span class="rank">#8</span> JBR hotels and attractions</span>
+    <!-- Keywords - Light -->
+    <section class="cs-section cs-section-light">
+        <div class="cs-section-inner cs-keywords-wrap">
+            <div class="cs-label">RANKINGS</div>
+            <div class="cs-section-title">Keywords Now Ranking on Page 1</div>
+            <div class="cs-keyword-list">
+                <span class="cs-keyword-chip"><span class="rank">#4</span> Dubai Marina apartments for sale</span>
+                <span class="cs-keyword-chip"><span class="rank">#6</span> Downtown Dubai real estate</span>
+                <span class="cs-keyword-chip"><span class="rank">#3</span> Palm Jumeirah property listings</span>
+                <span class="cs-keyword-chip"><span class="rank">#7</span> Dubai tourism guide for tourists</span>
+                <span class="cs-keyword-chip"><span class="rank">#5</span> Business Bay office spaces</span>
+                <span class="cs-keyword-chip"><span class="rank">#8</span> JBR hotels and attractions</span>
             </div>
         </div>
+    </section>
 
-        <div class="content-section">
-            <h2>What I Executed</h2>
-            <ul>
+    <!-- What I Executed - Dark -->
+    <section class="cs-section cs-section-dark">
+        <div class="cs-section-inner">
+            <div class="cs-label">EXECUTION</div>
+            <div class="cs-section-title">What I Executed</div>
+            <ul class="cs-list">
                 <li>Ran Screaming Frog audits across all client sites and resolved technical issues including duplicate content, broken links, and missing meta tags</li>
                 <li>Optimized 150 location-specific pages with proper heading hierarchy, meta titles, and entity-first content structure</li>
                 <li>Built internal linking architecture connecting neighborhood pages, property types, and tourism content into coherent clusters</li>
@@ -155,45 +109,63 @@
                 <li>Managed complete content pipelines from keyword briefing through publishing across multiple client accounts</li>
             </ul>
         </div>
+    </section>
 
-        <div class="visual-block">
-            <h3>Technical Fixes Delivered</h3>
-            <div class="metric-row">
-                <div class="metric-card">
-                    <div class="big gradient-text">150</div>
-                    <div class="label">Pages Optimized</div>
+    <!-- Technical Fixes Metrics - White -->
+    <section class="cs-section cs-section-white">
+        <div class="cs-section-inner">
+            <div class="cs-label">BY THE NUMBERS</div>
+            <div class="cs-section-title">Technical Fixes Delivered</div>
+            <div class="cs-metrics-grid">
+                <div class="cs-metric-card">
+                    <div class="cs-metric-num">150</div>
+                    <div class="cs-metric-label">Pages Optimized</div>
                 </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">6</div>
-                    <div class="label">Location Clusters Built</div>
+                <div class="cs-metric-card">
+                    <div class="cs-metric-num">6</div>
+                    <div class="cs-metric-label">Location Clusters Built</div>
                 </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">45+</div>
-                    <div class="label">Internal Links Restructured</div>
+                <div class="cs-metric-card">
+                    <div class="cs-metric-num">45+</div>
+                    <div class="cs-metric-label">Internal Links Restructured</div>
                 </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">12</div>
-                    <div class="label">Property Launches Supported</div>
+                <div class="cs-metric-card">
+                    <div class="cs-metric-num">12</div>
+                    <div class="cs-metric-label">Property Launches Supported</div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="quote-block">
-            <p>The internal linking strategy for location pages was the key. Dubai real estate has dozens of neighborhoods, each needing its own page. By creating hub pages for each area and linking related neighborhoods together, we built a geographic content topology that search engines could easily crawl and understand.</p>
+    <!-- Quote - Light -->
+    <section class="cs-section cs-section-light">
+        <div class="cs-section-inner">
+            <div class="cs-quote">
+                <p>The internal linking strategy for location pages was the key. Dubai real estate has dozens of neighborhoods, each needing its own page. By creating hub pages for each area and linking related neighborhoods together, we built a geographic content topology that search engines could easily crawl and understand.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="content-section">
-            <h2>The Outcome</h2>
-            <p>After the technical overhaul, client sites saw improved crawl efficiency and better indexation of location pages. The internal linking structure helped Google understand the relationship between neighborhoods, property types, and service pages. On-page optimization across 150 location pages resulted in 8 keywords reaching Page 1 for Dubai-specific real estate and tourism queries. The structured content approach helped some pages capture featured snippets for location-based searches. The agency used these technical improvements to demonstrate measurable progress to clients and retain accounts.</p>
+    <!-- Outcome - White -->
+    <section class="cs-section cs-section-white">
+        <div class="cs-section-inner">
+            <div class="cs-label">THE OUTCOME</div>
+            <div class="cs-section-title">Visible Results in a Competitive Market</div>
+            <p>After the technical overhaul, client sites saw improved crawl efficiency and better indexation of location pages. The internal linking structure helped Google understand the relationship between neighborhoods, property types, and service pages.</p>
+            <p>On-page optimization across 150 location pages resulted in 8 keywords reaching Page 1 for Dubai-specific real estate and tourism queries. The structured content approach helped some pages capture featured snippets for location-based searches. The agency used these technical improvements to demonstrate measurable progress to clients and retain accounts.</p>
         </div>
+    </section>
 
-        <div class="cta-box">
-            <h3>Need Location-Based SEO?</h3>
-            <p>I build internal linking structures and on-page optimization for multi-location businesses.</p>
-            <a href="https://wa.link/6gski2" class="cta-btn" target="_blank">Let's Talk on WhatsApp</a>
+    <!-- CTA -->
+    <section class="cs-cta">
+        <h2>Need Location-Based SEO?</h2>
+        <p>I build internal linking structures and on-page optimization for multi-location businesses.</p>
+        <div class="cs-cta-buttons">
+            <a href="https://wa.link/6gski2" class="cs-btn-white" target="_blank">Let's Talk on WhatsApp</a>
+            <a href="../index.html" class="cs-btn-outline">View My Portfolio</a>
         </div>
-    </div>
+    </section>
 
-    <footer>&copy; 2026 Amir Ali. All rights reserved.</footer>
+    <footer class="cs-footer">&copy; 2026 Amir Ali. All rights reserved.</footer>
 </body>
 </html>

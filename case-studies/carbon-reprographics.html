@@ -5,148 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carbon Reprographics Case Study | Amir Ali</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; }
-        .gradient-text { background: linear-gradient(135deg, #00d2ff, #7b2ff7, #ff0080); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-        nav { padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .logo { font-size: 1.3rem; font-weight: 800; }
-        .back-link { color: #888; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
-        .back-link:hover { color: #fff; }
-
-        .case-hero { padding: 80px 60px 60px; max-width: 1000px; margin: 0 auto; }
-        .case-tag { display: inline-block; background: rgba(123, 47, 247, 0.15); border: 1px solid rgba(123, 47, 247, 0.3); color: #b388ff; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; }
-        .case-hero h1 { font-size: 3.2rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 16px; line-height: 1.1; }
-        .case-hero .subtitle { font-size: 1.15rem; color: #999; margin-bottom: 48px; line-height: 1.7; max-width: 700px; }
-
-        .results-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; margin-bottom: 60px; }
-        .result-item { padding: 32px 16px; text-align: center; background: rgba(10, 10, 10, 0.9); }
-        .result-num { font-size: 2.2rem; font-weight: 900; margin-bottom: 4px; }
-        .result-label { font-size: 0.8rem; color: #888; }
-
-        .case-content { max-width: 1000px; margin: 0 auto; padding: 0 60px 80px; }
-        .content-section { margin-bottom: 56px; }
-        .content-section h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.5px; }
-        .content-section p { font-size: 1.05rem; color: #999; line-height: 1.85; margin-bottom: 16px; }
-        .content-section ul { list-style: none; padding: 0; }
-        .content-section li { padding: 10px 0 10px 28px; position: relative; color: #999; line-height: 1.75; font-size: 1rem; }
-        .content-section li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 8px; background: linear-gradient(135deg, #00d2ff, #7b2ff7); border-radius: 50%; }
-
-        .process-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .process-step { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 28px; }
-        .process-step .step-num { font-size: 0.75rem; font-weight: 700; color: #7b2ff7; letter-spacing: 1px; margin-bottom: 10px; }
-        .process-step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
-        .process-step p { font-size: 0.95rem; color: #888; line-height: 1.65; margin: 0; }
-
-        .visual-block { margin: 48px 0; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 40px; }
-        .visual-block h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
-        .metric-row { display: flex; gap: 24px; flex-wrap: wrap; }
-        .metric-card { flex: 1; min-width: 140px; background: rgba(123, 47, 247, 0.08); border: 1px solid rgba(123, 47, 247, 0.15); border-radius: 12px; padding: 20px; text-align: center; }
-        .metric-card .big { font-size: 1.8rem; font-weight: 900; }
-        .metric-card .label { font-size: 0.75rem; color: #888; margin-top: 4px; }
-
-        .keywords-block { margin: 48px 0; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 40px; }
-        .keywords-block h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
-        .keyword-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .keyword-chip { background: rgba(0, 210, 255, 0.08); border: 1px solid rgba(0, 210, 255, 0.2); color: #00d2ff; padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; }
-        .keyword-chip .rank { color: #b388ff; font-weight: 700; margin-right: 6px; }
-
-        .quote-block { margin: 48px 0; padding: 32px 40px; border-left: 3px solid #7b2ff7; background: rgba(123, 47, 247, 0.05); border-radius: 0 12px 12px 0; }
-        .quote-block p { font-size: 1.1rem; color: #ccc; font-style: italic; line-height: 1.7; margin: 0; }
-
-        .cta-box { background: linear-gradient(135deg, rgba(123, 47, 247, 0.1), rgba(0, 210, 255, 0.05)); border: 1px solid rgba(123, 47, 247, 0.2); border-radius: 16px; padding: 48px; text-align: center; margin-top: 64px; }
-        .cta-box h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
-        .cta-box p { color: #888; margin-bottom: 28px; font-size: 1.05rem; }
-        .cta-btn { display: inline-block; background: linear-gradient(135deg, #7b2ff7, #ff0080); color: #fff; padding: 16px 36px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s, box-shadow 0.3s; }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(123, 47, 247, 0.4); }
-
-        footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 30px 60px; text-align: center; color: #555; font-size: 0.85rem; }
-
-        @media (max-width: 768px) {
-            nav, .case-hero, .case-content, footer { padding-left: 24px; padding-right: 24px; }
-            .case-hero h1 { font-size: 2rem; }
-            .results-bar { grid-template-columns: 1fr; }
-            .process-grid { grid-template-columns: 1fr; }
-            .metric-row { flex-direction: column; }
-        }
-    </style>
+    <link rel="stylesheet" href="case-style.css">
 </head>
 <body>
-    <nav>
-        <div class="logo gradient-text">Amir Ali</div>
+    <nav class="cs-nav">
+        <a href="../index.html" class="logo">Amir Ali</a>
         <a href="../index.html" class="back-link">Back to Portfolio</a>
+        <a href="https://wa.link/6gski2" class="hire-btn" target="_blank">Hire Me</a>
     </nav>
 
-    <div class="case-hero">
-        <div class="case-tag">E-COMMERCE / JEWELRY / HOME DECOR</div>
-        <h1>Carbon Reprographics</h1>
-        <p class="subtitle">A multi-vertical e-commerce brand with serious technical SEO problems. I fixed their crawl issues, rebuilt their internal linking architecture, and optimized 120 pages across jewelry, automotive, and home decor.</p>
-
-        <div class="results-bar">
-            <div class="result-item">
-                <div class="result-num gradient-text">340+</div>
-                <div class="result-label">Technical Issues Fixed</div>
-            </div>
-            <div class="result-item">
-                <div class="result-num gradient-text">120</div>
-                <div class="result-label">Pages Optimized</div>
-            </div>
-            <div class="result-item">
-                <div class="result-num gradient-text">10</div>
-                <div class="result-label">Keywords Ranking Page 1</div>
+    <!-- Hero -->
+    <section class="cs-hero">
+        <div class="cs-hero-rays"></div>
+        <div class="cs-hero-inner">
+            <div class="cs-tag">E-commerce / Jewelry / Home Decor</div>
+            <h1>Carbon Reprographics</h1>
+            <p class="cs-subtitle">A multi-vertical e-commerce brand with serious technical SEO problems. I fixed their crawl issues, rebuilt their internal linking architecture, and optimized 120 pages across jewelry, automotive, and home decor.</p>
+            <div class="cs-results">
+                <div class="cs-result">
+                    <div class="cs-result-num">340+</div>
+                    <div class="cs-result-label">Technical Issues Fixed</div>
+                </div>
+                <div class="cs-result">
+                    <div class="cs-result-num">120</div>
+                    <div class="cs-result-label">Pages Optimized</div>
+                </div>
+                <div class="cs-result">
+                    <div class="cs-result-num">10</div>
+                    <div class="cs-result-label">Keywords Ranking Page 1</div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="case-content">
-        <div class="content-section">
-            <h2>The Problem</h2>
-            <p>Carbon Reprographics operated three e-commerce verticals: jewelry, automotive, and home decor. The site had serious technical SEO issues holding it back. Broken internal links were everywhere, duplicate content was dragging down crawl efficiency, and product pages had no structured data. The internal linking was flat with no hierarchy, meaning PageRank was not flowing to the pages that mattered most. On-page optimization was weak across the board with thin meta descriptions and poorly structured headings.</p>
+    <!-- The Problem - Light -->
+    <section class="cs-section cs-section-light">
+        <div class="cs-section-inner">
+            <div class="cs-label">THE PROBLEM</div>
+            <div class="cs-section-title">A Site Google Couldn't Trust</div>
+            <p>Carbon Reprographics operated three e-commerce verticals: jewelry, automotive, and home decor. The site had serious technical SEO issues holding it back. Broken internal links were everywhere, duplicate content was dragging down crawl efficiency, and product pages had no structured data.</p>
+            <p>The internal linking was flat with no hierarchy, meaning PageRank was not flowing to the pages that mattered most. On-page optimization was weak across the board with thin meta descriptions and poorly structured headings.</p>
         </div>
+    </section>
 
-        <div class="content-section">
-            <h2>The Approach</h2>
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="step-num">PHASE 01</div>
+    <!-- The Approach - White -->
+    <section class="cs-section cs-section-white">
+        <div class="cs-section-inner">
+            <div class="cs-label">THE APPROACH</div>
+            <div class="cs-section-title">A Four-Phase Technical Overhaul</div>
+            <div class="cs-process-grid">
+                <div class="cs-process-card">
+                    <div class="step-num">Phase 01</div>
                     <h3>Full Technical Audit with Screaming Frog</h3>
                     <p>Ran a comprehensive Screaming Frog crawl and identified 340+ broken internal links, 89 duplicate content issues, missing canonical tags, and parameter URLs wasting crawl budget. Every issue was logged with severity ranking and fixed systematically.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-num">PHASE 02</div>
+                <div class="cs-process-card">
+                    <div class="step-num">Phase 02</div>
                     <h3>Internal Linking Architecture Rebuild</h3>
                     <p>Built a proper internal linking hierarchy connecting product categories, subcategories, and related products. Implemented breadcrumb navigation with structured data. Created hub pages for each vertical that distributed PageRank to product pages efficiently.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-num">PHASE 03</div>
+                <div class="cs-process-card">
+                    <div class="step-num">Phase 03</div>
                     <h3>On-Page Optimization at Scale</h3>
                     <p>Rewrote 85 product descriptions with benefit-driven copy. Added optimized meta titles, meta descriptions, and proper H1/H2 heading hierarchy to every product and category page. Ensured each page targeted a specific keyword without cannibalization.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-num">PHASE 04</div>
+                <div class="cs-process-card">
+                    <div class="step-num">Phase 04</div>
                     <h3>Structured Data and Schema Implementation</h3>
                     <p>Implemented JSON-LD product schema across all product pages. Added breadcrumb schema, organization schema, and FAQ schema where applicable. This improved how Google understood the site structure and enhanced search appearance.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="keywords-block">
-            <h3>Keywords Now Ranking on Page 1</h3>
-            <div class="keyword-list">
-                <span class="keyword-chip"><span class="rank">#3</span> lab grown diamond earrings Albuquerque</span>
-                <span class="keyword-chip"><span class="rank">#5</span> custom jewelry design New Mexico</span>
-                <span class="keyword-chip"><span class="rank">#4</span> Verragio engagement rings</span>
-                <span class="keyword-chip"><span class="rank">#7</span> men's diamond bracelets online</span>
-                <span class="keyword-chip"><span class="rank">#6</span> home decor accessories shop</span>
-                <span class="keyword-chip"><span class="rank">#8</span> automotive accessories store</span>
-                <span class="keyword-chip"><span class="rank">#5</span> estate jewelry Albuquerque</span>
+    <!-- Keywords - Light -->
+    <section class="cs-section cs-section-light">
+        <div class="cs-section-inner cs-keywords-wrap">
+            <div class="cs-label">RANKINGS</div>
+            <div class="cs-section-title">Keywords Now Ranking on Page 1</div>
+            <div class="cs-keyword-list">
+                <span class="cs-keyword-chip"><span class="rank">#3</span> lab grown diamond earrings Albuquerque</span>
+                <span class="cs-keyword-chip"><span class="rank">#5</span> custom jewelry design New Mexico</span>
+                <span class="cs-keyword-chip"><span class="rank">#4</span> Verragio engagement rings</span>
+                <span class="cs-keyword-chip"><span class="rank">#7</span> men's diamond bracelets online</span>
+                <span class="cs-keyword-chip"><span class="rank">#6</span> home decor accessories shop</span>
+                <span class="cs-keyword-chip"><span class="rank">#8</span> automotive accessories store</span>
+                <span class="cs-keyword-chip"><span class="rank">#5</span> estate jewelry Albuquerque</span>
             </div>
         </div>
+    </section>
 
-        <div class="content-section">
-            <h2>What I Executed</h2>
-            <ul>
+    <!-- What I Executed - Dark -->
+    <section class="cs-section cs-section-dark">
+        <div class="cs-section-inner">
+            <div class="cs-label">EXECUTION</div>
+            <div class="cs-section-title">What I Executed</div>
+            <ul class="cs-list">
                 <li>Ran full Screaming Frog audits and resolved 340+ broken internal links across three product verticals</li>
                 <li>Fixed 89 duplicate content issues with proper canonical tag implementation</li>
                 <li>Rebuilt internal linking architecture with clear hierarchy from category to subcategory to product pages</li>
@@ -156,45 +110,63 @@
                 <li>Created topic clusters around core product categories to strengthen topical authority</li>
             </ul>
         </div>
+    </section>
 
-        <div class="visual-block">
-            <h3>Technical Fixes Delivered</h3>
-            <div class="metric-row">
-                <div class="metric-card">
-                    <div class="big gradient-text">340+</div>
-                    <div class="label">Broken Links Fixed</div>
+    <!-- Technical Fixes Metrics - White -->
+    <section class="cs-section cs-section-white">
+        <div class="cs-section-inner">
+            <div class="cs-label">BY THE NUMBERS</div>
+            <div class="cs-section-title">Technical Fixes Delivered</div>
+            <div class="cs-metrics-grid">
+                <div class="cs-metric-card">
+                    <div class="cs-metric-num">340+</div>
+                    <div class="cs-metric-label">Broken Links Fixed</div>
                 </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">89</div>
-                    <div class="label">Duplicate Content Resolved</div>
+                <div class="cs-metric-card">
+                    <div class="cs-metric-num">89</div>
+                    <div class="cs-metric-label">Duplicate Content Resolved</div>
                 </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">120</div>
-                    <div class="label">Pages Fully Optimized</div>
+                <div class="cs-metric-card">
+                    <div class="cs-metric-num">120</div>
+                    <div class="cs-metric-label">Pages Fully Optimized</div>
                 </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">3</div>
-                    <div class="label">Schema Types Implemented</div>
+                <div class="cs-metric-card">
+                    <div class="cs-metric-num">3</div>
+                    <div class="cs-metric-label">Schema Types Implemented</div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="quote-block">
-            <p>The biggest win was the internal linking rebuild. Most e-commerce sites treat linking as an afterthought. By building a proper hierarchy where every product page was reachable within two clicks from the homepage, we improved crawl depth and ensured Google discovered new products faster.</p>
+    <!-- Quote - Light -->
+    <section class="cs-section cs-section-light">
+        <div class="cs-section-inner">
+            <div class="cs-quote">
+                <p>The biggest win was the internal linking rebuild. Most e-commerce sites treat linking as an afterthought. By building a proper hierarchy where every product page was reachable within two clicks from the homepage, we improved crawl depth and ensured Google discovered new products faster.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="content-section">
-            <h2>The Outcome</h2>
-            <p>After the technical overhaul, the site went from having 340+ crawl errors to a clean bill of health in Google Search Console. Indexation improved significantly with more product pages being crawled and indexed. Internal linking flow was restored, allowing PageRank to reach deep product pages. On-page optimization across 120 pages resulted in 10 keywords reaching Page 1 for targeted buyer-intent queries. The structured data implementation enhanced search appearance with rich results for product listings.</p>
+    <!-- Outcome - White -->
+    <section class="cs-section cs-section-white">
+        <div class="cs-section-inner">
+            <div class="cs-label">THE OUTCOME</div>
+            <div class="cs-section-title">From Crawl Errors to Page 1</div>
+            <p>After the technical overhaul, the site went from having 340+ crawl errors to a clean bill of health in Google Search Console. Indexation improved significantly with more product pages being crawled and indexed.</p>
+            <p>Internal linking flow was restored, allowing PageRank to reach deep product pages. On-page optimization across 120 pages resulted in 10 keywords reaching Page 1 for targeted buyer-intent queries. The structured data implementation enhanced search appearance with rich results for product listings.</p>
         </div>
+    </section>
 
-        <div class="cta-box">
-            <h3>Need a Technical SEO Audit?</h3>
-            <p>I fix crawl issues, internal linking, and on-page problems that hold sites back.</p>
-            <a href="https://wa.link/6gski2" class="cta-btn" target="_blank">Let's Talk on WhatsApp</a>
+    <!-- CTA -->
+    <section class="cs-cta">
+        <h2>Need a Technical SEO Audit?</h2>
+        <p>I fix crawl issues, internal linking, and on-page problems that hold sites back.</p>
+        <div class="cs-cta-buttons">
+            <a href="https://wa.link/6gski2" class="cs-btn-white" target="_blank">Let's Talk on WhatsApp</a>
+            <a href="../index.html" class="cs-btn-outline">View My Portfolio</a>
         </div>
-    </div>
+    </section>
 
-    <footer>&copy; 2026 Amir Ali. All rights reserved.</footer>
+    <footer class="cs-footer">&copy; 2026 Amir Ali. All rights reserved.</footer>
 </body>
 </html>
