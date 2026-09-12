@@ -34,21 +34,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; -webkit-tap-highlight-color: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html { overflow-x: hidden; }
         body { font-family: 'Inter', sans-serif; background: #fbfbfb; color: #1a1a2e; overflow-x: hidden; line-height: 1.5; }
         img { max-width: 100%; height: auto; }
-
-        .cursor { width: 20px; height: 20px; border: 2px solid #22c55e; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease, background 0.15s ease; mix-blend-mode: difference; }
-        .cursor.active { transform: scale(2.5); background: rgba(34, 197, 94, 0.1); }
-        .cursor-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; }
 
         nav { position: fixed; top: 0; width: 100%; padding: 0 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(10, 46, 26, 0.95); backdrop-filter: blur(20px); height: 70px; }
         .logo { font-size: 1.4rem; font-weight: 900; color: #fff; }
         .nav-links { display: flex; gap: 32px; list-style: none; }
         .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: #fff; }
-        .hire-btn { background: #fff; color: #0a2e1a; border: none; padding: 10px 24px; border-radius: 6px; font-weight: 600; cursor: none; text-decoration: none; font-size: 0.9rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .hire-btn { background: #fff; color: #0a2e1a; border: none; padding: 10px 24px; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.9rem; transition: transform 0.3s, box-shadow 0.3s; }
         .hire-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
 
         /* HERO */
@@ -61,9 +57,9 @@
         .hero h1 { font-size: 4rem; font-weight: 900; line-height: 1.05; margin-bottom: 20px; letter-spacing: -2px; }
         .hero p { font-size: 1.2rem; margin-bottom: 36px; opacity: 0.9; line-height: 1.7; }
         .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-        .btn-white { background: #fff; color: #0a2e1a; border: none; padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 1rem; cursor: none; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; }
+        .btn-white { background: #fff; color: #0a2e1a; border: none; padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; }
         .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
-        .btn-outline-white { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.6); padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 1rem; cursor: none; text-decoration: none; transition: background 0.3s; }
+        .btn-outline-white { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.6); padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: background 0.3s; }
         .btn-outline-white:hover { background: rgba(255,255,255,0.15); }
         .hero-right { display: flex; justify-content: center; align-items: center; position: relative; }
         .hero-img-wrap { width: 100%; max-width: 560px; position: relative; border-radius: 16px; overflow: hidden; }
@@ -118,7 +114,7 @@
 
         /* TOOLS */
         .tools-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; max-width: 900px; margin: 0 auto; }
-        .tool-chip { background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; color: #475569; cursor: none; transition: all 0.3s; }
+        .tool-chip { background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; color: #475569; transition: all 0.3s; }
         .tool-chip:hover { background: #f0fdf4; border-color: #22c55e; color: #22c55e; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(34, 197, 94, 0.1); }
 
         /* EXPERIENCE - Creative Timeline on Dark */
@@ -680,8 +676,6 @@
             .footer-inner { grid-template-columns: 1fr; gap: 32px; }
             footer { padding: 40px 24px; }
             .footer-bottom { font-size: 0.75rem; }
-            .cursor, .cursor-dot { display: none; }
-            * { cursor: auto; }
         }
 
         /* SMALL PHONES */
@@ -703,9 +697,6 @@
     </style>
 </head>
 <body>
-
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-dot" id="cursor-dot"></div>
 
     <nav>
         <div class="logo">Amir Ali</div>
@@ -1064,17 +1055,6 @@
     </footer>
 
     <script>
-        const cursor = document.getElementById('cursor');
-        const cursorDot = document.getElementById('cursor-dot');
-        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; cursorDot.style.left = mouseX - 3 + 'px'; cursorDot.style.top = mouseY - 3 + 'px'; });
-        function animateCursor() { cursorX += (mouseX - cursorX) * 0.15; cursorY += (mouseY - cursorY) * 0.15; cursor.style.left = cursorX - 10 + 'px'; cursor.style.top = cursorY - 10 + 'px'; requestAnimationFrame(animateCursor); }
-        animateCursor();
-        document.querySelectorAll('a, button, .feature-card, .case-card, .tool-chip, .cert-card, .portfolio-card, .expertise-card, .tool-card').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('active'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
-        });
-
         // Expertise Card Tilt Effect
         document.querySelectorAll('.expertise-card[data-tilt]').forEach(card => {
             card.addEventListener('mousemove', (e) => {
