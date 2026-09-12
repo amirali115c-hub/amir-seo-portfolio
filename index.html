@@ -11,600 +11,162 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #fbfbfb;
-            color: #1a1a2e;
-            overflow-x: hidden;
-        }
+        body { font-family: 'Inter', sans-serif; background: #fbfbfb; color: #1a1a2e; overflow-x: hidden; }
 
         /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #22c55e;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.15s ease, background 0.15s ease;
-            mix-blend-mode: difference;
-        }
-        .cursor.active {
-            transform: scale(2.5);
-            background: rgba(34, 197, 94, 0.1);
-            border-color: #22c55e;
-        }
-        .cursor-dot {
-            width: 6px;
-            height: 6px;
-            background: #22c55e;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 10000;
-        }
+        .cursor { width: 20px; height: 20px; border: 2px solid #22c55e; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease, background 0.15s ease; mix-blend-mode: difference; }
+        .cursor.active { transform: scale(2.5); background: rgba(34, 197, 94, 0.1); }
+        .cursor-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(34, 197, 94, 0.1);
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #22c55e, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        /* Navigation - Dark like Mint */
+        nav { position: fixed; top: 0; width: 100%; padding: 0 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(10, 46, 26, 0.95); backdrop-filter: blur(20px); height: 70px; }
+        .logo { font-size: 1.4rem; font-weight: 900; color: #fff; }
         .nav-links { display: flex; gap: 32px; list-style: none; }
-        .nav-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover { color: #22c55e; }
-        .hire-btn {
-            background: linear-gradient(135deg, #22c55e, #3b82f6);
-            color: #fff;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: none;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .hire-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
-        }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: #fff; }
+        .hire-btn { background: #fff; color: #0a2e1a; border: none; padding: 10px 24px; border-radius: 6px; font-weight: 600; cursor: none; text-decoration: none; font-size: 0.9rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .hire-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
 
-        /* 3D Canvas Container */
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        /* Hero Section - Gradient like Linux Mint */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            z-index: 2;
-            background: linear-gradient(135deg, #0a2e1a 0%, #0a1628 50%, #1a0a2e 100%);
-            overflow: hidden;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background: #fbfbfb;
-            clip-path: ellipse(55% 100% at 50% 100%);
-        }
-        .hero-content { position: relative; z-index: 3; max-width: 900px; padding: 0 20px; }
-        .badge {
-            display: inline-block;
-            background: rgba(34, 197, 94, 0.15);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            color: #22c55e;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            letter-spacing: 0.5px;
-        }
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 900;
-            line-height: 1.05;
-            margin-bottom: 24px;
-            letter-spacing: -2px;
-            color: #fff;
-        }
-        .hero h1 .gradient {
-            background: linear-gradient(135deg, #22c55e, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero p {
-            font-size: 1.25rem;
-            color: #94a3b8;
-            max-width: 650px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
-        }
-        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn-primary {
-            background: linear-gradient(135deg, #22c55e, #3b82f6);
-            color: #fff;
-            border: none;
-            padding: 16px 36px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: none;
-            text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.3);
-        }
-        .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 16px 36px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: none;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.15);
-        }
+        /* Hero - Green Radial Gradient Burst like Mint */
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; z-index: 2; background: #22c55e; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 50%; left: 50%; width: 180%; height: 180%; transform: translate(-50%, -50%); background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, transparent 60%); pointer-events: none; }
+        .hero::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 100px; background: #fbfbfb; clip-path: ellipse(55% 100% at 50% 100%); z-index: 5; }
+        .hero-content { position: relative; z-index: 3; max-width: 1200px; margin: 0 auto; padding: 120px 60px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; width: 100%; }
+        .hero-left { color: #fff; }
+        .hero-subtitle { font-size: 0.95rem; font-weight: 500; margin-bottom: 8px; opacity: 0.9; }
+        .hero h1 { font-size: 4rem; font-weight: 900; line-height: 1.05; margin-bottom: 20px; letter-spacing: -2px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 36px; opacity: 0.9; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-white { background: #fff; color: #0a2e1a; border: none; padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 1rem; cursor: none; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+        .btn-outline-white { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.6); padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 1rem; cursor: none; text-decoration: none; transition: background 0.3s; }
+        .btn-outline-white:hover { background: rgba(255,255,255,0.15); }
+        .hero-right { display: flex; justify-content: center; align-items: center; position: relative; }
+        #hero-canvas { width: 100%; height: 400px; }
 
         /* Stats Bar */
-        .stats-bar {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: rgba(34, 197, 94, 0.2);
-            border-radius: 20px;
-            overflow: hidden;
-            max-width: 1000px;
-            margin: 60px auto 0;
-            border: 1px solid rgba(34, 197, 94, 0.15);
-        }
-        .stat-item {
-            padding: 28px 20px;
-            text-align: center;
-            background: rgba(10, 14, 23, 0.8);
-            backdrop-filter: blur(10px);
-        }
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 4px;
-            background: linear-gradient(135deg, #22c55e, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .stat-label { font-size: 0.8rem; color: #64748b; font-weight: 500; }
+        .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.2); border-radius: 12px; overflow: hidden; margin-top: 40px; border: 1px solid rgba(255,255,255,0.2); }
+        .stat-item { padding: 20px 16px; text-align: center; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+        .stat-number { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 2px; }
+        .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.8); font-weight: 500; }
 
-        /* Section Styles */
-        .section-dark {
-            background: #1a1a2e;
-            color: #f8fafc;
-            padding: 120px 60px;
-        }
-        .section-light {
-            background: #fbfbfb;
-            color: #1a1a2e;
-            padding: 120px 60px;
-        }
-        .section-green {
-            background: linear-gradient(135deg, #22c55e, #3b82f6);
-            color: #fff;
-            padding: 80px 60px;
-            text-align: center;
-        }
-        .section-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .section-label {
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #22c55e;
-            margin-bottom: 12px;
-        }
-        .section-dark .section-label { color: #22c55e; }
-        .section-light .section-label { color: #22c55e; }
-        .section-title {
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: -1.5px;
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
-        .section-desc {
-            font-size: 1.1rem;
-            max-width: 600px;
-            line-height: 1.7;
-            margin-bottom: 60px;
-        }
-        .section-dark .section-desc { color: #94a3b8; }
-        .section-light .section-desc { color: #64748b; }
+        /* Section Light - Like Mint Features */
+        .section-light { background: #fbfbfb; padding: 100px 60px; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-label { font-size: 0.85rem; font-weight: 700; color: #22c55e; margin-bottom: 8px; }
+        .section-title { font-size: 2.8rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; color: #1a1a2e; }
+        .section-desc { font-size: 1.05rem; color: #64748b; max-width: 500px; line-height: 1.7; margin-bottom: 50px; }
 
-        /* 3D Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            perspective: 1000px;
-        }
-        .skill-card {
-            border-radius: 20px;
-            padding: 36px;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            transform-style: preserve-3d;
-            position: relative;
-            overflow: hidden;
-        }
-        .section-dark .skill-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(34, 197, 94, 0.12);
-        }
-        .section-light .skill-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #22c55e, #3b82f6, #8b5cf6);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
+        /* Features Grid - Mint Style Cards */
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .feature-card { background: #f1f5f9; border-radius: 12px; padding: 36px; transition: transform 0.3s, box-shadow 0.3s; min-height: 220px; }
+        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+        .feature-card.featured { background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; }
+        .feature-icon { width: 48px; height: 48px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
+        .feature-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+        .feature-card p { font-size: 0.95rem; line-height: 1.65; }
+        .feature-card:not(.featured) p { color: #64748b; }
+
+        /* Dark Band - Like Mint */
+        .section-dark { background: #1a1a2e; color: #f8fafc; padding: 80px 60px; text-align: center; }
+        .section-dark h2 { font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
+        .section-dark p { font-size: 1.1rem; color: #94a3b8; max-width: 600px; margin: 0 auto; }
+
+        /* Tools/Partners - Clean White Like Mint */
+        .section-partners { background: #fff; padding: 100px 60px; text-align: center; }
+        .section-partners .pre-title { font-size: 1rem; font-style: italic; color: #64748b; margin-bottom: 8px; }
+        .section-partners h2 { font-size: 2.8rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; color: #1a1a2e; }
+        .section-partners > .section-inner > p { font-size: 1.05rem; color: #64748b; margin-bottom: 50px; }
+        .tools-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; max-width: 900px; margin: 0 auto; }
+        .tool-chip { background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; color: #475569; cursor: none; transition: all 0.3s; }
+        .tool-chip:hover { background: #f0fdf4; border-color: #22c55e; color: #22c55e; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(34, 197, 94, 0.1); }
+
+        /* Skills Section - Light with Cards */
+        .section-skills { background: #fbfbfb; padding: 100px 60px; }
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .skill-card { background: #f1f5f9; border-radius: 12px; padding: 36px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+        .skill-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #22c55e, #3b82f6); opacity: 0; transition: opacity 0.3s; }
         .skill-card:hover::before { opacity: 1; }
-        .skill-card:hover {
-            transform: translateY(-8px) rotateX(5deg);
-            box-shadow: 0 20px 60px rgba(34, 197, 94, 0.15);
-        }
-        .skill-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(59, 130, 246, 0.1));
-            border: 1px solid rgba(34, 197, 94, 0.2);
-        }
-        .skill-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
-        .skill-card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px; }
-        .section-dark .skill-card p { color: #94a3b8; }
-        .section-light .skill-card p { color: #64748b; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .skill-tag {
-            background: rgba(34, 197, 94, 0.08);
-            color: #22c55e;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border: 1px solid rgba(34, 197, 94, 0.15);
-        }
+        .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+        .skill-icon { font-size: 1.8rem; margin-bottom: 16px; }
+        .skill-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: #1a1a2e; }
+        .skill-card p { font-size: 0.95rem; color: #64748b; line-height: 1.6; margin-bottom: 16px; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .skill-tag { background: rgba(34, 197, 94, 0.08); color: #22c55e; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
 
-        /* Tools Section */
-        .tools-row { display: flex; flex-wrap: wrap; gap: 12px; }
-        .tool-chip {
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: none;
-            transition: all 0.3s;
-        }
-        .section-dark .tool-chip {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(34, 197, 94, 0.12);
-            color: #94a3b8;
-        }
-        .section-dark .tool-chip:hover {
-            background: rgba(34, 197, 94, 0.1);
-            border-color: rgba(34, 197, 94, 0.3);
-            color: #22c55e;
-            transform: translateY(-2px);
-        }
-        .section-light .tool-chip {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            color: #475569;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .section-light .tool-chip:hover {
-            background: #f0fdf4;
-            border-color: #22c55e;
-            color: #22c55e;
-            transform: translateY(-2px);
-        }
-
-        /* Case Studies & Portfolio Grid */
-        .case-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            perspective: 1200px;
-        }
-        .case-card {
-            border-radius: 20px;
-            padding: 32px;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            text-decoration: none;
-            display: block;
-            transform-style: preserve-3d;
-            position: relative;
-            overflow: hidden;
-        }
-        .section-dark .case-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(34, 197, 94, 0.12);
-            color: #f8fafc;
-        }
-        .section-light .case-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            color: #1a1a2e;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        .case-card:hover {
-            transform: translateY(-12px) rotateY(5deg) rotateX(5deg);
-            box-shadow: 0 30px 80px rgba(34, 197, 94, 0.15);
-        }
-        .case-card .case-tag-sm {
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #22c55e;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-        .case-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
-        .case-card p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; }
-        .section-dark .case-card p { color: #94a3b8; }
-        .section-light .case-card p { color: #64748b; }
-        .case-results { display: flex; gap: 12px; flex-wrap: wrap; }
-        .case-results span {
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 6px;
-        }
-        .section-dark .case-results span {
-            color: #3b82f6;
-            background: rgba(59, 130, 246, 0.1);
-        }
-        .section-light .case-results span {
-            color: #3b82f6;
-            background: rgba(59, 130, 246, 0.08);
-        }
-        .case-card .live-link {
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        .section-dark .live-link { color: #22c55e; }
-        .section-light .live-link { color: #22c55e; }
-
-        /* Experience Section */
-        .experience-list { display: flex; flex-direction: column; gap: 0; }
-        .exp-item {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 40px;
-            padding: 40px 0;
-            border-bottom: 1px solid rgba(34, 197, 94, 0.1);
-            transition: all 0.3s;
-        }
-        .exp-item:hover { padding-left: 20px; }
-        .section-dark .exp-item { border-bottom-color: rgba(255,255,255,0.06); }
-        .section-light .exp-item { border-bottom-color: #e2e8f0; }
-        .exp-date { font-size: 0.9rem; font-weight: 500; padding-top: 4px; }
-        .section-dark .exp-date { color: #475569; }
-        .section-light .exp-date { color: #94a3b8; }
-        .exp-role { font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
+        /* Experience - Light */
+        .section-experience { background: #fbfbfb; padding: 100px 60px; }
+        .experience-list { display: flex; flex-direction: column; }
+        .exp-item { display: grid; grid-template-columns: 180px 1fr; gap: 40px; padding: 36px 0; border-bottom: 1px solid #e2e8f0; transition: padding-left 0.3s; }
+        .exp-item:hover { padding-left: 16px; }
+        .exp-date { font-size: 0.9rem; color: #94a3b8; font-weight: 500; padding-top: 4px; }
+        .exp-role { font-size: 1.25rem; font-weight: 800; margin-bottom: 4px; color: #1a1a2e; }
         .exp-company { font-size: 1rem; color: #22c55e; font-weight: 600; margin-bottom: 12px; }
-        .exp-desc { font-size: 0.95rem; line-height: 1.7; }
-        .section-dark .exp-desc { color: #94a3b8; }
-        .section-light .exp-desc { color: #64748b; }
-        .exp-desc li {
-            margin-bottom: 8px;
-            list-style: none;
-            padding-left: 24px;
-            position: relative;
-        }
-        .exp-desc li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 8px;
-            height: 8px;
-            background: linear-gradient(135deg, #22c55e, #3b82f6);
-            border-radius: 50%;
-        }
+        .exp-desc { font-size: 0.95rem; color: #64748b; line-height: 1.7; }
+        .exp-desc li { margin-bottom: 8px; list-style: none; padding-left: 24px; position: relative; }
+        .exp-desc li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; background: linear-gradient(135deg, #22c55e, #3b82f6); border-radius: 50%; }
 
-        /* Certifications */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .cert-card {
-            border-radius: 16px;
-            padding: 28px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .section-dark .cert-card {
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(59, 130, 246, 0.05));
-            border: 1px solid rgba(34, 197, 94, 0.15);
-        }
-        .section-light .cert-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-        }
-        .cert-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(34, 197, 94, 0.1);
-        }
+        /* Case Studies - Light */
+        .section-cases { background: #fbfbfb; padding: 100px 60px; }
+        .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .case-card { background: #f1f5f9; border-radius: 12px; padding: 32px; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); text-decoration: none; display: block; color: #1a1a2e; }
+        .case-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        .case-card .case-tag-sm { font-size: 0.7rem; font-weight: 700; color: #22c55e; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+        .case-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; }
+        .case-card p { font-size: 0.9rem; color: #64748b; line-height: 1.6; margin-bottom: 16px; }
+        .case-results { display: flex; gap: 8px; flex-wrap: wrap; }
+        .case-results span { font-size: 0.7rem; font-weight: 700; color: #3b82f6; background: rgba(59, 130, 246, 0.08); padding: 4px 10px; border-radius: 6px; }
+
+        /* Portfolio - Light */
+        .section-portfolio { background: #fbfbfb; padding: 100px 60px; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .portfolio-card { background: #f1f5f9; border-radius: 12px; padding: 24px; transition: all 0.3s; text-decoration: none; color: #1a1a2e; display: block; }
+        .portfolio-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+        .portfolio-card .num { font-size: 0.7rem; font-weight: 700; color: #94a3b8; margin-bottom: 8px; }
+        .portfolio-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+        .portfolio-card .live-link { font-size: 0.85rem; font-weight: 600; color: #22c55e; }
+
+        /* Certifications - Light */
+        .section-certs { background: #fbfbfb; padding: 100px 60px; }
+        .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .cert-card { background: #f1f5f9; border-radius: 12px; padding: 32px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .cert-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
         .cert-icon { font-size: 2.5rem; margin-bottom: 12px; }
-        .cert-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
-        .cert-card p { font-size: 0.8rem; }
-        .section-dark .cert-card p { color: #94a3b8; }
-        .section-light .cert-card p { color: #64748b; }
+        .cert-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; color: #1a1a2e; }
+        .cert-card p { font-size: 0.8rem; color: #64748b; }
 
         /* Green CTA Band */
-        .cta-band {
-            background: linear-gradient(135deg, #22c55e, #3b82f6);
-            color: #fff;
-            padding: 80px 60px;
-            text-align: center;
-        }
-        .cta-band h2 { font-size: 3rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 16px; }
-        .cta-band p { font-size: 1.15rem; margin-bottom: 32px; opacity: 0.9; }
+        .cta-band { background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; padding: 80px 60px; text-align: center; }
+        .cta-band h2 { font-size: 2.8rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
+        .cta-band p { font-size: 1.1rem; margin-bottom: 32px; opacity: 0.9; }
         .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn-white {
-            background: #fff;
-            color: #22c55e;
-            border: none;
-            padding: 16px 36px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: none;
-            text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .btn-white:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-        .btn-outline-white {
-            background: transparent;
-            color: #fff;
-            border: 2px solid rgba(255,255,255,0.5);
-            padding: 16px 36px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: none;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-        .btn-outline-white:hover {
-            background: rgba(255,255,255,0.15);
-        }
 
-        /* Footer */
-        footer {
-            background: #1a1a2e;
-            color: #94a3b8;
-            padding: 60px;
-        }
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-        }
+        /* Footer - Dark like Mint */
+        footer { background: #1a1a2e; color: #94a3b8; padding: 60px; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
         .footer-brand p { font-size: 0.9rem; line-height: 1.7; margin-top: 12px; }
-        .footer-col h6 {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #f8fafc;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .footer-col a {
-            display: block;
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 4px 0;
-            transition: color 0.3s;
-        }
+        .footer-col h6 { font-size: 0.85rem; font-weight: 700; color: #f8fafc; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col a { display: block; color: #94a3b8; text-decoration: none; font-size: 0.9rem; padding: 4px 0; transition: color 0.3s; }
         .footer-col a:hover { color: #22c55e; }
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.06);
-            margin-top: 40px;
-            padding-top: 24px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #475569;
-        }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 40px; padding-top: 24px; text-align: center; font-size: 0.8rem; color: #475569; max-width: 1200px; margin-left: auto; margin-right: auto; }
 
-        /* Particle Background */
-        #particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
+        /* Particles */
+        #particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 
         /* Responsive */
         @media (max-width: 768px) {
-            nav { padding: 16px 24px; }
+            nav { padding: 0 24px; }
             .nav-links { display: none; }
+            .hero-content { grid-template-columns: 1fr; padding: 120px 24px 80px; text-align: center; }
             .hero h1 { font-size: 2.5rem; }
+            .hero-buttons { justify-content: center; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); }
-            .section-dark, .section-light { padding: 80px 24px; }
+            .section-light, .section-skills, .section-experience, .section-cases, .section-portfolio, .section-certs, .section-partners { padding: 60px 24px; }
+            .section-dark { padding: 60px 24px; }
             .cta-band { padding: 60px 24px; }
-            .skills-grid, .case-grid, .cert-grid { grid-template-columns: 1fr; }
-            .exp-item { grid-template-columns: 1fr; gap: 12px; }
+            .features-grid, .skills-grid, .case-grid, .cert-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+            .exp-item { grid-template-columns: 1fr; gap: 8px; }
             .section-title { font-size: 2rem; }
             .footer-inner { grid-template-columns: 1fr; }
             footer { padding: 40px 24px; }
@@ -615,11 +177,8 @@
 </head>
 <body>
 
-    <!-- Custom Cursor -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-dot" id="cursor-dot"></div>
-
-    <!-- Particle Background -->
     <canvas id="particles-canvas"></canvas>
 
     <!-- Navigation -->
@@ -634,114 +193,89 @@
         <a href="https://wa.link/6gski2" class="hire-btn" target="_blank">Hire Me</a>
     </nav>
 
-    <!-- Hero Section - Gradient -->
+    <!-- Hero - Green Radial Gradient Burst -->
     <section class="hero">
-        <canvas id="hero-canvas"></canvas>
         <div class="hero-content">
-            <div class="badge">OPEN TO FULL-TIME REMOTE & FREELANCE</div>
-            <h1>SEO Specialist &<br><span class="gradient">AI Content Strategist</span></h1>
-            <p>I fix what's broken, rank what matters, and automate the rest. 4+ years of technical SEO, GEO optimization, and custom AI workflows for B2B and e-commerce brands.</p>
-            <div class="hero-buttons">
-                <a href="https://wa.link/6gski2" class="btn-primary" target="_blank">Hire Me on WhatsApp</a>
-                <a href="mailto:amirali115c@gmail.com" class="btn-secondary">Email Me</a>
+            <div class="hero-left">
+                <div class="hero-subtitle">SEO Specialist & AI Content Strategist</div>
+                <h1>I Fix What's Broken, Rank What Matters</h1>
+                <p>4+ years of technical SEO, GEO optimization, and custom AI workflows for B2B and e-commerce brands across USA, UAE, and UK markets.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.link/6gski2" class="btn-white" target="_blank">Hire Me on WhatsApp</a>
+                    <a href="mailto:amirali115c@gmail.com" class="btn-outline-white">Email Me</a>
+                </div>
+                <div class="stats-bar">
+                    <div class="stat-item"><div class="stat-number">4+</div><div class="stat-label">Years Experience</div></div>
+                    <div class="stat-item"><div class="stat-number">13</div><div class="stat-label">Clients Served</div></div>
+                    <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">Industries</div></div>
+                    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Commitment</div></div>
+                </div>
             </div>
-            <div class="stats-bar">
-                <div class="stat-item">
-                    <div class="stat-number">4+</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">13</div>
-                    <div class="stat-label">Clients Served</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Industries</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Commitment</div>
-                </div>
+            <div class="hero-right">
+                <canvas id="hero-canvas"></canvas>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section - Light -->
+    <!-- Features Section - Mint Style -->
     <section class="section-light" id="skills">
         <div class="section-inner">
             <div class="section-label">CORE EXPERTISE</div>
             <div class="section-title">What I Do Best</div>
             <p class="section-desc">From technical SEO infrastructure to AI-powered content workflows, I cover the full spectrum of organic search growth.</p>
 
-            <div class="skills-grid">
-                <div class="skill-card" data-tilt>
-                    <div class="skill-icon">&#128269;</div>
-                    <h3>Technical & On-Page SEO</h3>
-                    <p>Technical audits, crawl diagnostics, structured data, and indexation control for maximum search visibility.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Screaming Frog</span>
-                        <span class="skill-tag">Crawl Budget & Indexing</span>
-                        <span class="skill-tag">JSON-LD Schema.org</span>
-                        <span class="skill-tag">Core Web Vitals</span>
-                        <span class="skill-tag">Internal Linking Logic</span>
-                        <span class="skill-tag">301 Redirect Mapping</span>
-                        <span class="skill-tag">Pre/Post Migration QA</span>
-                    </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&#128269;</div>
+                    <h3>Technical SEO & Auditing</h3>
+                    <p>Technical audits with Screaming Frog, crawl diagnostics, JSON-LD Schema, Core Web Vitals, and indexation control.</p>
                 </div>
-                <div class="skill-card" data-tilt>
-                    <div class="skill-icon">&#128200;</div>
-                    <h3>Semantic SEO & GEO Strategy</h3>
-                    <p>Topical authority, entity-first content, and AI search optimization across Google and AI engines.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Topical Authority Mapping</span>
-                        <span class="skill-tag">Entity Extraction</span>
-                        <span class="skill-tag">GEO Optimization</span>
-                        <span class="skill-tag">Keyword/Content Clustering</span>
-                        <span class="skill-tag">E-E-A-T Brief Architecture</span>
-                        <span class="skill-tag">Content Scoring</span>
-                        <span class="skill-tag">Local SEO & Citations</span>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128200;</div>
+                    <h3>Semantic SEO & GEO</h3>
+                    <p>Topical authority mapping, entity extraction, GEO optimization for AI search engines, and E-E-A-T briefs.</p>
                 </div>
-                <div class="skill-card" data-tilt>
-                    <div class="skill-icon">&#129302;</div>
-                    <h3>AI Workflows & Process Systems</h3>
-                    <p>Custom AI execution, prompt chaining, and automated pipelines for scalable SEO operations.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Claude & OpenCode Workflows</span>
-                        <span class="skill-tag">.md Rule Files & SOPs</span>
-                        <span class="skill-tag">MCP Integrations</span>
-                        <span class="skill-tag">Prompt Chaining & API Auditing</span>
-                        <span class="skill-tag">Python Indexing Pipelines</span>
-                    </div>
+                <div class="feature-card featured">
+                    <div class="feature-icon">&#129302;</div>
+                    <h3>AI Workflows</h3>
+                    <p>Custom Claude and OpenCode workflows, MCP integrations, Python indexing pipelines, and automated content scoring.</p>
                 </div>
-                <div class="skill-card" data-tilt>
-                    <div class="skill-icon">&#128202;</div>
-                    <h3>Analytics, CMS & Tools</h3>
-                    <p>Data-driven SEO decisions using analytics platforms, CMS management, and industry-leading tools.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Google Search Console</span>
-                        <span class="skill-tag">GA4</span>
-                        <span class="skill-tag">Google Tag Manager</span>
-                        <span class="skill-tag">Ahrefs</span>
-                        <span class="skill-tag">SEMrush</span>
-                        <span class="skill-tag">WordPress</span>
-                        <span class="skill-tag">Spreadsheets</span>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128202;</div>
+                    <h3>Internal Linking</h3>
+                    <p>Strategic internal linking architecture, PageRank flow optimization, and hub page construction for topical clusters.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#9881;</div>
+                    <h3>On-Page Optimization</h3>
+                    <p>Meta tags, heading hierarchy, content restructuring, keyword mapping, and product page optimization at scale.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128736;</div>
+                    <h3>Schema & Structured Data</h3>
+                    <p>JSON-LD implementation, product schema, FAQ schema, breadcrumb markup, and rich result optimization.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tools Section - Dark -->
-    <section class="section-dark" id="tools">
+    <!-- Dark Band -->
+    <section class="section-dark">
+        <h2>Technical SEO First, Everything Else Second</h2>
+        <p>I believe a website must be technically sound before any content strategy can work. That is where I start every project.</p>
+    </section>
+
+    <!-- Tools - Partners Style -->
+    <section class="section-partners">
         <div class="section-inner">
-            <div class="section-label">TOOLS & PLATFORMS</div>
-            <div class="section-title">My Tech Stack</div>
-            <div class="tools-row">
+            <div class="pre-title">Tools I Use Daily</div>
+            <h2>My Tech Stack</h2>
+            <p>Industry-leading platforms for technical audits, keyword research, analytics, and content optimization.</p>
+            <div class="tools-grid">
+                <span class="tool-chip">Screaming Frog</span>
                 <span class="tool-chip">Ahrefs</span>
                 <span class="tool-chip">SEMrush</span>
                 <span class="tool-chip">SurferSEO</span>
-                <span class="tool-chip">Screaming Frog</span>
                 <span class="tool-chip">Google Search Console</span>
                 <span class="tool-chip">GA4</span>
                 <span class="tool-chip">Google Tag Manager</span>
@@ -752,13 +286,12 @@
                 <span class="tool-chip">Claude / OpenCode</span>
                 <span class="tool-chip">Python</span>
                 <span class="tool-chip">Google Indexing API</span>
-                <span class="tool-chip">Spreadsheets</span>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section - Light -->
-    <section class="section-light" id="experience">
+    <!-- Experience - Light -->
+    <section class="section-experience" id="experience">
         <div class="section-inner">
             <div class="section-label">EXPERIENCE</div>
             <div class="section-title">Where I've Worked</div>
@@ -769,12 +302,12 @@
                     <div class="exp-date">2025 - Present</div>
                     <div>
                         <div class="exp-role">Freelance SEO Specialist & AI Workflow Strategist</div>
-                        <div class="exp-company">Independent | Remote (USA & UAE Clients)</div>
+                        <div class="exp-company">Independent | Remote (USA & UAE)</div>
                         <ul class="exp-desc">
-                            <li>End-to-end SEO campaigns: technical audits, crawl error resolution, indexing fixes with Screaming Frog</li>
-                            <li>Nested JSON-LD Schema.org graphs and entity-first content architectures for AI search engines</li>
-                            <li>Custom AI workflows using Claude, OpenCode, and MCPs for automated content scoring and E-E-A-T briefs</li>
-                            <li>Automated page indexing pipelines with Python scripts and Google Indexing API</li>
+                            <li>End-to-end SEO campaigns with Screaming Frog audits and crawl error resolution</li>
+                            <li>JSON-LD Schema.org graphs and entity-first content architectures for AI search</li>
+                            <li>Custom AI workflows using Claude, OpenCode, and MCPs for content scoring</li>
+                            <li>Automated indexing pipelines with Python and Google Indexing API</li>
                         </ul>
                     </div>
                 </div>
@@ -784,9 +317,9 @@
                         <div class="exp-role">SEO & On-Page Specialist</div>
                         <div class="exp-company">Carbon Reprographics | Remote (USA)</div>
                         <ul class="exp-desc">
-                            <li>Optimized 120 e-commerce articles, product pages, and category descriptions across jewelry, automotive, and home decor</li>
-                            <li>Restructured 85 product descriptions into benefit-driven narratives with optimized meta tags</li>
-                            <li>Fixed 340+ broken internal links and resolved duplicate content issues</li>
+                            <li>Optimized 120 e-commerce pages across jewelry, automotive, and home decor</li>
+                            <li>Restructured 85 product descriptions with optimized meta tags</li>
+                            <li>Fixed 340+ broken internal links and duplicate content issues</li>
                         </ul>
                     </div>
                 </div>
@@ -796,9 +329,9 @@
                         <div class="exp-role">SEO Content Strategist</div>
                         <div class="exp-company">Three Angle Marketing | Remote (Dubai, UAE)</div>
                         <ul class="exp-desc">
-                            <li>Optimized 150 location-specific SEO articles and landing pages for real estate and tourism clients</li>
+                            <li>Optimized 150 location-specific pages for real estate and tourism clients</li>
                             <li>Built internal linking clusters for Dubai neighborhood content</li>
-                            <li>Structured content for direct answer extraction across competitive Dubai search niches</li>
+                            <li>Structured content for direct answer extraction</li>
                         </ul>
                     </div>
                 </div>
@@ -808,9 +341,8 @@
                         <div class="exp-role">SEO Content Associate</div>
                         <div class="exp-company">The Neo Solutions | Lahore, Pakistan</div>
                         <ul class="exp-desc">
-                            <li>Wrote 80 thought leadership articles and service pages for B2B consultancy</li>
+                            <li>Wrote 80 thought leadership articles for B2B FinTech consultancy</li>
                             <li>Built internal linking architecture for complex product hierarchy</li>
-                            <li>Optimized existing web pages with strategic keyword integration</li>
                         </ul>
                     </div>
                 </div>
@@ -820,8 +352,8 @@
                         <div class="exp-role">SEO Content Associate</div>
                         <div class="exp-company">Mugshel Pvt Ltd | Lahore, Pakistan</div>
                         <ul class="exp-desc">
-                            <li>Optimized product catalog copy and category landing pages for B2B packaging solutions</li>
-                            <li>Wrote 60 product descriptions translating technical specs into customer-centered copy</li>
+                            <li>Optimized product catalog for B2B packaging solutions</li>
+                            <li>Wrote 60 product descriptions with benefit-driven copy</li>
                         </ul>
                     </div>
                 </div>
@@ -829,38 +361,38 @@
         </div>
     </section>
 
-    <!-- Case Studies Section - Dark -->
-    <section class="section-dark" id="case-studies">
+    <!-- Case Studies - Light -->
+    <section class="section-cases" id="case-studies">
         <div class="section-inner">
             <div class="section-label">CASE STUDIES</div>
             <div class="section-title">Results I've Delivered</div>
-            <p class="section-desc">Deep dives into three projects where technical SEO fixes, internal linking, and on-page optimization delivered measurable results.</p>
+            <p class="section-desc">Deep dives into three projects where technical SEO, internal linking, and on-page optimization delivered results.</p>
 
             <div class="case-grid">
-                <a href="case-studies/carbon-reprographics.html" class="case-card" data-tilt>
-                    <div class="case-tag-sm">E-commerce / Jewelry / Home Decor</div>
+                <a href="case-studies/carbon-reprographics.html" class="case-card">
+                    <div class="case-tag-sm">E-commerce / Jewelry</div>
                     <h3>Carbon Reprographics</h3>
-                    <p>Fixed 340+ technical issues, rebuilt internal linking architecture, and optimized 120 pages across three e-commerce verticals.</p>
+                    <p>Fixed 340+ technical issues, rebuilt internal linking, and optimized 120 pages across three verticals.</p>
                     <div class="case-results">
                         <span>340+ issues fixed</span>
                         <span>120 pages optimized</span>
                         <span>10 Page 1 keywords</span>
                     </div>
                 </a>
-                <a href="case-studies/three-angle-marketing.html" class="case-card" data-tilt>
+                <a href="case-studies/three-angle-marketing.html" class="case-card">
                     <div class="case-tag-sm">Real Estate / Tourism / Dubai</div>
                     <h3>Three Angle Marketing</h3>
-                    <p>Optimized 150 location pages, built internal linking clusters for Dubai neighborhoods, and improved search visibility.</p>
+                    <p>Optimized 150 location pages, built internal linking clusters for Dubai neighborhoods.</p>
                     <div class="case-results">
                         <span>150 pages optimized</span>
                         <span>8 Page 1 keywords</span>
                         <span>6 location clusters</span>
                     </div>
                 </a>
-                <a href="case-studies/the-neo-solutions.html" class="case-card" data-tilt>
+                <a href="case-studies/the-neo-solutions.html" class="case-card">
                     <div class="case-tag-sm">B2B FinTech / SaaS</div>
                     <h3>The Neo Solutions</h3>
-                    <p>Built content architecture from scratch, optimized 80 pages, and created internal linking for complex product hierarchy.</p>
+                    <p>Built content architecture from scratch, optimized 80 pages with complex product hierarchy.</p>
                     <div class="case-results">
                         <span>80 pages optimized</span>
                         <span>6 Page 1 keywords</span>
@@ -871,104 +403,40 @@
         </div>
     </section>
 
-    <!-- Portfolio Section - Light -->
-    <section class="section-light" id="portfolio">
+    <!-- Portfolio - Light -->
+    <section class="section-portfolio" id="portfolio">
         <div class="section-inner">
             <div class="section-label">CLIENT PORTFOLIO</div>
             <div class="section-title">Clients I've Worked With</div>
-            <p class="section-desc">13 clients across 12 industries. Every site carries pages I researched, optimized, and published.</p>
+            <p class="section-desc">13 clients across 12 industries.</p>
 
-            <div class="case-grid">
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">01 / EDUCATION</div>
-                    <h3>Image Academy Houston</h3>
-                    <a href="https://imageacademy.org/" target="_blank" class="live-link">Live Site</a>
-                </div>
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">02 / E-COMMERCE</div>
-                    <h3>Lucho</h3>
-                    <a href="https://lucho.com/" target="_blank" class="live-link">Live Site</a>
-                </div>
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">03 / BEAUTY</div>
-                    <h3>Lashes By Aree</h3>
-                    <a href="https://lashesbyaree.com/" target="_blank" class="live-link">Live Site</a>
-                </div>
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">04 / FOOD & BEV</div>
-                    <h3>Swiss Ice Co</h3>
-                    <a href="https://swissiceco.com/" target="_blank" class="live-link">Live Site</a>
-                </div>
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">05 / JEWELRY</div>
-                    <h3>Crown Jewels and Coin</h3>
-                    <a href="https://crownjewelsandcoin.com/" target="_blank" class="live-link">Live Site</a>
-                </div>
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">06 / MARKETING</div>
-                    <h3>Three Angle Marketing</h3>
-                    <a href="https://threeanglemarketing.com/" target="_blank" class="live-link">Live Site</a>
-                </div>
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">07 / AUTOMOTIVE</div>
-                    <h3>Mukhtar Car Auctions</h3>
-                    <a href="https://mukhtarcarauctions.com/" target="_blank" class="live-link">Live Site</a>
-                </div>
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">08 / CONSTRUCTION</div>
-                    <h3>MAP Building Contracting LLC</h3>
-                    <a href="https://mapconstructionllc.com/" target="_blank" class="live-link">Live Site</a>
-                </div>
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">09 / CONSULTANCY</div>
-                    <h3>The Neo Consultancy</h3>
-                    <a href="https://www.theneoconsultancy.com/" target="_blank" class="live-link">Live Site</a>
-                </div>
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">10 / B2B SERVICES</div>
-                    <h3>The Neo Solutions</h3>
-                    <a href="https://theneosolutions.com/" target="_blank" class="live-link">Live Site</a>
-                </div>
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">11 / AUTOMOTIVE</div>
-                    <h3>Starlight Customs</h3>
-                    <a href="https://starlightcustoms.co.uk/" target="_blank" class="live-link">Live Site</a>
-                </div>
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">12 / WEB SERVICES</div>
-                    <h3>Elite Web Pro</h3>
-                    <a href="https://elitewebpro.com/" target="_blank" class="live-link">Live Site</a>
-                </div>
-                <div class="case-card" data-tilt>
-                    <div class="case-tag-sm">13 / DESIGN SERVICES</div>
-                    <h3>Professional Logo Design</h3>
-                    <a href="https://professionallogodesign.net/" target="_blank" class="live-link">Live Site</a>
-                </div>
+            <div class="portfolio-grid">
+                <a href="https://imageacademy.org/" target="_blank" class="portfolio-card"><div class="num">01</div><h3>Image Academy</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://lucho.com/" target="_blank" class="portfolio-card"><div class="num">02</div><h3>Lucho</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://lashesbyaree.com/" target="_blank" class="portfolio-card"><div class="num">03</div><h3>Lashes By Aree</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://swissiceco.com/" target="_blank" class="portfolio-card"><div class="num">04</div><h3>Swiss Ice Co</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://crownjewelsandcoin.com/" target="_blank" class="portfolio-card"><div class="num">05</div><h3>Crown Jewels</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://threeanglemarketing.com/" target="_blank" class="portfolio-card"><div class="num">06</div><h3>Three Angle Marketing</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://mukhtarcarauctions.com/" target="_blank" class="portfolio-card"><div class="num">07</div><h3>Mukhtar Car Auctions</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://mapconstructionllc.com/" target="_blank" class="portfolio-card"><div class="num">08</div><h3>MAP Construction</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://www.theneoconsultancy.com/" target="_blank" class="portfolio-card"><div class="num">09</div><h3>The Neo Consultancy</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://theneosolutions.com/" target="_blank" class="portfolio-card"><div class="num">10</div><h3>The Neo Solutions</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://starlightcustoms.co.uk/" target="_blank" class="portfolio-card"><div class="num">11</div><h3>Starlight Customs</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://elitewebpro.com/" target="_blank" class="portfolio-card"><div class="num">12</div><h3>Elite Web Pro</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://professionallogodesign.net/" target="_blank" class="portfolio-card"><div class="num">13</div><h3>Professional Logo Design</h3><span class="live-link">Visit Site</span></a>
             </div>
         </div>
     </section>
 
-    <!-- Certifications Section - Dark -->
-    <section class="section-dark" id="certifications">
+    <!-- Certifications - Light -->
+    <section class="section-certs">
         <div class="section-inner">
             <div class="section-label">CERTIFICATIONS</div>
             <div class="section-title">Verified Expertise</div>
             <div class="cert-grid">
-                <div class="cert-card">
-                    <div class="cert-icon">&#127942;</div>
-                    <h3>HubSpot SEO Certification I</h3>
-                    <p>HubSpot Academy</p>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">&#127942;</div>
-                    <h3>HubSpot SEO Certification II</h3>
-                    <p>HubSpot Academy</p>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">&#127942;</div>
-                    <h3>Content Marketing Certification</h3>
-                    <p>HubSpot Academy</p>
-                </div>
+                <div class="cert-card"><div class="cert-icon">&#127942;</div><h3>HubSpot SEO I</h3><p>HubSpot Academy</p></div>
+                <div class="cert-card"><div class="cert-icon">&#127942;</div><h3>HubSpot SEO II</h3><p>HubSpot Academy</p></div>
+                <div class="cert-card"><div class="cert-icon">&#127942;</div><h3>Content Marketing</h3><p>HubSpot Academy</p></div>
             </div>
         </div>
     </section>
@@ -1010,181 +478,96 @@
                 <a href="case-studies/the-neo-solutions.html">The Neo Solutions</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            &copy; 2026 Amir Ali. All rights reserved.
-        </div>
+        <div class="footer-bottom">&copy; 2026 Amir Ali. All rights reserved.</div>
     </footer>
 
     <script>
-        // Custom Cursor
+        // Cursor
         const cursor = document.getElementById('cursor');
         const cursorDot = document.getElementById('cursor-dot');
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursorDot.style.left = mouseX - 3 + 'px';
-            cursorDot.style.top = mouseY - 3 + 'px';
-        });
-
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.15;
-            cursorY += (mouseY - cursorY) * 0.15;
-            cursor.style.left = cursorX - 10 + 'px';
-            cursor.style.top = cursorY - 10 + 'px';
-            requestAnimationFrame(animateCursor);
-        }
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; cursorDot.style.left = mouseX - 3 + 'px'; cursorDot.style.top = mouseY - 3 + 'px'; });
+        function animateCursor() { cursorX += (mouseX - cursorX) * 0.15; cursorY += (mouseY - cursorY) * 0.15; cursor.style.left = cursorX - 10 + 'px'; cursor.style.top = cursorY - 10 + 'px'; requestAnimationFrame(animateCursor); }
         animateCursor();
-
-        document.querySelectorAll('a, button, .skill-card, .case-card, .tool-chip, .cert-card').forEach(el => {
+        document.querySelectorAll('a, button, .feature-card, .case-card, .tool-chip, .cert-card, .portfolio-card, .skill-card').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('active'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
         });
 
-        // 3D Tilt Effect
-        document.querySelectorAll('[data-tilt]').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            });
-        });
-
-        // Three.js Hero Scene
+        // Three.js Hero Globe
         const heroCanvas = document.getElementById('hero-canvas');
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true, antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(400, 400);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        // Wireframe Globe
-        const globeGeometry = new THREE.IcosahedronGeometry(5, 2);
-        const globeMaterial = new THREE.MeshBasicMaterial({ color: 0x22c55e, wireframe: true, transparent: true, opacity: 0.15 });
+        const globeGeometry = new THREE.IcosahedronGeometry(4, 2);
+        const globeMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.3 });
         const globe = new THREE.Mesh(globeGeometry, globeMaterial);
         scene.add(globe);
 
-        // Orbiting Rings
         for (let i = 0; i < 3; i++) {
-            const ringGeometry = new THREE.TorusGeometry(6 + i * 1.5, 0.02, 16, 100);
-            const ringMaterial = new THREE.MeshBasicMaterial({ color: [0x22c55e, 0x3b82f6, 0x8b5cf6][i], transparent: true, opacity: 0.3 });
+            const ringGeometry = new THREE.TorusGeometry(5 + i * 1.2, 0.02, 16, 100);
+            const ringMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.2 });
             const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-            ring.rotation.x = Math.PI / 2 + i * 0.3;
-            ring.rotation.y = i * 0.5;
+            ring.rotation.x = Math.PI / 2 + i * 0.4;
             scene.add(ring);
         }
 
-        // Data Nodes
         const nodesGeometry = new THREE.BufferGeometry();
-        const nodesCount = 200;
-        const posArray = new Float32Array(nodesCount * 3);
-        for (let i = 0; i < nodesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 20;
-        }
+        const posArray = new Float32Array(150 * 3);
+        for (let i = 0; i < 150 * 3; i++) posArray[i] = (Math.random() - 0.5) * 16;
         nodesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const nodesMaterial = new THREE.PointsMaterial({ color: 0x22c55e, size: 0.05, transparent: true, opacity: 0.6 });
-        const nodes = new THREE.Points(nodesGeometry, nodesMaterial);
-        scene.add(nodes);
+        const nodesMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.06, transparent: true, opacity: 0.5 });
+        scene.add(new THREE.Points(nodesGeometry, nodesMaterial));
 
-        camera.position.z = 12;
+        camera.position.z = 10;
 
         let heroMouseX = 0, heroMouseY = 0;
-        document.addEventListener('mousemove', (e) => {
-            heroMouseX = (e.clientX / window.innerWidth) * 2 - 1;
-            heroMouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-        });
+        document.addEventListener('mousemove', (e) => { heroMouseX = (e.clientX / window.innerWidth) * 2 - 1; heroMouseY = -(e.clientY / window.innerHeight) * 2 + 1; });
 
         function animateHero() {
             requestAnimationFrame(animateHero);
-            globe.rotation.y += 0.002;
+            globe.rotation.y += 0.003;
             globe.rotation.x += 0.001;
-            globe.rotation.y += heroMouseX * 0.01;
-            globe.rotation.x += heroMouseY * 0.01;
-            nodes.rotation.y += 0.001;
+            globe.rotation.y += heroMouseX * 0.005;
             renderer.render(scene, camera);
         }
         animateHero();
 
-        // Particle Background
-        const particleCanvas = document.getElementById('particles-canvas');
-        const pCtx = particleCanvas.getContext('2d');
-        particleCanvas.width = window.innerWidth;
-        particleCanvas.height = window.innerHeight;
-
+        // Particles
+        const pCanvas = document.getElementById('particles-canvas');
+        const pCtx = pCanvas.getContext('2d');
+        pCanvas.width = window.innerWidth;
+        pCanvas.height = window.innerHeight;
         const particles = [];
-        const particleCount = 60;
-
-        for (let i = 0; i < particleCount; i++) {
-            particles.push({
-                x: Math.random() * particleCanvas.width,
-                y: Math.random() * particleCanvas.height,
-                vx: (Math.random() - 0.5) * 0.3,
-                vy: (Math.random() - 0.5) * 0.3,
-                size: Math.random() * 2 + 0.5
-            });
+        for (let i = 0; i < 50; i++) {
+            particles.push({ x: Math.random() * pCanvas.width, y: Math.random() * pCanvas.height, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3, size: Math.random() * 1.5 + 0.5 });
         }
-
         function animateParticles() {
-            pCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+            pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
             particles.forEach((p, i) => {
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0 || p.x > particleCanvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > particleCanvas.height) p.vy *= -1;
-                pCtx.beginPath();
-                pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                pCtx.fillStyle = 'rgba(34, 197, 94, 0.25)';
-                pCtx.fill();
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > pCanvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > pCanvas.height) p.vy *= -1;
+                pCtx.beginPath(); pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2); pCtx.fillStyle = 'rgba(34, 197, 94, 0.15)'; pCtx.fill();
                 particles.forEach((p2, j) => {
                     if (i === j) return;
-                    const dx = p.x - p2.x;
-                    const dy = p.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 120) {
-                        pCtx.beginPath();
-                        pCtx.moveTo(p.x, p.y);
-                        pCtx.lineTo(p2.x, p2.y);
-                        pCtx.strokeStyle = `rgba(34, 197, 94, ${0.08 * (1 - dist / 120)})`;
-                        pCtx.stroke();
-                    }
+                    const dist = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
+                    if (dist < 100) { pCtx.beginPath(); pCtx.moveTo(p.x, p.y); pCtx.lineTo(p2.x, p2.y); pCtx.strokeStyle = `rgba(34, 197, 94, ${0.05 * (1 - dist / 100)})`; pCtx.stroke(); }
                 });
             });
             requestAnimationFrame(animateParticles);
         }
         animateParticles();
 
-        // Resize
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            particleCanvas.width = window.innerWidth;
-            particleCanvas.height = window.innerHeight;
-        });
+        window.addEventListener('resize', () => { pCanvas.width = window.innerWidth; pCanvas.height = window.innerHeight; });
 
-        // GSAP Scroll Animations
+        // GSAP
         gsap.registerPlugin(ScrollTrigger);
-        gsap.utils.toArray('.section-dark, .section-light, .cta-band').forEach(section => {
-            gsap.from(section, {
-                scrollTrigger: { trigger: section, start: 'top 85%' },
-                opacity: 0, y: 40, duration: 0.8
-            });
-        });
-        gsap.utils.toArray('.skill-card, .case-card, .cert-card').forEach((card, i) => {
-            gsap.from(card, {
-                scrollTrigger: { trigger: card, start: 'top 90%' },
-                opacity: 0, y: 30, duration: 0.5, delay: (i % 3) * 0.1
-            });
+        gsap.utils.toArray('.section-light, .section-dark, .section-partners, .section-skills, .section-experience, .section-cases, .section-portfolio, .section-certs, .cta-band').forEach(s => {
+            gsap.from(s, { scrollTrigger: { trigger: s, start: 'top 85%' }, opacity: 0, y: 30, duration: 0.7 });
         });
     </script>
 </body>
