@@ -88,16 +88,47 @@ body { font-family: 'Inter', sans-serif; background: #fbfbfb; color: #1a1a2e; ov
 .cs-footer { background: #0f1729; color: #94a3b8; padding: 40px 60px; text-align: center; font-size: 0.85rem; }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .cs-section { padding-left: 40px; padding-right: 40px; }
+    .cs-metrics-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 768px) {
-    .cs-nav { padding: 0 24px; }
-    .cs-hero { padding: 120px 24px 60px; }
-    .cs-hero h1 { font-size: 2.2rem; }
+    .cs-nav { padding: 0 20px; height: 60px; }
+    .cs-nav .logo { font-size: 1.1rem; }
+    .cs-nav .back-link { font-size: 0.85rem; }
+    .cs-nav .hire-btn { padding: 8px 18px; font-size: 0.8rem; }
+    .cs-hero { padding: 110px 24px 50px; min-height: auto; }
+    .cs-hero h1 { font-size: 2rem; line-height: 1.1; }
+    .cs-hero .cs-subtitle { font-size: 1.02rem; }
+    .cs-hero::after { height: 60px; }
+    .cs-hero-rays { width: 300%; height: 300%; }
+    .cs-tag { font-size: 0.65rem; padding: 5px 14px; }
     .cs-results { grid-template-columns: 1fr; }
+    .cs-result { padding: 22px 16px; }
+    .cs-result-num { font-size: 1.6rem; }
     .cs-section { padding: 60px 24px; }
     .cs-process-grid { grid-template-columns: 1fr; }
+    .cs-metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .cs-section-title { font-size: 1.6rem; }
+    .cs-section p { font-size: 1rem; }
+    .cs-keyword-chip { padding: 10px 16px; font-size: 0.85rem; }
+    .cs-quote { padding: 28px 24px; }
+    .cs-quote p { font-size: 1rem; }
+    .cs-cta { padding: 50px 24px; }
+    .cs-cta h2 { font-size: 1.7rem; }
+    .cs-cta p { font-size: 1rem; }
+    .cs-cta-buttons { flex-direction: column; align-items: center; }
+    .cs-btn-white, .cs-btn-outline { width: 100%; max-width: 320px; text-align: center; }
+    .cs-footer { padding: 30px 24px; font-size: 0.8rem; }
+    html { overflow-x: hidden; }
+}
+
+@media (max-width: 420px) {
+    .cs-nav .back-link { display: none; }
+    .cs-hero h1 { font-size: 1.7rem; }
+    .cs-section-title { font-size: 1.4rem; }
     .cs-metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    .cs-section-title { font-size: 1.8rem; }
-    .cs-cta { padding: 60px 24px; }
-    .cs-cta h2 { font-size: 1.8rem; }
-    .cs-footer { padding: 30px 24px; }
+    .cs-result-num { font-size: 1.4rem; }
+    .cs-keyword-chip { padding: 8px 12px; font-size: 0.78rem; }
 }
