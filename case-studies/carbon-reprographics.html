@@ -20,7 +20,7 @@
         .case-hero h1 { font-size: 3.2rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 16px; line-height: 1.1; }
         .case-hero .subtitle { font-size: 1.15rem; color: #999; margin-bottom: 48px; line-height: 1.7; max-width: 700px; }
 
-        .results-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; margin-bottom: 60px; }
+        .results-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; margin-bottom: 60px; }
         .result-item { padding: 32px 16px; text-align: center; background: rgba(10, 10, 10, 0.9); }
         .result-num { font-size: 2.2rem; font-weight: 900; margin-bottom: 4px; }
         .result-label { font-size: 0.8rem; color: #888; }
@@ -46,6 +46,12 @@
         .metric-card .big { font-size: 1.8rem; font-weight: 900; }
         .metric-card .label { font-size: 0.75rem; color: #888; margin-top: 4px; }
 
+        .keywords-block { margin: 48px 0; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 40px; }
+        .keywords-block h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
+        .keyword-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .keyword-chip { background: rgba(0, 210, 255, 0.08); border: 1px solid rgba(0, 210, 255, 0.2); color: #00d2ff; padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; }
+        .keyword-chip .rank { color: #b388ff; font-weight: 700; margin-right: 6px; }
+
         .quote-block { margin: 48px 0; padding: 32px 40px; border-left: 3px solid #7b2ff7; background: rgba(123, 47, 247, 0.05); border-radius: 0 12px 12px 0; }
         .quote-block p { font-size: 1.1rem; color: #ccc; font-style: italic; line-height: 1.7; margin: 0; }
 
@@ -60,7 +66,7 @@
         @media (max-width: 768px) {
             nav, .case-hero, .case-content, footer { padding-left: 24px; padding-right: 24px; }
             .case-hero h1 { font-size: 2rem; }
-            .results-bar { grid-template-columns: repeat(2, 1fr); }
+            .results-bar { grid-template-columns: 1fr; }
             .process-grid { grid-template-columns: 1fr; }
             .metric-row { flex-direction: column; }
         }
@@ -75,24 +81,20 @@
     <div class="case-hero">
         <div class="case-tag">E-COMMERCE / JEWELRY / HOME DECOR</div>
         <h1>Carbon Reprographics</h1>
-        <p class="subtitle">A multi-vertical e-commerce brand stuck at 12K monthly organic visitors. I rebuilt their entire content architecture from the ground up and grew traffic to 180K in 12 months.</p>
+        <p class="subtitle">A multi-vertical e-commerce brand with serious technical SEO problems. I fixed their crawl issues, rebuilt their internal linking architecture, and optimized 120 pages across jewelry, automotive, and home decor.</p>
 
         <div class="results-bar">
             <div class="result-item">
-                <div class="result-num gradient-text">180K</div>
-                <div class="result-label">Monthly Organic Visitors</div>
-            </div>
-            <div class="result-item">
-                <div class="result-num gradient-text">15x</div>
-                <div class="result-label">Traffic Growth</div>
+                <div class="result-num gradient-text">340+</div>
+                <div class="result-label">Technical Issues Fixed</div>
             </div>
             <div class="result-item">
                 <div class="result-num gradient-text">120</div>
                 <div class="result-label">Pages Optimized</div>
             </div>
             <div class="result-item">
-                <div class="result-num gradient-text">34%</div>
-                <div class="result-label">Conversion Rate Lift</div>
+                <div class="result-num gradient-text">10</div>
+                <div class="result-label">Keywords Ranking Page 1</div>
             </div>
         </div>
     </div>
@@ -100,7 +102,7 @@
     <div class="case-content">
         <div class="content-section">
             <h2>The Problem</h2>
-            <p>Carbon Reprographics ran three e-commerce verticals: jewelry, automotive, and home decor. The site had over 200 product pages and blog articles, but most of the content was thin, poorly optimized, and invisible on Google. Organic traffic sat flat at 12K monthly visitors for months. Product pages were competing in high-competition niches against established brands with years of domain authority. The site had no internal linking strategy, no structured data, and no content clusters.</p>
+            <p>Carbon Reprographics operated three e-commerce verticals: jewelry, automotive, and home decor. The site had serious technical SEO issues holding it back. Broken internal links were everywhere, duplicate content was dragging down crawl efficiency, and product pages had no structured data. The internal linking was flat with no hierarchy, meaning PageRank was not flowing to the pages that mattered most. On-page optimization was weak across the board with thin meta descriptions and poorly structured headings.</p>
         </div>
 
         <div class="content-section">
@@ -108,96 +110,87 @@
             <div class="process-grid">
                 <div class="process-step">
                     <div class="step-num">PHASE 01</div>
-                    <h3>Technical Audit and Crawl Cleanup</h3>
-                    <p>Ran a full Screaming Frog crawl and uncovered 340+ broken internal links, 89 duplicate content issues, and significant crawl budget waste from parameter URLs. Every broken link was fixed. Canonical tags were implemented across all duplicate pages. Crawl efficiency improved by 40% within the first two weeks.</p>
+                    <h3>Full Technical Audit with Screaming Frog</h3>
+                    <p>Ran a comprehensive Screaming Frog crawl and identified 340+ broken internal links, 89 duplicate content issues, missing canonical tags, and parameter URLs wasting crawl budget. Every issue was logged with severity ranking and fixed systematically.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-num">PHASE 02</div>
-                    <h3>Keyword Architecture and Intent Mapping</h3>
-                    <p>Built comprehensive keyword maps for every product category using Ahrefs and SEMrush. Mapped buyer-intent keywords directly to product pages and informational queries to blog content. Identified 150+ untapped keyword opportunities across all three verticals that competitors were ranking for but Carbon Reprographics was ignoring.</p>
+                    <h3>Internal Linking Architecture Rebuild</h3>
+                    <p>Built a proper internal linking hierarchy connecting product categories, subcategories, and related products. Implemented breadcrumb navigation with structured data. Created hub pages for each vertical that distributed PageRank to product pages efficiently.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-num">PHASE 03</div>
-                    <h3>Content Restructuring and Optimization</h3>
-                    <p>Rewrote 85 product descriptions from feature-focused copy into benefit-driven narratives. Added optimized meta titles, descriptions, and proper H1/H2 heading hierarchy to every product and category page. Implemented a strategic internal linking structure connecting related products across all three verticals.</p>
+                    <h3>On-Page Optimization at Scale</h3>
+                    <p>Rewrote 85 product descriptions with benefit-driven copy. Added optimized meta titles, meta descriptions, and proper H1/H2 heading hierarchy to every product and category page. Ensured each page targeted a specific keyword without cannibalization.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-num">PHASE 04</div>
-                    <h3>Content Expansion and Topical Authority</h3>
-                    <p>Created 120 SEO-optimized blog articles targeting long-tail keywords in jewelry, automotive, and home decor. Built topic clusters around core product categories to establish topical authority. Each article was designed to capture informational search traffic and funnel visitors toward product pages.</p>
+                    <h3>Structured Data and Schema Implementation</h3>
+                    <p>Implemented JSON-LD product schema across all product pages. Added breadcrumb schema, organization schema, and FAQ schema where applicable. This improved how Google understood the site structure and enhanced search appearance.</p>
                 </div>
             </div>
         </div>
 
-        <div class="visual-block">
-            <h3>Key Actions Taken</h3>
-            <div class="metric-row">
-                <div class="metric-card">
-                    <div class="big gradient-text">85</div>
-                    <div class="label">Product Descriptions Rewritten</div>
-                </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">120</div>
-                    <div class="label">New SEO Articles Published</div>
-                </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">340+</div>
-                    <div class="label">Broken Links Fixed</div>
-                </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">150+</div>
-                    <div class="label">New Keywords Targeted</div>
-                </div>
+        <div class="keywords-block">
+            <h3>Keywords Now Ranking on Page 1</h3>
+            <div class="keyword-list">
+                <span class="keyword-chip"><span class="rank">#3</span> lab grown diamond earrings Albuquerque</span>
+                <span class="keyword-chip"><span class="rank">#5</span> custom jewelry design New Mexico</span>
+                <span class="keyword-chip"><span class="rank">#4</span> Verragio engagement rings</span>
+                <span class="keyword-chip"><span class="rank">#7</span> men's diamond bracelets online</span>
+                <span class="keyword-chip"><span class="rank">#6</span> home decor accessories shop</span>
+                <span class="keyword-chip"><span class="rank">#8</span> automotive accessories store</span>
+                <span class="keyword-chip"><span class="rank">#5</span> estate jewelry Albuquerque</span>
             </div>
         </div>
 
         <div class="content-section">
             <h2>What I Executed</h2>
             <ul>
-                <li>Optimized 120 blog articles, product pages, and category descriptions across jewelry, automotive, and home decor verticals</li>
-                <li>Restructured 85 product descriptions into benefit-driven narratives with optimized meta tags and heading structures</li>
-                <li>Fixed 340+ broken internal links and resolved 89 duplicate content issues identified through Screaming Frog audits</li>
-                <li>Implemented strategic internal linking across product clusters to distribute page authority and improve crawl depth</li>
-                <li>Built 120 new SEO articles targeting buyer-intent long-tail keywords in each vertical</li>
-                <li>Applied JSON-LD structured data for product schema across all product pages to enhance search visibility</li>
-                <li>Configured GA4 tracking and Google Search Console monitoring for all three product categories</li>
+                <li>Ran full Screaming Frog audits and resolved 340+ broken internal links across three product verticals</li>
+                <li>Fixed 89 duplicate content issues with proper canonical tag implementation</li>
+                <li>Rebuilt internal linking architecture with clear hierarchy from category to subcategory to product pages</li>
+                <li>Optimized 120 pages including product descriptions, meta tags, heading structures, and image alt text</li>
+                <li>Implemented JSON-LD structured data for product, breadcrumb, and organization schema</li>
+                <li>Reduced crawl budget waste by blocking parameter URLs and optimizing robots.txt</li>
+                <li>Created topic clusters around core product categories to strengthen topical authority</li>
             </ul>
         </div>
 
         <div class="visual-block">
-            <h3>Results at a Glance</h3>
+            <h3>Technical Fixes Delivered</h3>
             <div class="metric-row">
                 <div class="metric-card">
-                    <div class="big gradient-text">15x</div>
-                    <div class="label">Organic Traffic Growth</div>
+                    <div class="big gradient-text">340+</div>
+                    <div class="label">Broken Links Fixed</div>
                 </div>
                 <div class="metric-card">
-                    <div class="big gradient-text">28%</div>
-                    <div class="label">Bounce Rate Reduction</div>
+                    <div class="big gradient-text">89</div>
+                    <div class="label">Duplicate Content Resolved</div>
                 </div>
                 <div class="metric-card">
-                    <div class="big gradient-text">45%</div>
-                    <div class="label">Session Duration Increase</div>
+                    <div class="big gradient-text">120</div>
+                    <div class="label">Pages Fully Optimized</div>
                 </div>
                 <div class="metric-card">
-                    <div class="big gradient-text">34%</div>
-                    <div class="label">Conversion Rate Improvement</div>
+                    <div class="big gradient-text">3</div>
+                    <div class="label">Schema Types Implemented</div>
                 </div>
             </div>
         </div>
 
         <div class="quote-block">
-            <p>The internal linking strategy alone transformed how Google understood the site. Product pages that had been buried three clicks deep became accessible within one click from the homepage. That single change drove a measurable increase in crawl frequency and indexation rates.</p>
+            <p>The biggest win was the internal linking rebuild. Most e-commerce sites treat linking as an afterthought. By building a proper hierarchy where every product page was reachable within two clicks from the homepage, we improved crawl depth and ensured Google discovered new products faster.</p>
         </div>
 
         <div class="content-section">
             <h2>The Outcome</h2>
-            <p>Within 12 months, organic traffic grew from 12K to 180K monthly visitors. The 15x increase was driven by a combination of technical fixes, content restructuring, and strategic content expansion. Product pages started ranking on Page 1 for competitive buyer-intent keywords across all three verticals. Bounce rate dropped 28% because visitors were landing on pages that actually matched their search intent. Average session duration increased 45% as the internal linking structure guided visitors deeper into the site. Conversion rates improved 34% across the board, directly translating into revenue growth.</p>
+            <p>After the technical overhaul, the site went from having 340+ crawl errors to a clean bill of health in Google Search Console. Indexation improved significantly with more product pages being crawled and indexed. Internal linking flow was restored, allowing PageRank to reach deep product pages. On-page optimization across 120 pages resulted in 10 keywords reaching Page 1 for targeted buyer-intent queries. The structured data implementation enhanced search appearance with rich results for product listings.</p>
         </div>
 
         <div class="cta-box">
-            <h3>Ready to Scale Your Organic Traffic?</h3>
-            <p>I build the same growth engines for e-commerce brands in any vertical.</p>
+            <h3>Need a Technical SEO Audit?</h3>
+            <p>I fix crawl issues, internal linking, and on-page problems that hold sites back.</p>
             <a href="https://wa.link/6gski2" class="cta-btn" target="_blank">Let's Talk on WhatsApp</a>
         </div>
     </div>

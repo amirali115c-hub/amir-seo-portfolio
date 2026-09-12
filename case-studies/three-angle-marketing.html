@@ -20,7 +20,7 @@
         .case-hero h1 { font-size: 3.2rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 16px; line-height: 1.1; }
         .case-hero .subtitle { font-size: 1.15rem; color: #999; margin-bottom: 48px; line-height: 1.7; max-width: 700px; }
 
-        .results-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; margin-bottom: 60px; }
+        .results-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; margin-bottom: 60px; }
         .result-item { padding: 32px 16px; text-align: center; background: rgba(10, 10, 10, 0.9); }
         .result-num { font-size: 2.2rem; font-weight: 900; margin-bottom: 4px; }
         .result-label { font-size: 0.8rem; color: #888; }
@@ -46,6 +46,12 @@
         .metric-card .big { font-size: 1.8rem; font-weight: 900; }
         .metric-card .label { font-size: 0.75rem; color: #888; margin-top: 4px; }
 
+        .keywords-block { margin: 48px 0; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 40px; }
+        .keywords-block h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
+        .keyword-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .keyword-chip { background: rgba(0, 210, 255, 0.08); border: 1px solid rgba(0, 210, 255, 0.2); color: #00d2ff; padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; }
+        .keyword-chip .rank { color: #b388ff; font-weight: 700; margin-right: 6px; }
+
         .quote-block { margin: 48px 0; padding: 32px 40px; border-left: 3px solid #7b2ff7; background: rgba(123, 47, 247, 0.05); border-radius: 0 12px 12px 0; }
         .quote-block p { font-size: 1.1rem; color: #ccc; font-style: italic; line-height: 1.7; margin: 0; }
 
@@ -60,7 +66,7 @@
         @media (max-width: 768px) {
             nav, .case-hero, .case-content, footer { padding-left: 24px; padding-right: 24px; }
             .case-hero h1 { font-size: 2rem; }
-            .results-bar { grid-template-columns: repeat(2, 1fr); }
+            .results-bar { grid-template-columns: 1fr; }
             .process-grid { grid-template-columns: 1fr; }
             .metric-row { flex-direction: column; }
         }
@@ -75,24 +81,20 @@
     <div class="case-hero">
         <div class="case-tag">REAL ESTATE / TOURISM / DUBAI, UAE</div>
         <h1>Three Angle Marketing</h1>
-        <p class="subtitle">A digital marketing agency in Dubai managing SEO for real estate and tourism clients. I built their entire organic search engine from zero and generated 250K qualified visitors annually in one of the most competitive markets online.</p>
+        <p class="subtitle">A digital marketing agency in Dubai managing SEO for real estate and tourism clients. I optimized 150 location-specific pages, fixed technical issues, and built internal linking structures that improved search visibility in competitive Dubai niches.</p>
 
         <div class="results-bar">
-            <div class="result-item">
-                <div class="result-num gradient-text">250K</div>
-                <div class="result-label">Annual Qualified Visitors</div>
-            </div>
             <div class="result-item">
                 <div class="result-num gradient-text">150</div>
                 <div class="result-label">Pages Optimized</div>
             </div>
             <div class="result-item">
-                <div class="result-num gradient-text">42</div>
-                <div class="result-label">Page 1 Rankings</div>
+                <div class="result-num gradient-text">8</div>
+                <div class="result-label">Keywords Ranking Page 1</div>
             </div>
             <div class="result-item">
-                <div class="result-num gradient-text">28%</div>
-                <div class="result-label">Bounce Rate Drop</div>
+                <div class="result-num gradient-text">12</div>
+                <div class="result-label">Property Launches Supported</div>
             </div>
         </div>
     </div>
@@ -100,7 +102,7 @@
     <div class="case-content">
         <div class="content-section">
             <h2>The Problem</h2>
-            <p>Three Angle Marketing managed SEO for real estate and tourism clients in Dubai, two of the most competitive search verticals online. Their clients were competing against massive property portals and travel platforms with enormous budgets and years of content. The existing content was generic, not location-optimized, and completely failing to capture international search intent from buyers and travelers outside the UAE. Organic traffic was negligible. The agency needed a systematic approach to build organic visibility for their clients in a market where every keyword was contested.</p>
+            <p>Three Angle Marketing managed SEO for real estate and tourism clients in Dubai. The websites had generic content that was not location-optimized. Pages were competing against massive property portals with huge budgets. Technical SEO was inconsistent across client sites with duplicate content, weak heading hierarchies, and no internal linking strategy connecting related location pages. The agency needed a systematic technical approach to improve search visibility for their clients.</p>
         </div>
 
         <div class="content-section">
@@ -108,41 +110,66 @@
             <div class="process-grid">
                 <div class="process-step">
                     <div class="step-num">PHASE 01</div>
-                    <h3>Search Intent and Competitor Analysis</h3>
-                    <p>Analyzed search intent for Dubai real estate and tourism queries across 15+ countries. Identified specific gaps where international searchers were looking for location-based information that competitors were not providing. Built a keyword universe of 500+ target terms organized by intent, competition level, and client relevance.</p>
+                    <h3>Technical Audit Across Client Sites</h3>
+                    <p>Ran Screaming Frog audits across all client websites to identify duplicate content, missing meta tags, broken links, and heading hierarchy issues. Created a unified technical fix log with severity rankings and implementation priorities for each client.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-num">PHASE 02</div>
-                    <h3>Location-Specific Content Production</h3>
-                    <p>Created 150 location-specific SEO articles and landing pages targeting Dubai neighborhoods, property types, tourist attractions, and travel experiences. Each piece was structured for direct answer extraction by Google and AI search engines, with entity-first content architecture ensuring search engines could clearly understand location entities.</p>
+                    <h3>Location Page Architecture and On-Page SEO</h3>
+                    <p>Created 150 location-specific pages targeting Dubai neighborhoods, property types, and tourist attractions. Each page was optimized with proper heading hierarchy, meta titles, meta descriptions, and entity-first content structure for direct answer extraction.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-num">PHASE 03</div>
-                    <h3>Entity Optimization and Structured Data</h3>
-                    <p>Built entity-first content architecture ensuring Google could clearly understand location entities, property types, and tourism categories. Implemented structured data for real estate listings and tourism content. Optimized heading hierarchies and meta content for location-based keyword clusters across all client accounts.</p>
+                    <h3>Internal Linking for Location Clusters</h3>
+                    <p>Built internal linking structures connecting related location pages, neighborhood guides, and property type content. Created hub pages for each real estate area and tourism category that distributed link authority to deeper location pages.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-num">PHASE 04</div>
-                    <h3>Ongoing Optimization and Performance Tracking</h3>
-                    <p>Ran monthly competitor gap analyses to identify new ranking opportunities. Built tracking spreadsheets to monitor organic visibility across target keywords. Adjusted content strategy based on performance data, doubling down on what worked and pivoting away from what did not.</p>
+                    <h3>Content Scoring and Optimization</h3>
+                    <p>Implemented content scoring system to evaluate each page against competitors. Adjusted content depth, keyword density, and entity coverage based on scoring. Maintained tracking spreadsheets to monitor ranking movements and on-page improvements.</p>
                 </div>
             </div>
         </div>
 
+        <div class="keywords-block">
+            <h3>Keywords Now Ranking on Page 1</h3>
+            <div class="keyword-list">
+                <span class="keyword-chip"><span class="rank">#4</span> Dubai Marina apartments for sale</span>
+                <span class="keyword-chip"><span class="rank">#6</span> Downtown Dubai real estate</span>
+                <span class="keyword-chip"><span class="rank">#3</span> Palm Jumeirah property listings</span>
+                <span class="keyword-chip"><span class="rank">#7</span> Dubai tourism guide for tourists</span>
+                <span class="keyword-chip"><span class="rank">#5</span> Business Bay office spaces</span>
+                <span class="keyword-chip"><span class="rank">#8</span> JBR hotels and attractions</span>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>What I Executed</h2>
+            <ul>
+                <li>Ran Screaming Frog audits across all client sites and resolved technical issues including duplicate content, broken links, and missing meta tags</li>
+                <li>Optimized 150 location-specific pages with proper heading hierarchy, meta titles, and entity-first content structure</li>
+                <li>Built internal linking architecture connecting neighborhood pages, property types, and tourism content into coherent clusters</li>
+                <li>Created hub pages for each Dubai area that distributed link authority to deeper location pages</li>
+                <li>Implemented content scoring system to evaluate and improve each page against competitor benchmarks</li>
+                <li>Structured content for direct answer extraction with entity clarity and optimal heading hierarchies</li>
+                <li>Managed complete content pipelines from keyword briefing through publishing across multiple client accounts</li>
+            </ul>
+        </div>
+
         <div class="visual-block">
-            <h3>Key Actions Taken</h3>
+            <h3>Technical Fixes Delivered</h3>
             <div class="metric-row">
                 <div class="metric-card">
                     <div class="big gradient-text">150</div>
-                    <div class="label">Location Pages Created</div>
+                    <div class="label">Pages Optimized</div>
                 </div>
                 <div class="metric-card">
-                    <div class="big gradient-text">500+</div>
-                    <div class="label">Keywords Targeted</div>
+                    <div class="big gradient-text">6</div>
+                    <div class="label">Location Clusters Built</div>
                 </div>
                 <div class="metric-card">
-                    <div class="big gradient-text">15</div>
-                    <div class="label">Countries Analyzed</div>
+                    <div class="big gradient-text">45+</div>
+                    <div class="label">Internal Links Restructured</div>
                 </div>
                 <div class="metric-card">
                     <div class="big gradient-text">12</div>
@@ -151,53 +178,18 @@
             </div>
         </div>
 
-        <div class="content-section">
-            <h2>What I Executed</h2>
-            <ul>
-                <li>Optimized 150 location-specific SEO articles and landing pages targeting international buyer and traveler search intent</li>
-                <li>Structured all content for direct answer extraction with entity clarity and optimal heading hierarchies</li>
-                <li>Created email sequences and ad copy for 12 property launches supporting lead generation efforts</li>
-                <li>Built topic clusters around Dubai neighborhoods, property types, and tourist attractions to establish topical authority</li>
-                <li>Implemented competitor tracking spreadsheets to monitor organic visibility across target keywords monthly</li>
-                <li>Optimized meta content and internal linking for location-based keyword clusters across all client accounts</li>
-                <li>Managed complete content pipelines from keyword briefing through publishing with consistent brand voice</li>
-            </ul>
-        </div>
-
-        <div class="visual-block">
-            <h3>Results at a Glance</h3>
-            <div class="metric-row">
-                <div class="metric-card">
-                    <div class="big gradient-text">250K</div>
-                    <div class="label">Annual Qualified Visitors</div>
-                </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">42</div>
-                    <div class="label">Page 1 Rankings</div>
-                </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">15</div>
-                    <div class="label">Featured Snippets Won</div>
-                </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">28%</div>
-                    <div class="label">Bounce Rate Reduction</div>
-                </div>
-            </div>
-        </div>
-
         <div class="quote-block">
-            <p>Dubai is one of the hardest search markets in the world. Every keyword is contested by billion-dollar portals. The only way to win was to be more specific, more local, and more intent-focused than anyone else. That is exactly what we built.</p>
+            <p>The internal linking strategy for location pages was the key. Dubai real estate has dozens of neighborhoods, each needing its own page. By creating hub pages for each area and linking related neighborhoods together, we built a geographic content topology that search engines could easily crawl and understand.</p>
         </div>
 
         <div class="content-section">
             <h2>The Outcome</h2>
-            <p>Within 18 months, the portfolio generated 250K qualified visitors annually. Real estate landing pages achieved Page 1 rankings for 42 competitive Dubai location keywords. Tourism content captured featured snippets for 15+ travel-related queries. Bounce rate dropped 28% because visitors were landing on hyper-specific content that matched their exact search intent. The location-specific strategy outperformed generic content by 3x, proving that precision beats volume in competitive markets. The agency used these results to pitch and win three additional client accounts.</p>
+            <p>After the technical overhaul, client sites saw improved crawl efficiency and better indexation of location pages. The internal linking structure helped Google understand the relationship between neighborhoods, property types, and service pages. On-page optimization across 150 location pages resulted in 8 keywords reaching Page 1 for Dubai-specific real estate and tourism queries. The structured content approach helped some pages capture featured snippets for location-based searches. The agency used these technical improvements to demonstrate measurable progress to clients and retain accounts.</p>
         </div>
 
         <div class="cta-box">
-            <h3>Want to Dominate Your Local Market?</h3>
-            <p>I build location-specific SEO strategies that outperform bigger competitors.</p>
+            <h3>Need Location-Based SEO?</h3>
+            <p>I build internal linking structures and on-page optimization for multi-location businesses.</p>
             <a href="https://wa.link/6gski2" class="cta-btn" target="_blank">Let's Talk on WhatsApp</a>
         </div>
     </div>

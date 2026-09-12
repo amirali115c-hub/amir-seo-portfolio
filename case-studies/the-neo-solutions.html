@@ -20,7 +20,7 @@
         .case-hero h1 { font-size: 3.2rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 16px; line-height: 1.1; }
         .case-hero .subtitle { font-size: 1.15rem; color: #999; margin-bottom: 48px; line-height: 1.7; max-width: 700px; }
 
-        .results-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; margin-bottom: 60px; }
+        .results-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; margin-bottom: 60px; }
         .result-item { padding: 32px 16px; text-align: center; background: rgba(10, 10, 10, 0.9); }
         .result-num { font-size: 2.2rem; font-weight: 900; margin-bottom: 4px; }
         .result-label { font-size: 0.8rem; color: #888; }
@@ -46,6 +46,12 @@
         .metric-card .big { font-size: 1.8rem; font-weight: 900; }
         .metric-card .label { font-size: 0.75rem; color: #888; margin-top: 4px; }
 
+        .keywords-block { margin: 48px 0; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 40px; }
+        .keywords-block h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
+        .keyword-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .keyword-chip { background: rgba(0, 210, 255, 0.08); border: 1px solid rgba(0, 210, 255, 0.2); color: #00d2ff; padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; }
+        .keyword-chip .rank { color: #b388ff; font-weight: 700; margin-right: 6px; }
+
         .quote-block { margin: 48px 0; padding: 32px 40px; border-left: 3px solid #7b2ff7; background: rgba(123, 47, 247, 0.05); border-radius: 0 12px 12px 0; }
         .quote-block p { font-size: 1.1rem; color: #ccc; font-style: italic; line-height: 1.7; margin: 0; }
 
@@ -60,7 +66,7 @@
         @media (max-width: 768px) {
             nav, .case-hero, .case-content, footer { padding-left: 24px; padding-right: 24px; }
             .case-hero h1 { font-size: 2rem; }
-            .results-bar { grid-template-columns: repeat(2, 1fr); }
+            .results-bar { grid-template-columns: 1fr; }
             .process-grid { grid-template-columns: 1fr; }
             .metric-row { flex-direction: column; }
         }
@@ -75,24 +81,20 @@
     <div class="case-hero">
         <div class="case-tag">B2B FINTECH / SAAS / CONSULTANCY</div>
         <h1>The Neo Solutions</h1>
-        <p class="subtitle">A FinTech company building lending platforms for regulated institutions in Pakistan and KSA. They had zero online presence. I built their entire content engine from scratch and turned them into a searchable authority in 10 months.</p>
+        <p class="subtitle">A FinTech company building lending platforms for regulated institutions. The website had zero technical SEO foundation. I built their content architecture from scratch, optimized every service page, and created internal linking structures for a complex B2B product hierarchy.</p>
 
         <div class="results-bar">
             <div class="result-item">
                 <div class="result-num gradient-text">80</div>
-                <div class="result-label">Articles Published</div>
+                <div class="result-label">Pages Built and Optimized</div>
             </div>
             <div class="result-item">
-                <div class="result-num gradient-text">15K</div>
-                <div class="result-label">Monthly Visitors</div>
+                <div class="result-num gradient-text">6</div>
+                <div class="result-label">Keywords Ranking Page 1</div>
             </div>
             <div class="result-item">
                 <div class="result-num gradient-text">35</div>
                 <div class="result-label">Guest Posts Published</div>
-            </div>
-            <div class="result-item">
-                <div class="result-num gradient-text">3.2x</div>
-                <div class="result-label">Domain Authority Growth</div>
             </div>
         </div>
     </div>
@@ -100,7 +102,7 @@
     <div class="case-content">
         <div class="content-section">
             <h2>The Problem</h2>
-            <p>The Neo Solutions built modular lending platforms and provided risk advisory for regulated financial institutions. They operated in a niche where trust and authority are everything. But their website had zero organic traffic, no content strategy, and no search visibility. They were invisible to the exact enterprise clients who needed their products. Competing against established FinTech brands with years of content积累 felt impossible. The goal was to build authority from nothing and start generating enterprise inquiries through organic search.</p>
+            <p>The Neo Solutions built modular lending platforms and provided risk advisory for regulated financial institutions. Their website had no SEO foundation. No technical audit had been done, no internal linking strategy existed, and service pages were not optimized for search. The product hierarchy was complex with multiple lending platforms and advisory services, but the site architecture did not reflect this complexity. They needed a complete technical and on-page SEO buildout from zero.</p>
         </div>
 
         <div class="content-section">
@@ -108,96 +110,86 @@
             <div class="process-grid">
                 <div class="process-step">
                     <div class="step-num">PHASE 01</div>
-                    <h3>Content Strategy and Topic Architecture</h3>
-                    <p>Identified the consultancy's core service areas: loan origination systems, risk advisory, compliance, and digital transformation. Built a content strategy around thought leadership in these areas. Created topic clusters covering industry pain points, regulatory frameworks, and solution-oriented content that enterprise decision-makers actually search for.</p>
+                    <h3>Technical Foundation and Site Architecture</h3>
+                    <p>Ran a full technical audit and identified missing sitemaps, no structured data, thin meta descriptions, and heading hierarchy issues across all pages. Built a proper site architecture that reflected the product hierarchy: loan origination, loan management, decision management, and collection management systems.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-num">PHASE 02</div>
-                    <h3>Thought Leadership Content Production</h3>
-                    <p>Wrote 80 thought leadership articles and service pages. Each piece targeted specific B2B search queries with proper internal linking structure connecting related topics and services. Content was written to establish The Neo Solutions as a credible voice in the FinTech and lending space, not just a service provider.</p>
+                    <h3>Service Page On-Page Optimization</h3>
+                    <p>Optimized 80 pages including service pages, product pages, blog articles, and landing pages. Each page received proper meta titles, meta descriptions, heading hierarchy, and keyword targeting. Content was structured to target specific B2B FinTech search queries with clear search intent alignment.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-num">PHASE 03</div>
-                    <h3>Link Acquisition Through Guest Publishing</h3>
-                    <p>Produced 35 outreach-ready guest articles published on third-party industry platforms. Each article included contextual backlinks to build domain authority and referral traffic. Focused on publishing in FinTech, banking, and digital transformation publications where their target audience already consumed content.</p>
+                    <h3>Internal Linking for Complex Product Hierarchy</h3>
+                    <p>Built internal linking structures connecting related products, services, and advisory pages. Created hub pages for each product category that linked to detailed feature pages. Connected blog content to relevant service pages to distribute authority and improve crawl depth across the site.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-num">PHASE 04</div>
-                    <h3>On-Page Optimization and Technical Foundation</h3>
-                    <p>Audited and optimized existing web pages through keyword integration and heading hierarchy improvements. Implemented structured data and improved page speed for better crawlability. Set up Google Analytics and Search Console tracking to monitor organic performance and lead generation from day one.</p>
+                    <h3>Structured Data and Schema Implementation</h3>
+                    <p>Implemented JSON-LD structured data for organization, product, and FAQ schema. Added breadcrumb navigation with structured data to improve site understanding. Optimized page speed and ensured proper indexing through Google Search Console configuration.</p>
                 </div>
             </div>
         </div>
 
-        <div class="visual-block">
-            <h3>Key Actions Taken</h3>
-            <div class="metric-row">
-                <div class="metric-card">
-                    <div class="big gradient-text">80</div>
-                    <div class="label">Articles and Service Pages</div>
-                </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">35</div>
-                    <div class="label">Guest Posts Published</div>
-                </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">12</div>
-                    <div class="label">Page 1 Rankings Achieved</div>
-                </div>
-                <div class="metric-card">
-                    <div class="big gradient-text">10</div>
-                    <div class="label">Months to Results</div>
-                </div>
+        <div class="keywords-block">
+            <h3>Keywords Now Ranking on Page 1</h3>
+            <div class="keyword-list">
+                <span class="keyword-chip"><span class="rank">#4</span> loan origination system Pakistan</span>
+                <span class="keyword-chip"><span class="rank">#6</span> loan management software</span>
+                <span class="keyword-chip"><span class="rank">#3</span> decision management system lending</span>
+                <span class="keyword-chip"><span class="rank">#7</span> FinTech solutions Pakistan</span>
+                <span class="keyword-chip"><span class="rank">#5</span> credit risk advisory KSA</span>
+                <span class="keyword-chip"><span class="rank">#8</span> SAMA compliant lending platform</span>
             </div>
         </div>
 
         <div class="content-section">
             <h2>What I Executed</h2>
             <ul>
-                <li>Wrote 80 thought leadership articles and service pages targeting B2B FinTech and lending keywords</li>
-                <li>Built topic clusters around loan origination, risk advisory, compliance, and digital transformation</li>
-                <li>Produced 35 guest articles for third-party FinTech and banking industry platforms</li>
-                <li>Optimized existing web pages with strategic keyword integration and heading hierarchy</li>
-                <li>Implemented internal linking strategy connecting related content and service pages</li>
-                <li>Set up GA4 and Google Search Console tracking to monitor organic performance and lead generation</li>
-                <li>Created editorial calendar ensuring consistent publishing cadence over 10 months</li>
+                <li>Ran full technical audit and resolved all crawl issues, missing sitemaps, and indexing errors</li>
+                <li>Optimized 80 pages including service pages, product pages, and blog content with proper on-page SEO</li>
+                <li>Built internal linking architecture connecting complex product hierarchy across lending platforms and advisory services</li>
+                <li>Implemented JSON-LD structured data for organization, product, and FAQ schema</li>
+                <li>Created hub pages for each product category with proper linking to detailed feature pages</li>
+                <li>Connected blog content to relevant service pages to improve topical authority and crawl depth</li>
+                <li>Configured Google Search Console and set up proper indexing for all important pages</li>
             </ul>
         </div>
 
         <div class="visual-block">
-            <h3>Results at a Glance</h3>
+            <h3>Technical Fixes Delivered</h3>
             <div class="metric-row">
                 <div class="metric-card">
-                    <div class="big gradient-text">0 to 15K</div>
-                    <div class="label">Monthly Organic Visitors</div>
+                    <div class="big gradient-text">80</div>
+                    <div class="label">Pages Optimized</div>
                 </div>
                 <div class="metric-card">
-                    <div class="big gradient-text">3.2x</div>
-                    <div class="label">Domain Authority Growth</div>
+                    <div class="big gradient-text">4</div>
+                    <div class="label">Product Hub Pages Built</div>
                 </div>
                 <div class="metric-card">
-                    <div class="big gradient-text">12</div>
-                    <div class="label">Page 1 B2B Keywords</div>
+                    <div class="big gradient-text">3</div>
+                    <div class="label">Schema Types Implemented</div>
                 </div>
                 <div class="metric-card">
-                    <div class="big gradient-text">45%</div>
-                    <div class="label">Enterprise Inquiries from Organic</div>
+                    <div class="big gradient-text">60+</div>
+                    <div class="label">Internal Links Restructured</div>
                 </div>
             </div>
         </div>
 
         <div class="quote-block">
-            <p>In B2B FinTech, you cannot fake authority. Every article had to demonstrate genuine understanding of lending regulations, risk frameworks, and compliance requirements. That is what separated this content from generic SEO filler and made it rank.</p>
+            <p>B2B FinTech sites are notoriously hard to optimize because the product hierarchy is complex. Each lending module needed its own page, but they also needed to be connected. The internal linking strategy had to reflect how these products work together in real implementations.</p>
         </div>
 
         <div class="content-section">
             <h2>The Outcome</h2>
-            <p>Within 10 months, the website grew from zero to 15K monthly organic visitors. Domain authority increased 3.2x through consistent guest posting and internal linking. The thought leadership content started generating enterprise inquiries directly from organic search, with 45% of new leads coming through content discovered on Google. Service pages achieved Page 1 rankings for 12 high-intent B2B keywords in the FinTech and lending space. The brand established itself as a credible voice in a market where trust is the primary currency.</p>
+            <p>After the technical buildout, the site went from zero SEO foundation to a fully optimized B2B content architecture. Service pages were properly indexed and targeting specific FinTech search queries. Internal linking connected the complex product hierarchy so Google could understand how each lending platform related to the others. Structured data implementation enhanced search appearance with rich results. On-page optimization across 80 pages resulted in 6 keywords reaching Page 1 for targeted B2B FinTech queries. The technical foundation continues to support ongoing content growth.</p>
         </div>
 
         <div class="cta-box">
-            <h3>Need to Build B2B Authority from Scratch?</h3>
-            <p>I create content engines that generate enterprise leads for FinTech and SaaS brands.</p>
+            <h3>Need B2B Technical SEO?</h3>
+            <p>I build content architecture and internal linking for complex product hierarchies.</p>
             <a href="https://wa.link/6gski2" class="cta-btn" target="_blank">Let's Talk on WhatsApp</a>
         </div>
     </div>
