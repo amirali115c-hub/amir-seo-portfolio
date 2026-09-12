@@ -6,19 +6,16 @@
     <title>Amir Ali | SEO Specialist & AI Content Strategist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
         body { font-family: 'Inter', sans-serif; background: #fbfbfb; color: #1a1a2e; overflow-x: hidden; }
 
-        /* Custom Cursor */
         .cursor { width: 20px; height: 20px; border: 2px solid #22c55e; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease, background 0.15s ease; mix-blend-mode: difference; }
         .cursor.active { transform: scale(2.5); background: rgba(34, 197, 94, 0.1); }
         .cursor-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; }
 
-        /* Navigation - Dark like Mint */
         nav { position: fixed; top: 0; width: 100%; padding: 0 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(10, 46, 26, 0.95); backdrop-filter: blur(20px); height: 70px; }
         .logo { font-size: 1.4rem; font-weight: 900; color: #fff; }
         .nav-links { display: flex; gap: 32px; list-style: none; }
@@ -27,7 +24,7 @@
         .hire-btn { background: #fff; color: #0a2e1a; border: none; padding: 10px 24px; border-radius: 6px; font-weight: 600; cursor: none; text-decoration: none; font-size: 0.9rem; transition: transform 0.3s, box-shadow 0.3s; }
         .hire-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
 
-        /* Hero - Green Radial Gradient Burst like Mint */
+        /* HERO */
         .hero { position: relative; min-height: 100vh; display: flex; align-items: center; z-index: 2; background: #22c55e; overflow: hidden; }
         .hero::before { content: ''; position: absolute; top: 50%; left: 50%; width: 180%; height: 180%; transform: translate(-50%, -50%); background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, transparent 60%); pointer-events: none; }
         .hero::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 100px; background: #fbfbfb; clip-path: ellipse(55% 100% at 50% 100%); z-index: 5; }
@@ -42,22 +39,36 @@
         .btn-outline-white { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.6); padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 1rem; cursor: none; text-decoration: none; transition: background 0.3s; }
         .btn-outline-white:hover { background: rgba(255,255,255,0.15); }
         .hero-right { display: flex; justify-content: center; align-items: center; position: relative; }
-        #hero-canvas { width: 100%; height: 400px; }
+        .hero-svg-wrap { width: 100%; max-width: 480px; filter: drop-shadow(0 20px 60px rgba(0,0,0,0.15)); }
 
-        /* Stats Bar */
         .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.2); border-radius: 12px; overflow: hidden; margin-top: 40px; border: 1px solid rgba(255,255,255,0.2); }
         .stat-item { padding: 20px 16px; text-align: center; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
         .stat-number { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 2px; }
         .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.8); font-weight: 500; }
 
-        /* Section Light - Like Mint Features */
-        .section-light { background: #fbfbfb; padding: 100px 60px; }
+        /* SHARED */
         .section-inner { max-width: 1200px; margin: 0 auto; }
         .section-label { font-size: 0.85rem; font-weight: 700; color: #22c55e; margin-bottom: 8px; }
-        .section-title { font-size: 2.8rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; color: #1a1a2e; }
-        .section-desc { font-size: 1.05rem; color: #64748b; max-width: 500px; line-height: 1.7; margin-bottom: 50px; }
+        .section-title { font-size: 2.8rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; }
+        .section-desc { font-size: 1.05rem; max-width: 500px; line-height: 1.7; margin-bottom: 50px; }
 
-        /* Features Grid - Mint Style Cards */
+        /* LIGHT SECTION */
+        .section-light { background: #fbfbfb; padding: 100px 60px; }
+        .section-light .section-title { color: #1a1a2e; }
+        .section-light .section-desc { color: #64748b; }
+
+        /* DARK SECTION */
+        .section-dark { background: #1a1a2e; color: #f8fafc; padding: 100px 60px; }
+        .section-dark .section-title { color: #fff; }
+        .section-dark .section-desc { color: #94a3b8; }
+        .section-dark .section-label { color: #22c55e; }
+
+        /* WHITE SECTION */
+        .section-white { background: #fff; padding: 100px 60px; text-align: center; }
+        .section-white .section-title { color: #1a1a2e; }
+        .section-white .section-desc { color: #64748b; margin-left: auto; margin-right: auto; }
+
+        /* FEATURES - Mint Card Grid */
         .features-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
         .feature-card { background: #f1f5f9; border-radius: 12px; padding: 36px; transition: transform 0.3s, box-shadow 0.3s; min-height: 220px; }
         .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
@@ -67,47 +78,35 @@
         .feature-card p { font-size: 0.95rem; line-height: 1.65; }
         .feature-card:not(.featured) p { color: #64748b; }
 
-        /* Dark Band - Like Mint */
-        .section-dark { background: #1a1a2e; color: #f8fafc; padding: 80px 60px; text-align: center; }
-        .section-dark h2 { font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
-        .section-dark p { font-size: 1.1rem; color: #94a3b8; max-width: 600px; margin: 0 auto; }
+        /* DARK QUOTE BAND */
+        .quote-band { background: #1a1a2e; color: #fff; padding: 80px 60px; text-align: center; }
+        .quote-band h2 { font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
+        .quote-band p { font-size: 1.1rem; color: #94a3b8; max-width: 600px; margin: 0 auto; }
 
-        /* Tools/Partners - Clean White Like Mint */
-        .section-partners { background: #fff; padding: 100px 60px; text-align: center; }
-        .section-partners .pre-title { font-size: 1rem; font-style: italic; color: #64748b; margin-bottom: 8px; }
-        .section-partners h2 { font-size: 2.8rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; color: #1a1a2e; }
-        .section-partners > .section-inner > p { font-size: 1.05rem; color: #64748b; margin-bottom: 50px; }
+        /* TOOLS */
         .tools-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; max-width: 900px; margin: 0 auto; }
         .tool-chip { background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; color: #475569; cursor: none; transition: all 0.3s; }
         .tool-chip:hover { background: #f0fdf4; border-color: #22c55e; color: #22c55e; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(34, 197, 94, 0.1); }
 
-        /* Skills Section - Light with Cards */
-        .section-skills { background: #fbfbfb; padding: 100px 60px; }
-        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .skill-card { background: #f1f5f9; border-radius: 12px; padding: 36px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
-        .skill-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #22c55e, #3b82f6); opacity: 0; transition: opacity 0.3s; }
-        .skill-card:hover::before { opacity: 1; }
-        .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-        .skill-icon { font-size: 1.8rem; margin-bottom: 16px; }
-        .skill-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: #1a1a2e; }
-        .skill-card p { font-size: 0.95rem; color: #64748b; line-height: 1.6; margin-bottom: 16px; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-        .skill-tag { background: rgba(34, 197, 94, 0.08); color: #22c55e; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
+        /* EXPERIENCE - Creative Timeline on Dark */
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: rgba(34, 197, 94, 0.2); transform: translateX(-50%); }
+        .tl-item { display: flex; align-items: flex-start; margin-bottom: 60px; position: relative; }
+        .tl-item:nth-child(odd) { flex-direction: row; }
+        .tl-item:nth-child(even) { flex-direction: row-reverse; }
+        .tl-dot { position: absolute; left: 50%; top: 24px; width: 16px; height: 16px; background: #22c55e; border: 3px solid #1a1a2e; border-radius: 50%; transform: translateX(-50%); z-index: 2; box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
+        .tl-card { width: 44%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 28px; transition: all 0.3s; }
+        .tl-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(34, 197, 94, 0.3); transform: translateY(-4px); }
+        .tl-item:nth-child(odd) .tl-card { margin-right: auto; }
+        .tl-item:nth-child(even) .tl-card { margin-left: auto; }
+        .tl-date { font-size: 0.8rem; font-weight: 700; color: #22c55e; letter-spacing: 1px; margin-bottom: 8px; }
+        .tl-role { font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 4px; }
+        .tl-company { font-size: 0.95rem; color: #94a3b8; font-weight: 500; margin-bottom: 14px; }
+        .tl-list { list-style: none; }
+        .tl-list li { font-size: 0.9rem; color: #94a3b8; line-height: 1.6; padding: 4px 0 4px 20px; position: relative; }
+        .tl-list li::before { content: ''; position: absolute; left: 0; top: 11px; width: 7px; height: 7px; background: linear-gradient(135deg, #22c55e, #3b82f6); border-radius: 50%; }
 
-        /* Experience - Light */
-        .section-experience { background: #fbfbfb; padding: 100px 60px; }
-        .experience-list { display: flex; flex-direction: column; }
-        .exp-item { display: grid; grid-template-columns: 180px 1fr; gap: 40px; padding: 36px 0; border-bottom: 1px solid #e2e8f0; transition: padding-left 0.3s; }
-        .exp-item:hover { padding-left: 16px; }
-        .exp-date { font-size: 0.9rem; color: #94a3b8; font-weight: 500; padding-top: 4px; }
-        .exp-role { font-size: 1.25rem; font-weight: 800; margin-bottom: 4px; color: #1a1a2e; }
-        .exp-company { font-size: 1rem; color: #22c55e; font-weight: 600; margin-bottom: 12px; }
-        .exp-desc { font-size: 0.95rem; color: #64748b; line-height: 1.7; }
-        .exp-desc li { margin-bottom: 8px; list-style: none; padding-left: 24px; position: relative; }
-        .exp-desc li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; background: linear-gradient(135deg, #22c55e, #3b82f6); border-radius: 50%; }
-
-        /* Case Studies - Light */
-        .section-cases { background: #fbfbfb; padding: 100px 60px; }
+        /* CASE STUDIES */
         .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .case-card { background: #f1f5f9; border-radius: 12px; padding: 32px; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); text-decoration: none; display: block; color: #1a1a2e; }
         .case-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
@@ -117,8 +116,7 @@
         .case-results { display: flex; gap: 8px; flex-wrap: wrap; }
         .case-results span { font-size: 0.7rem; font-weight: 700; color: #3b82f6; background: rgba(59, 130, 246, 0.08); padding: 4px 10px; border-radius: 6px; }
 
-        /* Portfolio - Light */
-        .section-portfolio { background: #fbfbfb; padding: 100px 60px; }
+        /* PORTFOLIO */
         .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
         .portfolio-card { background: #f1f5f9; border-radius: 12px; padding: 24px; transition: all 0.3s; text-decoration: none; color: #1a1a2e; display: block; }
         .portfolio-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
@@ -126,8 +124,7 @@
         .portfolio-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
         .portfolio-card .live-link { font-size: 0.85rem; font-weight: 600; color: #22c55e; }
 
-        /* Certifications - Light */
-        .section-certs { background: #fbfbfb; padding: 100px 60px; }
+        /* CERTIFICATIONS */
         .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .cert-card { background: #f1f5f9; border-radius: 12px; padding: 32px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
         .cert-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
@@ -135,14 +132,14 @@
         .cert-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; color: #1a1a2e; }
         .cert-card p { font-size: 0.8rem; color: #64748b; }
 
-        /* Green CTA Band */
+        /* GREEN CTA */
         .cta-band { background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; padding: 80px 60px; text-align: center; }
         .cta-band h2 { font-size: 2.8rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
         .cta-band p { font-size: 1.1rem; margin-bottom: 32px; opacity: 0.9; }
         .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-        /* Footer - Dark like Mint */
-        footer { background: #1a1a2e; color: #94a3b8; padding: 60px; }
+        /* FOOTER */
+        footer { background: #0f1729; color: #94a3b8; padding: 60px; }
         .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
         .footer-brand p { font-size: 0.9rem; line-height: 1.7; margin-top: 12px; }
         .footer-col h6 { font-size: 0.85rem; font-weight: 700; color: #f8fafc; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
@@ -150,24 +147,26 @@
         .footer-col a:hover { color: #22c55e; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 40px; padding-top: 24px; text-align: center; font-size: 0.8rem; color: #475569; max-width: 1200px; margin-left: auto; margin-right: auto; }
 
-        /* Particles */
         #particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 
-        /* Responsive */
         @media (max-width: 768px) {
             nav { padding: 0 24px; }
             .nav-links { display: none; }
             .hero-content { grid-template-columns: 1fr; padding: 120px 24px 80px; text-align: center; }
             .hero h1 { font-size: 2.5rem; }
             .hero-buttons { justify-content: center; }
+            .hero-right { margin-top: 40px; }
+            .hero-svg-wrap { max-width: 320px; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); }
-            .section-light, .section-skills, .section-experience, .section-cases, .section-portfolio, .section-certs, .section-partners { padding: 60px 24px; }
-            .section-dark { padding: 60px 24px; }
+            .section-light, .section-dark, .section-white { padding: 60px 24px; }
             .cta-band { padding: 60px 24px; }
-            .features-grid, .skills-grid, .case-grid, .cert-grid { grid-template-columns: 1fr; }
+            .features-grid, .case-grid, .cert-grid { grid-template-columns: 1fr; }
             .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-            .exp-item { grid-template-columns: 1fr; gap: 8px; }
             .section-title { font-size: 2rem; }
+            .timeline::before { left: 20px; }
+            .tl-dot { left: 20px; }
+            .tl-item, .tl-item:nth-child(even) { flex-direction: row; }
+            .tl-card, .tl-item:nth-child(odd) .tl-card, .tl-item:nth-child(even) .tl-card { width: calc(100% - 50px); margin-left: 50px; margin-right: 0; }
             .footer-inner { grid-template-columns: 1fr; }
             footer { padding: 40px 24px; }
             .cursor, .cursor-dot { display: none; }
@@ -181,7 +180,6 @@
     <div class="cursor-dot" id="cursor-dot"></div>
     <canvas id="particles-canvas"></canvas>
 
-    <!-- Navigation -->
     <nav>
         <div class="logo">Amir Ali</div>
         <ul class="nav-links">
@@ -193,7 +191,7 @@
         <a href="https://wa.link/6gski2" class="hire-btn" target="_blank">Hire Me</a>
     </nav>
 
-    <!-- Hero - Green Radial Gradient Burst -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-left">
@@ -212,18 +210,97 @@
                 </div>
             </div>
             <div class="hero-right">
-                <canvas id="hero-canvas"></canvas>
+                <div class="hero-svg-wrap">
+                    <svg viewBox="0 0 460 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Browser Window -->
+                        <rect x="10" y="10" width="440" height="360" rx="12" fill="white" fill-opacity="0.95"/>
+                        <rect x="10" y="10" width="440" height="360" rx="12" stroke="white" stroke-opacity="0.2" stroke-width="1"/>
+                        <rect x="10" y="10" width="440" height="44" rx="12" fill="#f1f5f9"/>
+                        <circle cx="34" cy="32" r="6" fill="#ef4444"/>
+                        <circle cx="54" cy="32" r="6" fill="#eab308"/>
+                        <circle cx="74" cy="32" r="6" fill="#22c55e"/>
+                        <!-- Search Bar -->
+                        <rect x="100" y="20" width="260" height="24" rx="12" fill="#e2e8f0"/>
+                        <circle cx="114" cy="32" r="5" fill="#94a3b8"/>
+                        <line x1="122" y1="32" x2="150" y2="32" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                        <text x="375" y="37" font-family="Inter" font-size="10" fill="#94a3b8" font-weight="600">Google</text>
+
+                        <!-- Ranking Card 1 -->
+                        <rect x="30" y="68" width="200" height="56" rx="8" fill="#22c55e" fill-opacity="0.08"/>
+                        <rect x="30" y="68" width="4" height="56" rx="2" fill="#22c55e"/>
+                        <text x="48" y="87" font-family="Inter" font-size="9" fill="#94a3b8" font-weight="600">POSITION</text>
+                        <text x="48" y="108" font-family="Inter" font-size="22" fill="#22c55e" font-weight="900">#1</text>
+                        <text x="90" y="108" font-family="Inter" font-size="10" fill="#64748b" font-weight="500">best seo services</text>
+
+                        <!-- Ranking Card 2 -->
+                        <rect x="240" y="68" width="200" height="56" rx="8" fill="#3b82f6" fill-opacity="0.08"/>
+                        <rect x="240" y="68" width="4" height="56" rx="2" fill="#3b82f6"/>
+                        <text x="258" y="87" font-family="Inter" font-size="9" fill="#94a3b8" font-weight="600">KEYWORDS</text>
+                        <text x="258" y="108" font-family="Inter" font-size="22" fill="#3b82f6" font-weight="900">847</text>
+                        <text x="318" y="108" font-family="Inter" font-size="10" fill="#64748b" font-weight="500">indexed pages</text>
+
+                        <!-- Analytics Chart -->
+                        <rect x="30" y="140" width="410" height="150" rx="8" fill="#f8fafc"/>
+                        <text x="50" y="164" font-family="Inter" font-size="10" fill="#64748b" font-weight="700">ORGANIC TRAFFIC</text>
+                        <text x="380" y="164" font-family="Inter" font-size="10" fill="#22c55e" font-weight="700">+127%</text>
+                        <!-- Chart Area -->
+                        <polyline points="60,250 120,230 180,240 240,200 300,180 360,160 420,145" stroke="#22c55e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="60,250 120,230 180,240 240,200 300,180 360,160 420,145 420,270 60,270" fill="url(#chartGrad)" opacity="0.3"/>
+                        <!-- Dots -->
+                        <circle cx="60" cy="250" r="4" fill="white" stroke="#22c55e" stroke-width="2"/>
+                        <circle cx="120" cy="230" r="4" fill="white" stroke="#22c55e" stroke-width="2"/>
+                        <circle cx="180" cy="240" r="4" fill="white" stroke="#22c55e" stroke-width="2"/>
+                        <circle cx="240" cy="200" r="4" fill="white" stroke="#22c55e" stroke-width="2"/>
+                        <circle cx="300" cy="180" r="4" fill="white" stroke="#22c55e" stroke-width="2"/>
+                        <circle cx="360" cy="160" r="4" fill="white" stroke="#22c55e" stroke-width="2"/>
+                        <circle cx="420" cy="145" r="5" fill="#22c55e" stroke="white" stroke-width="2"/>
+                        <!-- Grid lines -->
+                        <line x1="60" y1="180" x2="420" y2="180" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+                        <line x1="60" y1="210" x2="420" y2="210" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+                        <line x1="60" y1="240" x2="420" y2="240" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+                        <!-- Labels -->
+                        <text x="55" y="275" font-family="Inter" font-size="8" fill="#94a3b8">Jan</text>
+                        <text x="115" y="275" font-family="Inter" font-size="8" fill="#94a3b8">Mar</text>
+                        <text x="175" y="275" font-family="Inter" font-size="8" fill="#94a3b8">May</text>
+                        <text x="235" y="275" font-family="Inter" font-size="8" fill="#94a3b8">Jul</text>
+                        <text x="295" y="275" font-family="Inter" font-size="8" fill="#94a3b8">Sep</text>
+                        <text x="355" y="275" font-family="Inter" font-size="8" fill="#94a3b8">Nov</text>
+                        <text x="415" y="275" font-family="Inter" font-size="8" fill="#94a3b8">Now</text>
+
+                        <!-- Bottom Status Bar -->
+                        <rect x="30" y="306" width="130" height="50" rx="8" fill="#f0fdf4"/>
+                        <text x="48" y="326" font-family="Inter" font-size="9" fill="#64748b" font-weight="600">SCHEMA</text>
+                        <text x="48" y="344" font-family="Inter" font-size="12" fill="#22c55e" font-weight="800">Active</text>
+                        <circle cx="140" cy="336" r="4" fill="#22c55e"/>
+
+                        <rect x="170" y="306" width="130" height="50" rx="8" fill="#eff6ff"/>
+                        <text x="188" y="326" font-family="Inter" font-size="9" fill="#64748b" font-weight="600">CRAWL</text>
+                        <text x="188" y="344" font-family="Inter" font-size="12" fill="#3b82f6" font-weight="800">0 Errors</text>
+                        <circle cx="280" cy="336" r="4" fill="#3b82f6"/>
+
+                        <rect x="310" y="306" width="130" height="50" rx="8" fill="#fefce8"/>
+                        <text x="328" y="326" font-family="Inter" font-size="9" fill="#64748b" font-weight="600">CORE VITALS</text>
+                        <text x="328" y="344" font-family="Inter" font-size="12" fill="#eab308" font-weight="800">Good</text>
+                        <circle cx="420" cy="336" r="4" fill="#eab308"/>
+
+                        <defs>
+                            <linearGradient id="chartGrad" x1="240" y1="145" x2="240" y2="270" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#22c55e" stop-opacity="0.4"/>
+                                <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section - Mint Style -->
+    <!-- FEATURES - Light -->
     <section class="section-light" id="skills">
         <div class="section-inner">
             <div class="section-label">CORE EXPERTISE</div>
             <div class="section-title">What I Do Best</div>
             <p class="section-desc">From technical SEO infrastructure to AI-powered content workflows, I cover the full spectrum of organic search growth.</p>
-
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">&#128269;</div>
@@ -259,18 +336,18 @@
         </div>
     </section>
 
-    <!-- Dark Band -->
-    <section class="section-dark">
+    <!-- QUOTE BAND - Dark -->
+    <section class="quote-band">
         <h2>Technical SEO First, Everything Else Second</h2>
         <p>I believe a website must be technically sound before any content strategy can work. That is where I start every project.</p>
     </section>
 
-    <!-- Tools - Partners Style -->
-    <section class="section-partners">
+    <!-- TOOLS - White -->
+    <section class="section-white">
         <div class="section-inner">
-            <div class="pre-title">Tools I Use Daily</div>
-            <h2>My Tech Stack</h2>
-            <p>Industry-leading platforms for technical audits, keyword research, analytics, and content optimization.</p>
+            <div class="pre-title" style="font-size:1rem; font-style:italic; color:#64748b; margin-bottom:8px;">Tools I Use Daily</div>
+            <div class="section-title">My Tech Stack</div>
+            <p class="section-desc" style="margin-left:auto; margin-right:auto;">Industry-leading platforms for technical audits, keyword research, analytics, and content optimization.</p>
             <div class="tools-grid">
                 <span class="tool-chip">Screaming Frog</span>
                 <span class="tool-chip">Ahrefs</span>
@@ -290,20 +367,21 @@
         </div>
     </section>
 
-    <!-- Experience - Light -->
-    <section class="section-experience" id="experience">
+    <!-- EXPERIENCE - Dark with Timeline -->
+    <section class="section-dark" id="experience">
         <div class="section-inner">
             <div class="section-label">EXPERIENCE</div>
             <div class="section-title">Where I've Worked</div>
             <p class="section-desc">4+ years across agencies, B2B brands, and e-commerce clients in USA, UAE, and Pakistan markets.</p>
 
-            <div class="experience-list">
-                <div class="exp-item">
-                    <div class="exp-date">2025 - Present</div>
-                    <div>
-                        <div class="exp-role">Freelance SEO Specialist & AI Workflow Strategist</div>
-                        <div class="exp-company">Independent | Remote (USA & UAE)</div>
-                        <ul class="exp-desc">
+            <div class="timeline">
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <div class="tl-date">2025 - PRESENT</div>
+                        <div class="tl-role">Freelance SEO Specialist & AI Workflow Strategist</div>
+                        <div class="tl-company">Independent | Remote (USA & UAE)</div>
+                        <ul class="tl-list">
                             <li>End-to-end SEO campaigns with Screaming Frog audits and crawl error resolution</li>
                             <li>JSON-LD Schema.org graphs and entity-first content architectures for AI search</li>
                             <li>Custom AI workflows using Claude, OpenCode, and MCPs for content scoring</li>
@@ -311,47 +389,51 @@
                         </ul>
                     </div>
                 </div>
-                <div class="exp-item">
-                    <div class="exp-date">Aug 2024 - Aug 2025</div>
-                    <div>
-                        <div class="exp-role">SEO & On-Page Specialist</div>
-                        <div class="exp-company">Carbon Reprographics | Remote (USA)</div>
-                        <ul class="exp-desc">
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <div class="tl-date">AUG 2024 - AUG 2025</div>
+                        <div class="tl-role">SEO & On-Page Specialist</div>
+                        <div class="tl-company">Carbon Reprographics | Remote (USA)</div>
+                        <ul class="tl-list">
                             <li>Optimized 120 e-commerce pages across jewelry, automotive, and home decor</li>
                             <li>Restructured 85 product descriptions with optimized meta tags</li>
                             <li>Fixed 340+ broken internal links and duplicate content issues</li>
                         </ul>
                     </div>
                 </div>
-                <div class="exp-item">
-                    <div class="exp-date">Jan 2023 - Dec 2024</div>
-                    <div>
-                        <div class="exp-role">SEO Content Strategist</div>
-                        <div class="exp-company">Three Angle Marketing | Remote (Dubai, UAE)</div>
-                        <ul class="exp-desc">
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <div class="tl-date">JAN 2023 - DEC 2024</div>
+                        <div class="tl-role">SEO Content Strategist</div>
+                        <div class="tl-company">Three Angle Marketing | Remote (Dubai, UAE)</div>
+                        <ul class="tl-list">
                             <li>Optimized 150 location-specific pages for real estate and tourism clients</li>
                             <li>Built internal linking clusters for Dubai neighborhood content</li>
                             <li>Structured content for direct answer extraction</li>
                         </ul>
                     </div>
                 </div>
-                <div class="exp-item">
-                    <div class="exp-date">Mar 2022 - Dec 2022</div>
-                    <div>
-                        <div class="exp-role">SEO Content Associate</div>
-                        <div class="exp-company">The Neo Solutions | Lahore, Pakistan</div>
-                        <ul class="exp-desc">
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <div class="tl-date">MAR 2022 - DEC 2022</div>
+                        <div class="tl-role">SEO Content Associate</div>
+                        <div class="tl-company">The Neo Solutions | Lahore, Pakistan</div>
+                        <ul class="tl-list">
                             <li>Wrote 80 thought leadership articles for B2B FinTech consultancy</li>
                             <li>Built internal linking architecture for complex product hierarchy</li>
                         </ul>
                     </div>
                 </div>
-                <div class="exp-item">
-                    <div class="exp-date">Jun 2021 - Feb 2022</div>
-                    <div>
-                        <div class="exp-role">SEO Content Associate</div>
-                        <div class="exp-company">Mugshel Pvt Ltd | Lahore, Pakistan</div>
-                        <ul class="exp-desc">
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <div class="tl-date">JUN 2021 - FEB 2022</div>
+                        <div class="tl-role">SEO Content Associate</div>
+                        <div class="tl-company">Mugshel Pvt Ltd | Lahore, Pakistan</div>
+                        <ul class="tl-list">
                             <li>Optimized product catalog for B2B packaging solutions</li>
                             <li>Wrote 60 product descriptions with benefit-driven copy</li>
                         </ul>
@@ -361,13 +443,12 @@
         </div>
     </section>
 
-    <!-- Case Studies - Light -->
-    <section class="section-cases" id="case-studies">
+    <!-- CASE STUDIES - Light -->
+    <section class="section-light" id="case-studies">
         <div class="section-inner">
             <div class="section-label">CASE STUDIES</div>
             <div class="section-title">Results I've Delivered</div>
             <p class="section-desc">Deep dives into three projects where technical SEO, internal linking, and on-page optimization delivered results.</p>
-
             <div class="case-grid">
                 <a href="case-studies/carbon-reprographics.html" class="case-card">
                     <div class="case-tag-sm">E-commerce / Jewelry</div>
@@ -403,33 +484,32 @@
         </div>
     </section>
 
-    <!-- Portfolio - Light -->
-    <section class="section-portfolio" id="portfolio">
+    <!-- PORTFOLIO - Dark -->
+    <section class="section-dark" id="portfolio">
         <div class="section-inner">
             <div class="section-label">CLIENT PORTFOLIO</div>
             <div class="section-title">Clients I've Worked With</div>
             <p class="section-desc">13 clients across 12 industries.</p>
-
             <div class="portfolio-grid">
-                <a href="https://imageacademy.org/" target="_blank" class="portfolio-card"><div class="num">01</div><h3>Image Academy</h3><span class="live-link">Visit Site</span></a>
-                <a href="https://lucho.com/" target="_blank" class="portfolio-card"><div class="num">02</div><h3>Lucho</h3><span class="live-link">Visit Site</span></a>
-                <a href="https://lashesbyaree.com/" target="_blank" class="portfolio-card"><div class="num">03</div><h3>Lashes By Aree</h3><span class="live-link">Visit Site</span></a>
-                <a href="https://swissiceco.com/" target="_blank" class="portfolio-card"><div class="num">04</div><h3>Swiss Ice Co</h3><span class="live-link">Visit Site</span></a>
-                <a href="https://crownjewelsandcoin.com/" target="_blank" class="portfolio-card"><div class="num">05</div><h3>Crown Jewels</h3><span class="live-link">Visit Site</span></a>
-                <a href="https://threeanglemarketing.com/" target="_blank" class="portfolio-card"><div class="num">06</div><h3>Three Angle Marketing</h3><span class="live-link">Visit Site</span></a>
-                <a href="https://mukhtarcarauctions.com/" target="_blank" class="portfolio-card"><div class="num">07</div><h3>Mukhtar Car Auctions</h3><span class="live-link">Visit Site</span></a>
-                <a href="https://mapconstructionllc.com/" target="_blank" class="portfolio-card"><div class="num">08</div><h3>MAP Construction</h3><span class="live-link">Visit Site</span></a>
-                <a href="https://www.theneoconsultancy.com/" target="_blank" class="portfolio-card"><div class="num">09</div><h3>The Neo Consultancy</h3><span class="live-link">Visit Site</span></a>
-                <a href="https://theneosolutions.com/" target="_blank" class="portfolio-card"><div class="num">10</div><h3>The Neo Solutions</h3><span class="live-link">Visit Site</span></a>
-                <a href="https://starlightcustoms.co.uk/" target="_blank" class="portfolio-card"><div class="num">11</div><h3>Starlight Customs</h3><span class="live-link">Visit Site</span></a>
-                <a href="https://elitewebpro.com/" target="_blank" class="portfolio-card"><div class="num">12</div><h3>Elite Web Pro</h3><span class="live-link">Visit Site</span></a>
-                <a href="https://professionallogodesign.net/" target="_blank" class="portfolio-card"><div class="num">13</div><h3>Professional Logo Design</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://imageacademy.org/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">01</div><h3 style="color:#fff">Image Academy</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://lucho.com/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">02</div><h3 style="color:#fff">Lucho</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://lashesbyaree.com/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">03</div><h3 style="color:#fff">Lashes By Aree</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://swissiceco.com/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">04</div><h3 style="color:#fff">Swiss Ice Co</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://crownjewelsandcoin.com/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">05</div><h3 style="color:#fff">Crown Jewels</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://threeanglemarketing.com/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">06</div><h3 style="color:#fff">Three Angle Marketing</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://mukhtarcarauctions.com/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">07</div><h3 style="color:#fff">Mukhtar Car Auctions</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://mapconstructionllc.com/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">08</div><h3 style="color:#fff">MAP Construction</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://www.theneoconsultancy.com/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">09</div><h3 style="color:#fff">The Neo Consultancy</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://theneosolutions.com/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">10</div><h3 style="color:#fff">The Neo Solutions</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://starlightcustoms.co.uk/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">11</div><h3 style="color:#fff">Starlight Customs</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://elitewebpro.com/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">12</div><h3 style="color:#fff">Elite Web Pro</h3><span class="live-link">Visit Site</span></a>
+                <a href="https://professionallogodesign.net/" target="_blank" class="portfolio-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);"><div class="num">13</div><h3 style="color:#fff">Professional Logo Design</h3><span class="live-link">Visit Site</span></a>
             </div>
         </div>
     </section>
 
-    <!-- Certifications - Light -->
-    <section class="section-certs">
+    <!-- CERTIFICATIONS - Light -->
+    <section class="section-light">
         <div class="section-inner">
             <div class="section-label">CERTIFICATIONS</div>
             <div class="section-title">Verified Expertise</div>
@@ -441,7 +521,7 @@
         </div>
     </section>
 
-    <!-- Green CTA Band -->
+    <!-- GREEN CTA -->
     <section class="cta-band">
         <h2>Ready to Rank On Page 1?</h2>
         <p>Let's build your organic traffic engine. Open to full-time remote and freelance opportunities.</p>
@@ -451,7 +531,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
@@ -482,61 +561,17 @@
     </footer>
 
     <script>
-        // Cursor
         const cursor = document.getElementById('cursor');
         const cursorDot = document.getElementById('cursor-dot');
         let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
         document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; cursorDot.style.left = mouseX - 3 + 'px'; cursorDot.style.top = mouseY - 3 + 'px'; });
         function animateCursor() { cursorX += (mouseX - cursorX) * 0.15; cursorY += (mouseY - cursorY) * 0.15; cursor.style.left = cursorX - 10 + 'px'; cursor.style.top = cursorY - 10 + 'px'; requestAnimationFrame(animateCursor); }
         animateCursor();
-        document.querySelectorAll('a, button, .feature-card, .case-card, .tool-chip, .cert-card, .portfolio-card, .skill-card').forEach(el => {
+        document.querySelectorAll('a, button, .feature-card, .case-card, .tool-chip, .cert-card, .portfolio-card').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('active'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
         });
 
-        // Three.js Hero Globe
-        const heroCanvas = document.getElementById('hero-canvas');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true, antialias: true });
-        renderer.setSize(400, 400);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-        const globeGeometry = new THREE.IcosahedronGeometry(4, 2);
-        const globeMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.3 });
-        const globe = new THREE.Mesh(globeGeometry, globeMaterial);
-        scene.add(globe);
-
-        for (let i = 0; i < 3; i++) {
-            const ringGeometry = new THREE.TorusGeometry(5 + i * 1.2, 0.02, 16, 100);
-            const ringMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.2 });
-            const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-            ring.rotation.x = Math.PI / 2 + i * 0.4;
-            scene.add(ring);
-        }
-
-        const nodesGeometry = new THREE.BufferGeometry();
-        const posArray = new Float32Array(150 * 3);
-        for (let i = 0; i < 150 * 3; i++) posArray[i] = (Math.random() - 0.5) * 16;
-        nodesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const nodesMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.06, transparent: true, opacity: 0.5 });
-        scene.add(new THREE.Points(nodesGeometry, nodesMaterial));
-
-        camera.position.z = 10;
-
-        let heroMouseX = 0, heroMouseY = 0;
-        document.addEventListener('mousemove', (e) => { heroMouseX = (e.clientX / window.innerWidth) * 2 - 1; heroMouseY = -(e.clientY / window.innerHeight) * 2 + 1; });
-
-        function animateHero() {
-            requestAnimationFrame(animateHero);
-            globe.rotation.y += 0.003;
-            globe.rotation.x += 0.001;
-            globe.rotation.y += heroMouseX * 0.005;
-            renderer.render(scene, camera);
-        }
-        animateHero();
-
-        // Particles
         const pCanvas = document.getElementById('particles-canvas');
         const pCtx = pCanvas.getContext('2d');
         pCanvas.width = window.innerWidth;
@@ -551,22 +586,20 @@
                 p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > pCanvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > pCanvas.height) p.vy *= -1;
-                pCtx.beginPath(); pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2); pCtx.fillStyle = 'rgba(34, 197, 94, 0.15)'; pCtx.fill();
+                pCtx.beginPath(); pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2); pCtx.fillStyle = 'rgba(34, 197, 94, 0.12)'; pCtx.fill();
                 particles.forEach((p2, j) => {
                     if (i === j) return;
                     const dist = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
-                    if (dist < 100) { pCtx.beginPath(); pCtx.moveTo(p.x, p.y); pCtx.lineTo(p2.x, p2.y); pCtx.strokeStyle = `rgba(34, 197, 94, ${0.05 * (1 - dist / 100)})`; pCtx.stroke(); }
+                    if (dist < 100) { pCtx.beginPath(); pCtx.moveTo(p.x, p.y); pCtx.lineTo(p2.x, p2.y); pCtx.strokeStyle = `rgba(34, 197, 94, ${0.04 * (1 - dist / 100)})`; pCtx.stroke(); }
                 });
             });
             requestAnimationFrame(animateParticles);
         }
         animateParticles();
-
         window.addEventListener('resize', () => { pCanvas.width = window.innerWidth; pCanvas.height = window.innerHeight; });
 
-        // GSAP
         gsap.registerPlugin(ScrollTrigger);
-        gsap.utils.toArray('.section-light, .section-dark, .section-partners, .section-skills, .section-experience, .section-cases, .section-portfolio, .section-certs, .cta-band').forEach(s => {
+        gsap.utils.toArray('.section-light, .section-dark, .section-white, .quote-band, .cta-band').forEach(s => {
             gsap.from(s, { scrollTrigger: { trigger: s, start: 'top 85%' }, opacity: 0, y: 30, duration: 0.7 });
         });
     </script>
