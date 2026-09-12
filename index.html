@@ -3,42 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amir Ali | SEO Specialist & Technical SEO Strategist</title>
+    <title>Amir Ali | SEO Specialist & AI Content Strategist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
         body {
             font-family: 'Inter', sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
+            background: #0a0e17;
+            color: #f8fafc;
             overflow-x: hidden;
         }
 
-        /* Gradient text utility */
-        .gradient-text {
-            background: linear-gradient(135deg, #00d2ff, #7b2ff7, #ff0080);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Animated gradient background blobs */
-        .blob {
-            position: absolute;
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #22c55e;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.4;
-            animation: float 8s ease-in-out infinite;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease, background 0.15s ease;
+            mix-blend-mode: difference;
         }
-        .blob-1 { width: 500px; height: 500px; background: #7b2ff7; top: -150px; left: -100px; }
-        .blob-2 { width: 400px; height: 400px; background: #00d2ff; top: 200px; right: -100px; animation-delay: 2s; }
-        .blob-3 { width: 350px; height: 350px; background: #ff0080; bottom: -100px; left: 30%; animation-delay: 4s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-30px) scale(1.05); }
+        .cursor.active {
+            transform: scale(2.5);
+            background: rgba(34, 197, 94, 0.1);
+            border-color: #22c55e;
+        }
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
         }
 
         /* Navigation */
@@ -51,63 +56,80 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(10, 14, 23, 0.8);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(34, 197, 94, 0.1);
         }
         .logo {
             font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #22c55e, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .nav-links { display: flex; gap: 32px; list-style: none; }
         .nav-links a {
-            color: #aaa;
+            color: #94a3b8;
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.3s;
         }
-        .nav-links a:hover { color: #fff; }
+        .nav-links a:hover { color: #22c55e; }
         .hire-btn {
-            background: linear-gradient(135deg, #7b2ff7, #ff0080);
+            background: linear-gradient(135deg, #22c55e, #3b82f6);
             color: #fff;
             border: none;
             padding: 10px 24px;
             border-radius: 50px;
             font-weight: 600;
-            cursor: pointer;
+            cursor: none;
             text-decoration: none;
             font-size: 0.9rem;
             transition: transform 0.3s, box-shadow 0.3s;
         }
         .hire-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(123, 47, 247, 0.4);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        /* 3D Canvas Container */
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
         }
 
         /* Hero Section */
         .hero {
             position: relative;
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 120px 20px 80px;
+            z-index: 2;
         }
-        .hero-content { position: relative; z-index: 2; max-width: 900px; }
+        .hero-content { position: relative; z-index: 3; max-width: 900px; padding: 0 20px; }
         .badge {
             display: inline-block;
-            background: rgba(123, 47, 247, 0.15);
-            border: 1px solid rgba(123, 47, 247, 0.3);
-            color: #b388ff;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
             padding: 8px 20px;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 24px;
             letter-spacing: 0.5px;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.2); }
         }
         .hero h1 {
             font-size: 4.5rem;
@@ -116,85 +138,111 @@
             margin-bottom: 24px;
             letter-spacing: -2px;
         }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, #22c55e, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         .hero p {
             font-size: 1.25rem;
-            color: #999;
+            color: #94a3b8;
             max-width: 650px;
             margin: 0 auto 40px;
             line-height: 1.7;
         }
         .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         .btn-primary {
-            background: linear-gradient(135deg, #00d2ff, #7b2ff7);
+            background: linear-gradient(135deg, #22c55e, #3b82f6);
             color: #fff;
             border: none;
             padding: 16px 36px;
             border-radius: 50px;
             font-weight: 700;
             font-size: 1rem;
-            cursor: pointer;
+            cursor: none;
             text-decoration: none;
             transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
         }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .btn-primary:hover::before { left: 100%; }
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 210, 255, 0.3);
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.3);
         }
         .btn-secondary {
             background: rgba(255,255,255,0.05);
             color: #fff;
-            border: 1px solid rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.1);
             padding: 16px 36px;
             border-radius: 50px;
             font-weight: 700;
             font-size: 1rem;
-            cursor: pointer;
+            cursor: none;
             text-decoration: none;
-            transition: background 0.3s;
+            transition: background 0.3s, border-color 0.3s;
         }
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+        .btn-secondary:hover {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
 
         /* Stats Bar */
         .stats-bar {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(34, 197, 94, 0.1);
             border-radius: 20px;
             overflow: hidden;
             max-width: 1000px;
-            margin: 80px auto 0;
+            margin: 60px auto 0;
+            border: 1px solid rgba(34, 197, 94, 0.1);
         }
         .stat-item {
-            padding: 32px 20px;
+            padding: 28px 20px;
             text-align: center;
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(10, 14, 23, 0.9);
             backdrop-filter: blur(10px);
         }
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 900;
             margin-bottom: 4px;
+            background: linear-gradient(135deg, #22c55e, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .stat-label {
-            font-size: 0.85rem;
-            color: #888;
+            font-size: 0.8rem;
+            color: #64748b;
             font-weight: 500;
         }
 
-        /* Section styles */
+        /* Section Styles */
         section {
             position: relative;
             padding: 120px 60px;
             max-width: 1200px;
             margin: 0 auto;
+            z-index: 2;
         }
         .section-label {
             font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: #7b2ff7;
+            color: #22c55e;
             margin-bottom: 12px;
         }
         .section-title {
@@ -206,239 +254,139 @@
         }
         .section-desc {
             font-size: 1.1rem;
-            color: #888;
+            color: #64748b;
             max-width: 600px;
             line-height: 1.7;
             margin-bottom: 60px;
         }
 
-        /* Skills Grid */
+        /* 3D Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 24px;
+            perspective: 1000px;
         }
         .skill-card {
             background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 16px;
-            padding: 32px;
-            transition: transform 0.3s, border-color 0.3s;
+            border: 1px solid rgba(34, 197, 94, 0.1);
+            border-radius: 20px;
+            padding: 36px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transform-style: preserve-3d;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #22c55e, #3b82f6, #8b5cf6);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .skill-card:hover::before { opacity: 1; }
         .skill-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(123, 47, 247, 0.3);
+            transform: translateY(-8px) rotateX(5deg);
+            box-shadow: 0 20px 60px rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.3);
         }
         .skill-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 16px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(59, 130, 246, 0.1));
+            border: 1px solid rgba(34, 197, 94, 0.2);
         }
         .skill-card h3 {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .skill-card p {
-            font-size: 0.9rem;
-            color: #888;
+            font-size: 0.95rem;
+            color: #64748b;
             line-height: 1.6;
+            margin-bottom: 16px;
         }
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 16px;
-        }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
         .skill-tag {
-            background: rgba(123, 47, 247, 0.1);
-            color: #b388ff;
-            padding: 4px 12px;
+            background: rgba(34, 197, 94, 0.08);
+            color: #22c55e;
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 600;
+            border: 1px solid rgba(34, 197, 94, 0.15);
         }
 
         /* Tools Section */
-        .tools-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
+        .tools-row { display: flex; flex-wrap: wrap; gap: 12px; }
         .tool-chip {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(34, 197, 94, 0.1);
             padding: 12px 24px;
             border-radius: 50px;
             font-weight: 600;
             font-size: 0.9rem;
-            color: #ccc;
+            color: #94a3b8;
             transition: all 0.3s;
+            cursor: none;
         }
         .tool-chip:hover {
-            background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(123, 47, 247, 0.1));
-            border-color: rgba(123, 47, 247, 0.3);
-            color: #fff;
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            transform: translateY(-2px);
         }
 
-        /* Experience Section */
-        .experience-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-        .exp-item {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 40px;
-            padding: 40px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            transition: background 0.3s;
-        }
-        .exp-item:hover { background: rgba(255,255,255,0.01); }
-        .exp-date {
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: 500;
-            padding-top: 4px;
-        }
-        .exp-role {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 4px;
-        }
-        .exp-company {
-            font-size: 1rem;
-            color: #7b2ff7;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .exp-desc {
-            font-size: 0.95rem;
-            color: #888;
-            line-height: 1.7;
-        }
-        .exp-desc li {
-            margin-bottom: 8px;
-            list-style: none;
-            padding-left: 20px;
-            position: relative;
-        }
-        .exp-desc li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 8px;
-            height: 8px;
-            background: linear-gradient(135deg, #00d2ff, #7b2ff7);
-            border-radius: 50%;
-        }
-
-        /* Portfolio Grid */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .portfolio-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 16px;
-            padding: 28px;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .portfolio-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0, 210, 255, 0.3);
-        }
-        .portfolio-num {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #555;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-        .portfolio-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .portfolio-card .industry {
-            font-size: 0.85rem;
-            color: #7b2ff7;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-        .portfolio-links {
-            display: flex;
-            gap: 12px;
-        }
-        .portfolio-links a {
-            font-size: 0.8rem;
-            color: #00d2ff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        .portfolio-links a:hover { color: #fff; }
-
-        /* Certifications */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .cert-card {
-            background: linear-gradient(135deg, rgba(123, 47, 247, 0.08), rgba(0, 210, 255, 0.05));
-            border: 1px solid rgba(123, 47, 247, 0.15);
-            border-radius: 16px;
-            padding: 28px;
-            text-align: center;
-        }
-        .cert-icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-        .cert-card h3 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        .cert-card p {
-            font-size: 0.8rem;
-            color: #888;
-        }
-
-        /* Case Studies Section */
+        /* 3D Case Studies */
         .case-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 24px;
+            perspective: 1200px;
         }
         .case-card {
             background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 16px;
+            border: 1px solid rgba(34, 197, 94, 0.1);
+            border-radius: 20px;
             padding: 32px;
-            transition: transform 0.3s, border-color 0.3s;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             text-decoration: none;
             color: #fff;
             display: block;
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
         }
+        .case-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .case-card:hover::after { opacity: 1; }
         .case-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(123, 47, 247, 0.3);
+            transform: translateY(-12px) rotateY(5deg) rotateX(5deg);
+            box-shadow: 0 30px 80px rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.3);
         }
         .case-card .case-tag-sm {
             font-size: 0.7rem;
             font-weight: 700;
-            color: #7b2ff7;
+            color: #22c55e;
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-bottom: 12px;
@@ -450,19 +398,91 @@
         }
         .case-card p {
             font-size: 0.9rem;
-            color: #888;
+            color: #64748b;
             line-height: 1.6;
             margin-bottom: 20px;
         }
-        .case-results {
-            display: flex;
+        .case-results { display: flex; gap: 16px; flex-wrap: wrap; }
+        .case-results span {
+            font-size: 0.75rem;
+            color: #3b82f6;
+            font-weight: 700;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* Experience Section */
+        .experience-list { display: flex; flex-direction: column; gap: 0; }
+        .exp-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(34, 197, 94, 0.08);
+            transition: all 0.3s;
+        }
+        .exp-item:hover { background: rgba(34, 197, 94, 0.02); padding-left: 20px; }
+        .exp-date {
+            font-size: 0.9rem;
+            color: #475569;
+            font-weight: 500;
+            padding-top: 4px;
+        }
+        .exp-role {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .exp-company {
+            font-size: 1rem;
+            color: #22c55e;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .exp-desc {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.7;
+        }
+        .exp-desc li {
+            margin-bottom: 8px;
+            list-style: none;
+            padding-left: 24px;
+            position: relative;
+        }
+        .exp-desc li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #22c55e, #3b82f6);
+            border-radius: 50%;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
-        .case-results span {
-            font-size: 0.8rem;
-            color: #00d2ff;
-            font-weight: 700;
+        .cert-card {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(59, 130, 246, 0.03));
+            border: 1px solid rgba(34, 197, 94, 0.12);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
+        .cert-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(34, 197, 94, 0.1);
+        }
+        .cert-icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .cert-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+        .cert-card p { font-size: 0.8rem; color: #64748b; }
 
         /* CTA Section */
         .cta-section {
@@ -470,7 +490,6 @@
             padding: 120px 20px;
             position: relative;
         }
-        .cta-section .blob { opacity: 0.2; }
         .cta-content { position: relative; z-index: 2; }
         .cta-content h2 {
             font-size: 3.5rem;
@@ -478,9 +497,14 @@
             letter-spacing: -1.5px;
             margin-bottom: 20px;
         }
+        .cta-content h2 .gradient {
+            background: linear-gradient(135deg, #22c55e, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         .cta-content p {
             font-size: 1.15rem;
-            color: #888;
+            color: #64748b;
             max-width: 500px;
             margin: 0 auto 40px;
             line-height: 1.7;
@@ -489,21 +513,58 @@
 
         /* Footer */
         footer {
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(34, 197, 94, 0.08);
             padding: 40px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: #555;
+            color: #475569;
             font-size: 0.85rem;
         }
         .social-links { display: flex; gap: 20px; }
         .social-links a {
-            color: #888;
+            color: #64748b;
             text-decoration: none;
             transition: color 0.3s;
         }
-        .social-links a:hover { color: #fff; }
+        .social-links a:hover { color: #22c55e; }
+
+        /* Particle Background */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Floating 3D Elements */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .shape {
+            position: absolute;
+            border: 1px solid rgba(34, 197, 94, 0.1);
+            border-radius: 50%;
+            animation: float-shape 20s ease-in-out infinite;
+        }
+        .shape:nth-child(1) { width: 300px; height: 300px; top: 10%; left: -5%; animation-delay: 0s; }
+        .shape:nth-child(2) { width: 200px; height: 200px; top: 60%; right: -3%; animation-delay: 5s; }
+        .shape:nth-child(3) { width: 150px; height: 150px; bottom: 10%; left: 20%; animation-delay: 10s; }
+
+        @keyframes float-shape {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-40px) rotate(180deg); opacity: 0.6; }
+        }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -512,59 +573,70 @@
             .hero h1 { font-size: 2.5rem; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); }
             section { padding: 80px 24px; }
-            .skills-grid, .portfolio-grid, .cert-grid { grid-template-columns: 1fr; }
+            .skills-grid, .case-grid, .cert-grid { grid-template-columns: 1fr; }
             .exp-item { grid-template-columns: 1fr; gap: 12px; }
             .section-title { font-size: 2rem; }
             footer { flex-direction: column; gap: 16px; text-align: center; }
+            .cursor, .cursor-dot { display: none; }
+            * { cursor: auto; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+
+    <!-- Particle Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Floating Shapes -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
     <!-- Navigation -->
     <nav>
-        <div class="logo gradient-text">Amir Ali</div>
+        <div class="logo">Amir Ali</div>
         <ul class="nav-links">
             <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#case-studies">Case Studies</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#certifications">Certifications</a></li>
         </ul>
         <a href="https://wa.link/6gski2" class="hire-btn" target="_blank">Hire Me</a>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-
+        <canvas id="hero-canvas"></canvas>
         <div class="hero-content">
             <div class="badge">OPEN TO FULL-TIME REMOTE & FREELANCE</div>
-            <h1>SEO Specialist &<br><span class="gradient-text">AI Content Strategist</span></h1>
+            <h1>SEO Specialist &<br><span class="gradient">AI Content Strategist</span></h1>
             <p>I fix what's broken, rank what matters, and automate the rest. 4+ years of technical SEO, GEO optimization, and custom AI workflows for B2B and e-commerce brands.</p>
             <div class="hero-buttons">
                 <a href="https://wa.link/6gski2" class="btn-primary" target="_blank">Hire Me on WhatsApp</a>
                 <a href="mailto:amirali115c@gmail.com" class="btn-secondary">Email Me</a>
             </div>
-
             <div class="stats-bar">
                 <div class="stat-item">
-                    <div class="stat-number gradient-text">500K+</div>
-                    <div class="stat-label">Monthly Organic Visitors</div>
+                    <div class="stat-number">4+</div>
+                    <div class="stat-label">Years Experience</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number gradient-text">47</div>
-                    <div class="stat-label">Page 1 Rankings</div>
+                    <div class="stat-number">13</div>
+                    <div class="stat-label">Clients Served</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number gradient-text">34%</div>
-                    <div class="stat-label">Conversion Rate Boost</div>
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Industries</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number gradient-text">13</div>
-                    <div class="stat-label">Clients Across 12 Industries</div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Commitment</div>
                 </div>
             </div>
         </div>
@@ -577,8 +649,8 @@
         <p class="section-desc">From technical SEO infrastructure to AI-powered content workflows, I cover the full spectrum of organic search growth.</p>
 
         <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-icon" style="background: linear-gradient(135deg, #7b2ff7, #ff0080);">&#128269;</div>
+            <div class="skill-card" data-tilt>
+                <div class="skill-icon">&#128269;</div>
                 <h3>Technical & On-Page SEO</h3>
                 <p>Technical audits, crawl diagnostics, structured data, and indexation control for maximum search visibility.</p>
                 <div class="skill-tags">
@@ -591,8 +663,8 @@
                     <span class="skill-tag">Pre/Post Migration QA</span>
                 </div>
             </div>
-            <div class="skill-card">
-                <div class="skill-icon" style="background: linear-gradient(135deg, #00d2ff, #7b2ff7);">&#128200;</div>
+            <div class="skill-card" data-tilt>
+                <div class="skill-icon">&#128200;</div>
                 <h3>Semantic SEO & GEO Strategy</h3>
                 <p>Topical authority, entity-first content, and AI search optimization across Google and AI engines.</p>
                 <div class="skill-tags">
@@ -605,8 +677,8 @@
                     <span class="skill-tag">Local SEO & Citations</span>
                 </div>
             </div>
-            <div class="skill-card">
-                <div class="skill-icon" style="background: linear-gradient(135deg, #ff0080, #ff6b6b);">&#129302;</div>
+            <div class="skill-card" data-tilt>
+                <div class="skill-icon">&#129302;</div>
                 <h3>AI Workflows & Process Systems</h3>
                 <p>Custom AI execution, prompt chaining, and automated pipelines for scalable SEO operations.</p>
                 <div class="skill-tags">
@@ -617,8 +689,8 @@
                     <span class="skill-tag">Python Indexing Pipelines</span>
                 </div>
             </div>
-            <div class="skill-card">
-                <div class="skill-icon" style="background: linear-gradient(135deg, #00d2ff, #00ff88);">&#128202;</div>
+            <div class="skill-card" data-tilt>
+                <div class="skill-icon">&#128202;</div>
                 <h3>Analytics, CMS & Tools</h3>
                 <p>Data-driven SEO decisions using analytics platforms, CMS management, and industry-leading tools.</p>
                 <div class="skill-tags">
@@ -685,7 +757,7 @@
                     <ul class="exp-desc">
                         <li>Optimized 120 e-commerce articles, product pages, and category descriptions across jewelry, automotive, and home decor</li>
                         <li>Restructured 85 product descriptions into benefit-driven narratives with optimized meta tags</li>
-                        <li>Built 180K monthly organic visitors through keyword research and internal link strategies</li>
+                        <li>Fixed 340+ broken internal links and resolved duplicate content issues</li>
                     </ul>
                 </div>
             </div>
@@ -696,7 +768,7 @@
                     <div class="exp-company">Three Angle Marketing | Remote (Dubai, UAE)</div>
                     <ul class="exp-desc">
                         <li>Optimized 150 location-specific SEO articles and landing pages for real estate and tourism clients</li>
-                        <li>Generated 250K qualified visitors annually through international search intent targeting</li>
+                        <li>Built internal linking clusters for Dubai neighborhood content</li>
                         <li>Structured content for direct answer extraction across competitive Dubai search niches</li>
                     </ul>
                 </div>
@@ -708,8 +780,8 @@
                     <div class="exp-company">The Neo Solutions | Lahore, Pakistan</div>
                     <ul class="exp-desc">
                         <li>Wrote 80 thought leadership articles and service pages for B2B consultancy</li>
-                        <li>Built online authority attracting 15K monthly visitors and enterprise inquiries</li>
-                        <li>Produced 35 outreach-ready guest articles for third-party industry platforms</li>
+                        <li>Built internal linking architecture for complex product hierarchy</li>
+                        <li>Optimized existing web pages with strategic keyword integration</li>
                     </ul>
                 </div>
             </div>
@@ -727,120 +799,6 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <div class="section-label">CLIENT PORTFOLIO</div>
-        <div class="section-title">Clients I've Worked With</div>
-        <p class="section-desc">13 clients across 12 industries. Every site carries content I researched, wrote, and published.</p>
-
-        <div class="portfolio-grid">
-            <div class="portfolio-card">
-                <div class="portfolio-num">01</div>
-                <h3>Image Academy Houston</h3>
-                <div class="industry">Education</div>
-                <div class="portfolio-links">
-                    <a href="https://imageacademy.org/" target="_blank">Live Site</a>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-num">02</div>
-                <h3>Lucho</h3>
-                <div class="industry">E-commerce</div>
-                <div class="portfolio-links">
-                    <a href="https://lucho.com/" target="_blank">Live Site</a>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-num">03</div>
-                <h3>Lashes By Aree</h3>
-                <div class="industry">Beauty</div>
-                <div class="portfolio-links">
-                    <a href="https://lashesbyaree.com/" target="_blank">Live Site</a>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-num">04</div>
-                <h3>Swiss Ice Co</h3>
-                <div class="industry">Food & Bev</div>
-                <div class="portfolio-links">
-                    <a href="https://swissiceco.com/" target="_blank">Live Site</a>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-num">05</div>
-                <h3>Crown Jewels and Coin</h3>
-                <div class="industry">Jewelry</div>
-                <div class="portfolio-links">
-                    <a href="https://crownjewelsandcoin.com/" target="_blank">Live Site</a>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-num">06</div>
-                <h3>Three Angle Marketing</h3>
-                <div class="industry">Marketing</div>
-                <div class="portfolio-links">
-                    <a href="https://threeanglemarketing.com/" target="_blank">Live Site</a>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-num">07</div>
-                <h3>Mukhtar Car Auctions</h3>
-                <div class="industry">Automotive</div>
-                <div class="portfolio-links">
-                    <a href="https://mukhtarcarauctions.com/" target="_blank">Live Site</a>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-num">08</div>
-                <h3>MAP Building Contracting LLC</h3>
-                <div class="industry">Construction</div>
-                <div class="portfolio-links">
-                    <a href="https://mapconstructionllc.com/" target="_blank">Live Site</a>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-num">09</div>
-                <h3>The Neo Consultancy</h3>
-                <div class="industry">Consultancy</div>
-                <div class="portfolio-links">
-                    <a href="https://www.theneoconsultancy.com/" target="_blank">Live Site</a>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-num">10</div>
-                <h3>The Neo Solutions</h3>
-                <div class="industry">B2B Services</div>
-                <div class="portfolio-links">
-                    <a href="https://theneosolutions.com/" target="_blank">Live Site</a>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-num">11</div>
-                <h3>Starlight Customs</h3>
-                <div class="industry">Automotive</div>
-                <div class="portfolio-links">
-                    <a href="https://starlightcustoms.co.uk/" target="_blank">Live Site</a>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-num">12</div>
-                <h3>Elite Web Pro</h3>
-                <div class="industry">Web Services</div>
-                <div class="portfolio-links">
-                    <a href="https://elitewebpro.com/" target="_blank">Live Site</a>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-num">13</div>
-                <h3>Professional Logo Design</h3>
-                <div class="industry">Design Services</div>
-                <div class="portfolio-links">
-                    <a href="https://professionallogodesign.net/" target="_blank">Live Site</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Case Studies Section -->
     <section id="case-studies">
         <div class="section-label">CASE STUDIES</div>
@@ -848,7 +806,7 @@
         <p class="section-desc">Deep dives into three projects where technical SEO fixes, internal linking, and on-page optimization delivered measurable results.</p>
 
         <div class="case-grid">
-            <a href="case-studies/carbon-reprographics.html" class="case-card">
+            <a href="case-studies/carbon-reprographics.html" class="case-card" data-tilt>
                 <div class="case-tag-sm">E-commerce / Jewelry / Home Decor</div>
                 <h3>Carbon Reprographics</h3>
                 <p>Fixed 340+ technical issues, rebuilt internal linking architecture, and optimized 120 pages across three e-commerce verticals.</p>
@@ -858,20 +816,20 @@
                     <span>10 Page 1 keywords</span>
                 </div>
             </a>
-            <a href="case-studies/three-angle-marketing.html" class="case-card">
+            <a href="case-studies/three-angle-marketing.html" class="case-card" data-tilt>
                 <div class="case-tag-sm">Real Estate / Tourism / Dubai</div>
                 <h3>Three Angle Marketing</h3>
-                <p>Optimized 150 location pages, built internal linking clusters for Dubai neighborhoods, and improved search visibility in competitive niches.</p>
+                <p>Optimized 150 location pages, built internal linking clusters for Dubai neighborhoods, and improved search visibility.</p>
                 <div class="case-results">
                     <span>150 pages optimized</span>
                     <span>8 Page 1 keywords</span>
                     <span>6 location clusters</span>
                 </div>
             </a>
-            <a href="case-studies/the-neo-solutions.html" class="case-card">
+            <a href="case-studies/the-neo-solutions.html" class="case-card" data-tilt>
                 <div class="case-tag-sm">B2B FinTech / SaaS</div>
                 <h3>The Neo Solutions</h3>
-                <p>Built content architecture from scratch, optimized 80 pages, and created internal linking for a complex B2B product hierarchy.</p>
+                <p>Built content architecture from scratch, optimized 80 pages, and created internal linking for complex product hierarchy.</p>
                 <div class="case-results">
                     <span>80 pages optimized</span>
                     <span>6 Page 1 keywords</span>
@@ -881,11 +839,85 @@
         </div>
     </section>
 
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="section-label">CLIENT PORTFOLIO</div>
+        <div class="section-title">Clients I've Worked With</div>
+        <p class="section-desc">13 clients across 12 industries. Every site carries pages I researched, optimized, and published.</p>
+
+        <div class="case-grid">
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">01 / EDUCATION</div>
+                <h3>Image Academy Houston</h3>
+                <a href="https://imageacademy.org/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">02 / E-COMMERCE</div>
+                <h3>Lucho</h3>
+                <a href="https://lucho.com/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">03 / BEAUTY</div>
+                <h3>Lashes By Aree</h3>
+                <a href="https://lashesbyaree.com/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">04 / FOOD & BEV</div>
+                <h3>Swiss Ice Co</h3>
+                <a href="https://swissiceco.com/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">05 / JEWELRY</div>
+                <h3>Crown Jewels and Coin</h3>
+                <a href="https://crownjewelsandcoin.com/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">06 / MARKETING</div>
+                <h3>Three Angle Marketing</h3>
+                <a href="https://threeanglemarketing.com/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">07 / AUTOMOTIVE</div>
+                <h3>Mukhtar Car Auctions</h3>
+                <a href="https://mukhtarcarauctions.com/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">08 / CONSTRUCTION</div>
+                <h3>MAP Building Contracting LLC</h3>
+                <a href="https://mapconstructionllc.com/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">09 / CONSULTANCY</div>
+                <h3>The Neo Consultancy</h3>
+                <a href="https://www.theneoconsultancy.com/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">10 / B2B SERVICES</div>
+                <h3>The Neo Solutions</h3>
+                <a href="https://theneosolutions.com/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">11 / AUTOMOTIVE</div>
+                <h3>Starlight Customs</h3>
+                <a href="https://starlightcustoms.co.uk/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">12 / WEB SERVICES</div>
+                <h3>Elite Web Pro</h3>
+                <a href="https://elitewebpro.com/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+            <div class="case-card" data-tilt>
+                <div class="case-tag-sm">13 / DESIGN SERVICES</div>
+                <h3>Professional Logo Design</h3>
+                <a href="https://professionallogodesign.net/" target="_blank" style="color: #22c55e; font-size: 0.85rem; font-weight: 600;">Live Site</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Certifications Section -->
     <section id="certifications">
         <div class="section-label">CERTIFICATIONS</div>
         <div class="section-title">Verified Expertise</div>
-
         <div class="cert-grid">
             <div class="cert-card">
                 <div class="cert-icon">&#127942;</div>
@@ -907,13 +939,10 @@
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
         <div class="cta-content">
-            <h2>Ready to Rank<br><span class="gradient-text">On Page 1?</span></h2>
+            <h2>Ready to Rank<br><span class="gradient">On Page 1?</span></h2>
             <p>Let's build your organic traffic engine. Open to full-time remote and freelance opportunities.</p>
             <div class="cta-buttons">
-                <a href="mailto:amirali115c@gmail.com" class="btn-primary">Email Me</a>
                 <a href="https://wa.link/6gski2" class="btn-primary" target="_blank">Hire Me on WhatsApp</a>
                 <a href="https://www.linkedin.com/in/amir-ali-23a3b1204" class="btn-secondary" target="_blank">LinkedIn</a>
             </div>
@@ -929,6 +958,235 @@
         </div>
     </footer>
 
+    <script>
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursor-dot');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = mouseX - 3 + 'px';
+            cursorDot.style.top = mouseY - 3 + 'px';
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.15;
+            cursorY += (mouseY - cursorY) * 0.15;
+            cursor.style.left = cursorX - 10 + 'px';
+            cursor.style.top = cursorY - 10 + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Cursor hover effects
+        document.querySelectorAll('a, button, .skill-card, .case-card, .tool-chip, .cert-card').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+        });
+
+        // 3D Tilt Effect on Cards
+        document.querySelectorAll('[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // Three.js Hero Scene
+        const heroCanvas = document.getElementById('hero-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        // Wireframe Globe
+        const globeGeometry = new THREE.IcosahedronGeometry(5, 2);
+        const globeMaterial = new THREE.MeshBasicMaterial({ 
+            color: 0x22c55e, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.15 
+        });
+        const globe = new THREE.Mesh(globeGeometry, globeMaterial);
+        scene.add(globe);
+
+        // Orbiting Rings
+        for (let i = 0; i < 3; i++) {
+            const ringGeometry = new THREE.TorusGeometry(6 + i * 1.5, 0.02, 16, 100);
+            const ringMaterial = new THREE.MeshBasicMaterial({ 
+                color: [0x22c55e, 0x3b82f6, 0x8b5cf6][i], 
+                transparent: true, 
+                opacity: 0.3 
+            });
+            const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+            ring.rotation.x = Math.PI / 2 + i * 0.3;
+            ring.rotation.y = i * 0.5;
+            scene.add(ring);
+        }
+
+        // Data Nodes
+        const nodesGeometry = new THREE.BufferGeometry();
+        const nodesCount = 200;
+        const posArray = new Float32Array(nodesCount * 3);
+        for (let i = 0; i < nodesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 20;
+        }
+        nodesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const nodesMaterial = new THREE.PointsMaterial({ 
+            color: 0x22c55e, 
+            size: 0.05, 
+            transparent: true, 
+            opacity: 0.6 
+        });
+        const nodes = new THREE.Points(nodesGeometry, nodesMaterial);
+        scene.add(nodes);
+
+        camera.position.z = 12;
+
+        // Mouse interaction for hero
+        let heroMouseX = 0, heroMouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            heroMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            heroMouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        function animateHero() {
+            requestAnimationFrame(animateHero);
+            globe.rotation.y += 0.002;
+            globe.rotation.x += 0.001;
+            globe.rotation.y += heroMouseX * 0.01;
+            globe.rotation.x += heroMouseY * 0.01;
+            nodes.rotation.y += 0.001;
+            renderer.render(scene, camera);
+        }
+        animateHero();
+
+        // Particle Background
+        const particleCanvas = document.getElementById('particles-canvas');
+        const pCtx = particleCanvas.getContext('2d');
+        particleCanvas.width = window.innerWidth;
+        particleCanvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 80;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * particleCanvas.width,
+                y: Math.random() * particleCanvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 2 + 0.5
+            });
+        }
+
+        function animateParticles() {
+            pCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+            
+            particles.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                
+                if (p.x < 0 || p.x > particleCanvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > particleCanvas.height) p.vy *= -1;
+                
+                pCtx.beginPath();
+                pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                pCtx.fillStyle = 'rgba(34, 197, 94, 0.3)';
+                pCtx.fill();
+                
+                // Draw connections
+                particles.forEach((p2, j) => {
+                    if (i === j) return;
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        pCtx.beginPath();
+                        pCtx.moveTo(p.x, p.y);
+                        pCtx.lineTo(p2.x, p2.y);
+                        pCtx.strokeStyle = `rgba(34, 197, 94, ${0.1 * (1 - dist / 150)})`;
+                        pCtx.stroke();
+                    }
+                });
+            });
+            
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            particleCanvas.width = window.innerWidth;
+            particleCanvas.height = window.innerHeight;
+        });
+
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('section').forEach(section => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    scrub: 1
+                },
+                opacity: 0,
+                y: 60
+            });
+        });
+
+        gsap.utils.toArray('.skill-card, .case-card, .cert-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 85%'
+                },
+                opacity: 0,
+                y: 40,
+                rotateX: 10,
+                duration: 0.6,
+                delay: i * 0.1
+            });
+        });
+
+        gsap.utils.toArray('.exp-item').forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 85%'
+                },
+                opacity: 0,
+                x: -30,
+                duration: 0.5,
+                delay: i * 0.1
+            });
+        });
+
+        // Floating shapes parallax
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            document.querySelectorAll('.shape').forEach((shape, i) => {
+                shape.style.transform = `translateY(${scrollY * (0.1 + i * 0.05)}px) rotate(${scrollY * 0.02}deg)`;
+            });
+        });
+    </script>
 </body>
 </html>
-<!-- updated -->
