@@ -180,40 +180,427 @@
         .footer-col a:hover { color: #22c55e; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 40px; padding-top: 24px; text-align: center; font-size: 0.8rem; color: #475569; max-width: 1200px; margin-left: auto; margin-right: auto; }
 
-        /* PROFILE SECTION */
-        .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .profile-photo-wrap { display: flex; justify-content: center; }
-        .profile-photo { width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 4px solid #22c55e; box-shadow: 0 20px 60px rgba(34, 197, 94, 0.2); }
-        .profile-info .section-label { text-align: left; }
-        .profile-info .section-title { text-align: left; margin-bottom: 16px; }
-        .profile-info .section-desc { text-align: left; margin-bottom: 0; }
-        .profile-links { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
-        .profile-link { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 10px 24px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; color: #1a1a2e; text-decoration: none; transition: all 0.3s; }
-        .profile-link:hover { background: #22c55e; color: #fff; border-color: #22c55e; transform: translateY(-2px); }
+        /* EXPERTISE SECTION - Orbital Command Center */
+        .expertise-section {
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+            padding: 130px 0 150px;
+            color: #171027;
+        }
+        .expertise-container {
+            width: min(1200px, calc(100% - 48px));
+            margin: auto;
+        }
+        .expertise-intro {
+            max-width: 650px;
+            position: relative;
+            z-index: 5;
+        }
+        .section-kicker {
+            display: inline-block;
+            color: #00c96b;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: .08em;
+            margin-bottom: 12px;
+        }
+        .expertise-intro h2 {
+            font-size: clamp(48px, 6vw, 76px);
+            line-height: .95;
+            letter-spacing: -0.055em;
+            margin: 0 0 24px;
+            color: #1b1230;
+        }
+        .expertise-intro p {
+            max-width: 570px;
+            color: #65728f;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+        .expertise-stage {
+            position: relative;
+            height: 700px;
+            margin-top: 50px;
+        }
+        .expertise-card {
+            position: absolute;
+            width: 330px;
+            min-height: 190px;
+            padding: 28px;
+            background: rgba(247, 249, 253, .92);
+            border: 1px solid rgba(38, 29, 65, .07);
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(35, 23, 60, .08), 0 5px 15px rgba(35, 23, 60, .04);
+            transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease, border-color .45s ease;
+            z-index: 4;
+        }
+        .expertise-card:hover {
+            transform: translateY(-10px) rotateX(2deg);
+            box-shadow: 0 35px 80px rgba(35, 23, 60, .14);
+            border-color: rgba(0, 201, 107, .35);
+        }
+        .expertise-card h3 {
+            margin: 15px 0 8px;
+            font-size: 20px;
+            color: #1c1430;
+        }
+        .expertise-card p {
+            margin: 0;
+            color: #65728f;
+            font-size: 15.5px;
+            line-height: 1.65;
+        }
+        .card-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: #171027;
+            color: #00d878;
+            font-size: 22px;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(23,16,39,.15);
+        }
+        .card-left-top { left: 0; top: 80px; transform: rotate(-1.5deg); }
+        .card-right-top { right: 0; top: 55px; transform: rotate(1.5deg); }
+        .card-left-bottom { left: 0; top: 390px; transform: rotate(1deg); }
+        .card-right-bottom { right: 0; top: 390px; transform: rotate(-1deg); }
+        .card-bottom { left: 50%; bottom: 0; transform: translateX(-50%); }
+        .ai-center {
+            position: absolute;
+            width: 460px;
+            height: 500px;
+            left: 50%;
+            top: 45px;
+            transform: translateX(-50%);
+            z-index: 6;
+            pointer-events: none;
+        }
+        .portrait-wrapper {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            left: 50%;
+            top: -20px;
+            transform: translateX(-50%);
+            overflow: hidden;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .portrait-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(0, 220, 120, .42), transparent 68%);
+            filter: blur(25px);
+        }
+        .portrait {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+        }
+        .ai-brain {
+            position: absolute;
+            width: 125px;
+            height: 125px;
+            top: 130px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: grid;
+            place-items: center;
+            border-radius: 30px;
+            background: linear-gradient(145deg, #241443, #0c5f40);
+            color: #00ff85;
+            font-size: 40px;
+            font-weight: 900;
+            box-shadow: 0 25px 60px rgba(0, 201, 107, .3);
+            z-index: 4;
+        }
+        .ai-card {
+            position: absolute;
+            width: 430px;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            padding: 32px;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #087844, #004c2d);
+            color: white;
+            box-shadow: 0 30px 70px rgba(0, 110, 65, .30);
+            text-align: left;
+            pointer-events: auto;
+        }
+        .ai-card-icon { font-size: 24px; }
+        .ai-card h3 { margin: 12px 0 8px; font-size: 25px; }
+        .ai-card p { margin: 0; color: rgba(255,255,255,.88); line-height: 1.65; font-size: 15px; }
+        .ai-arrow {
+            position: absolute;
+            right: 22px;
+            bottom: 22px;
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255,255,255,.5);
+            border-radius: 50%;
+            font-size: 20px;
+        }
+        .connection-lines {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .connection-lines path {
+            fill: none;
+            stroke: #00c96b;
+            stroke-width: 1.5;
+            stroke-dasharray: 5 9;
+            opacity: .45;
+            animation: lineFlow 8s linear infinite;
+        }
+        @keyframes lineFlow { to { stroke-dashoffset: -100; } }
+        .orbit {
+            position: absolute;
+            left: 50%;
+            top: 190px;
+            width: 500px;
+            height: 300px;
+            transform: translateX(-50%);
+            border: 1px solid rgba(0, 201, 107, .16);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .orbit-one { transform: translateX(-50%) rotate(18deg); }
+        .orbit-two { transform: translateX(-50%) rotate(-18deg); }
+        .floating-badge {
+            position: absolute;
+            padding: 10px 18px;
+            background: #1b1230;
+            color: white;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 15px 35px rgba(20,10,40,.15);
+            z-index: 8;
+            animation: floatBadge 5s ease-in-out infinite;
+        }
+        .badge-seo { right: 225px; top: 15px; }
+        .badge-ai { left: 220px; top: 10px; animation-delay: 1s; }
+        @keyframes floatBadge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
-        /* EXPERTISE SECTION */
-        .expertise-grid { display: grid; grid-template-columns: 340px 1fr; gap: 60px; align-items: start; }
-        .expertise-left { text-align: center; position: sticky; top: 100px; }
-        .expertise-photo { width: 280px; height: 280px; border-radius: 16px; object-fit: cover; border: 3px solid #22c55e; box-shadow: 0 20px 60px rgba(34, 197, 94, 0.15); margin-bottom: 20px; }
-        .expertise-name { font-size: 1.4rem; font-weight: 800; color: #1a1a2e; margin-bottom: 4px; }
-        .expertise-role { font-size: 0.95rem; color: #64748b; margin-bottom: 20px; }
-        .expertise-stats { display: flex; gap: 16px; justify-content: center; }
-        .expertise-stat { background: #f1f5f9; border-radius: 10px; padding: 14px 20px; text-align: center; flex: 1; }
-        .expertise-stat-num { display: block; font-size: 1.3rem; font-weight: 900; color: #22c55e; }
-        .expertise-stat-label { display: block; font-size: 0.75rem; color: #64748b; font-weight: 500; margin-top: 2px; }
-        .expertise-right .section-label { text-align: left; }
-        .expertise-right .section-title { text-align: left; }
-        .expertise-right .section-desc { text-align: left; }
-        .expertise-right .features-grid { grid-template-columns: 1fr 1fr; }
-
-        /* TOOLS GREEN TOP BORDER */
-        .tools-accent { border-top: 3px solid #22c55e; }
+        /* TECH STACK SECTION - Floating Engine */
+        .tech-stack {
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+            padding: 130px 0 150px;
+            color: #171027;
+            border-top: 3px solid #00c96b;
+        }
+        .tech-container {
+            width: min(1200px, calc(100% - 48px));
+            margin: auto;
+        }
+        .tech-heading {
+            text-align: center;
+            max-width: 720px;
+            margin: auto;
+        }
+        .tech-eyebrow {
+            color: #68738d;
+            font-size: 16px;
+            font-style: italic;
+        }
+        .tech-eyebrow i {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            margin: 0 7px;
+            background: #00cf70;
+            border-radius: 50%;
+        }
+        .tech-heading h2 {
+            margin: 15px 0;
+            font-size: clamp(48px, 6vw, 72px);
+            line-height: 1;
+            letter-spacing: -.055em;
+        }
+        .tech-heading h2 span { color: #00b965; }
+        .tech-heading p {
+            max-width: 650px;
+            margin: auto;
+            color: #68738d;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+        .tech-stage {
+            position: relative;
+            height: 650px;
+            margin-top: 55px;
+        }
+        .tool-column {
+            position: absolute;
+            width: 390px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            z-index: 5;
+        }
+        .left-tools { left: 0; top: 55px; }
+        .right-tools { right: 0; top: 85px; }
+        .tool-card {
+            min-height: 58px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 18px;
+            background: rgba(250,251,254,.9);
+            border: 1px solid #e4e8f1;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(35, 24, 65, .06);
+            color: #4e5b76;
+            font-size: 14px;
+            font-weight: 700;
+            transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+        }
+        .tool-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: #00c96b;
+            box-shadow: 0 20px 45px rgba(35,24,65,.12);
+        }
+        .tool-card span { color: #4e5b76; }
+        .tool-card-icon {
+            width: 32px;
+            height: 32px;
+            display: grid;
+            place-items: center;
+            border-radius: 8px;
+            background: #00c96b;
+            color: white;
+            font-size: 14px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        .tech-engine {
+            position: absolute;
+            left: 50%;
+            top: 110px;
+            width: 400px;
+            height: 400px;
+            transform: translateX(-50%);
+            z-index: 3;
+        }
+        .engine-stack {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 230px;
+            height: 170px;
+            transform: translate(-50%,-50%) perspective(700px) rotateX(55deg) rotateZ(-4deg);
+        }
+        .stack-layer {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 22px;
+            transform: translateZ(0);
+            box-shadow: 0 30px 50px rgba(20,10,50,.16);
+        }
+        .layer-back { top: 45px; background: #241440; transform: translateZ(-50px); }
+        .layer-middle { top: 25px; background: #116b4c; transform: translateZ(-25px); }
+        .layer-front {
+            top: 0;
+            background: linear-gradient(145deg, #2c164c, #071e28);
+            display: grid;
+            place-items: center;
+        }
+        .code-window {
+            width: 100px;
+            height: 75px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.15);
+            color: #00ef83;
+            font-size: 28px;
+            font-weight: 900;
+            transform: rotateX(-55deg);
+        }
+        .engine-orbit {
+            position: absolute;
+            inset: 20px;
+            border: 1px solid rgba(0,200,110,.2);
+            border-radius: 50%;
+        }
+        .orbit-a { transform: rotateX(62deg) rotateZ(15deg); }
+        .orbit-b { transform: rotateX(62deg) rotateZ(-15deg); }
+        .engine-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #00d878;
+            box-shadow: 0 0 20px rgba(0,216,120,.7);
+        }
+        .dot-one { top: 50px; right: 65px; }
+        .dot-two { left: 35px; top: 200px; }
+        .dot-three { right: 20px; bottom: 70px; }
+        .analytics-widget {
+            position: absolute;
+            left: 52%;
+            bottom: 10px;
+            width: 235px;
+            padding: 20px;
+            border-radius: 18px;
+            background: #19102d;
+            color: white;
+            box-shadow: 0 25px 55px rgba(25,16,45,.2);
+            transform: rotate(-4deg);
+        }
+        .analytics-widget small { font-size: 9px; color: #00d878; letter-spacing: .12em; }
+        .analytics-widget strong { display: block; margin-top: 7px; line-height: 1.35; }
+        .mini-chart { display: flex; align-items: end; gap: 6px; height: 35px; margin-top: 15px; }
+        .mini-chart span {
+            flex: 1;
+            background: #00d878;
+            border-radius: 3px;
+            animation: chartPulse 2s ease-in-out infinite alternate;
+        }
+        .mini-chart span:nth-child(1) { height: 25%; }
+        .mini-chart span:nth-child(2) { height: 40%; }
+        .mini-chart span:nth-child(3) { height: 35%; }
+        .mini-chart span:nth-child(4) { height: 70%; }
+        .mini-chart span:nth-child(5) { height: 100%; }
+        @keyframes chartPulse { from { transform: scaleY(.75); } to { transform: scaleY(1); } }
+        .gear-widget {
+            position: absolute;
+            left: 280px;
+            bottom: 25px;
+            width: 65px;
+            height: 65px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: #211437;
+            color: #00d878;
+            font-size: 27px;
+            box-shadow: 0 20px 40px rgba(30,15,50,.18);
+            transform: rotate(-8deg);
+        }
 
         /* TABLET */
         @media (max-width: 1024px) {
             .hero h1 { font-size: 3rem; }
             .hero-content { gap: 40px; padding: 120px 40px 80px; }
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
             .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
             .section-light, .section-dark, .section-white, .quote-band, .cta-band { padding-left: 40px; padding-right: 40px; }
             .case-grid { grid-template-columns: repeat(2, 1fr); }
@@ -255,16 +642,23 @@
 
             .features-grid, .case-grid, .cert-grid { grid-template-columns: 1fr; }
             .feature-card { padding: 28px; min-height: 0; }
-            .profile-grid { grid-template-columns: 1fr; text-align: center; }
-            .profile-photo { width: 240px; height: 240px; }
-            .profile-info .section-label, .profile-info .section-title, .profile-info .section-desc { text-align: center; }
-            .profile-links { justify-content: center; }
-            .expertise-grid { grid-template-columns: 1fr; }
-            .expertise-left { position: static; }
-            .expertise-photo { width: 220px; height: 220px; }
-            .expertise-right .features-grid { grid-template-columns: 1fr; }
 
-            .tool-chip { padding: 10px 18px; font-size: 0.85rem; }
+            /* Expertise Section Mobile */
+            .expertise-section, .tech-stack { padding: 90px 0; }
+            .expertise-stage { height: auto; display: flex; flex-direction: column; gap: 20px; }
+            .expertise-card { position: relative; width: calc(100% - 48px); margin: 0 auto; left: auto; right: auto; top: auto; bottom: auto; transform: none !important; }
+            .ai-center { position: relative; order: -1; left: auto; top: auto; transform: none; width: 100%; height: 430px; }
+            .ai-card { width: min(430px, 100%); bottom: 0; left: 50%; transform: translateX(-50%); }
+            .portrait-wrapper { width: 190px; height: 190px; }
+            .connection-lines, .orbit, .floating-badge { display: none; }
+
+            /* Tech Stack Mobile */
+            .tech-stage { height: auto; display: flex; flex-direction: column; gap: 25px; }
+            .tool-column { position: relative; width: calc(100% - 48px); margin: 0 auto; left: auto; right: auto; top: auto; order: 2; }
+            .right-tools { order: 3; }
+            .tech-engine { position: relative; left: auto; top: auto; transform: none; width: 100%; height: 360px; order: 1; }
+            .analytics-widget { left: 50%; transform: translateX(-50%) rotate(-3deg); }
+            .gear-widget { display: none; }
 
             .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .portfolio-card { padding: 18px; }
@@ -298,6 +692,13 @@
             .stats-bar { grid-template-columns: repeat(2, 1fr); }
             .portfolio-grid { grid-template-columns: 1fr; }
             .case-results span { font-size: 0.65rem; padding: 4px 8px; }
+            .expertise-container, .tech-container { width: min(100% - 30px, 1200px); }
+            .expertise-intro h2, .tech-heading h2 { font-size: 46px; }
+            .tool-column { grid-template-columns: 1fr; }
+            .tool-card { width: 100%; }
+            .ai-center { height: 400px; }
+            .portrait-wrapper { width: 165px; height: 165px; }
+            .ai-brain { width: 90px; height: 90px; top: 100px; font-size: 28px; }
         }
     </style>
 </head>
@@ -348,56 +749,63 @@
     </section>
 
     <!-- FEATURES - Light -->
-    <section class="section-light" id="skills">
-        <div class="section-inner">
-            <div class="expertise-grid">
-                <div class="expertise-left">
-                    <img src="images/profile.png" alt="Amir Ali - SEO Specialist" class="expertise-photo" width="300" height="300" loading="eager">
-                    <h3 class="expertise-name">Amir Ali</h3>
-                    <p class="expertise-role">SEO Specialist & AI Content Strategist</p>
-                    <div class="expertise-stats">
-                        <div class="expertise-stat"><span class="expertise-stat-num">4+</span><span class="expertise-stat-label">Years</span></div>
-                        <div class="expertise-stat"><span class="expertise-stat-num">13</span><span class="expertise-stat-label">Clients</span></div>
-                        <div class="expertise-stat"><span class="expertise-stat-num">12</span><span class="expertise-stat-label">Industries</span></div>
+    <section class="expertise-section" id="skills">
+        <div class="expertise-container">
+            <div class="expertise-intro">
+                <span class="section-kicker">CORE EXPERTISE</span>
+                <h2>What I Do Best</h2>
+                <p>From technical SEO infrastructure to AI-powered content workflows, I cover the full spectrum of organic search growth.</p>
+            </div>
+            <div class="expertise-stage">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <svg class="connection-lines" viewBox="0 0 1200 720" preserveAspectRatio="none">
+                    <path d="M290 180 C390 180 430 280 520 340"/>
+                    <path d="M910 180 C810 180 770 280 680 340"/>
+                    <path d="M290 500 C390 500 430 420 520 390"/>
+                    <path d="M910 500 C810 500 770 420 680 390"/>
+                    <path d="M600 590 C600 530 600 500 600 455"/>
+                </svg>
+                <article class="expertise-card card-left-top" data-tilt>
+                    <div class="card-icon">⌕</div>
+                    <h3>Technical SEO & Auditing</h3>
+                    <p>Technical audits with Screaming Frog, crawl diagnostics, JSON-LD Schema, Core Web Vitals, and indexation control.</p>
+                </article>
+                <article class="expertise-card card-right-top" data-tilt>
+                    <div class="card-icon">⌁</div>
+                    <h3>Semantic SEO & GEO</h3>
+                    <p>Topical authority mapping, entity extraction, GEO optimization for AI search engines, and E-E-A-T briefs.</p>
+                </article>
+                <div class="ai-center">
+                    <div class="portrait-wrapper">
+                        <div class="portrait-glow"></div>
+                        <img src="images/profile.png" alt="Amir Ali - SEO Specialist" class="portrait" width="250" height="250" loading="eager"/>
                     </div>
+                    <div class="ai-brain"><span>AI</span></div>
+                    <article class="ai-card">
+                        <div class="ai-card-icon">🤖</div>
+                        <h3>AI Workflows</h3>
+                        <p>Custom Claude and OpenCode workflows, MCP integrations, Python indexing pipelines, and automated content scoring.</p>
+                        <span class="ai-arrow">↗</span>
+                    </article>
                 </div>
-                <div class="expertise-right">
-                    <div class="section-label">EXPERTISE</div>
-                    <div class="section-title">What I Do Best</div>
-                    <p class="section-desc">From technical SEO infrastructure to AI-powered content workflows, I cover the full spectrum of organic search growth.</p>
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">&#128269;</div>
-                            <h3>Technical SEO</h3>
-                            <p>Audits, crawl diagnostics, JSON-LD Schema, Core Web Vitals, and indexation control.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">&#128200;</div>
-                            <h3>Semantic SEO & GEO</h3>
-                            <p>Topical authority, entity extraction, GEO optimization, and E-E-A-T briefs.</p>
-                        </div>
-                        <div class="feature-card featured">
-                            <div class="feature-icon">&#129302;</div>
-                            <h3>AI Workflows</h3>
-                            <p>Custom Claude workflows, MCP integrations, Python pipelines, and content scoring.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">&#128202;</div>
-                            <h3>Internal Linking</h3>
-                            <p>Strategic architecture, PageRank flow, and hub page construction.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">&#9881;</div>
-                            <h3>On-Page Optimization</h3>
-                            <p>Meta tags, headings, content restructuring, and keyword mapping at scale.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">&#128736;</div>
-                            <h3>Schema & Structured Data</h3>
-                            <p>JSON-LD, product schema, FAQ schema, and rich result optimization.</p>
-                        </div>
-                    </div>
-                </div>
+                <article class="expertise-card card-left-bottom" data-tilt>
+                    <div class="card-icon">↗</div>
+                    <h3>Internal Linking</h3>
+                    <p>Strategic internal linking architecture, PageRank flow optimization, and hub page construction for topical clusters.</p>
+                </article>
+                <article class="expertise-card card-right-bottom" data-tilt>
+                    <div class="card-icon">⌘</div>
+                    <h3>Schema & Structured Data</h3>
+                    <p>JSON-LD implementation, product schema, FAQ schema, breadcrumb markup, and rich result optimization.</p>
+                </article>
+                <article class="expertise-card card-bottom" data-tilt>
+                    <div class="card-icon">⚙</div>
+                    <h3>On-Page Optimization</h3>
+                    <p>Meta tags, heading hierarchy, content restructuring, keyword mapping, and product page optimization at scale.</p>
+                </article>
+                <div class="floating-badge badge-seo">↗ SEO</div>
+                <div class="floating-badge badge-ai">✦ AI</div>
             </div>
         </div>
     </section>
@@ -408,27 +816,55 @@
         <p>I believe a website must be technically sound before any content strategy can work. That is where I start every project.</p>
     </section>
 
-    <!-- TOOLS - White -->
-    <section class="section-white tools-accent">
-        <div class="section-inner">
-            <div class="pre-title" style="font-size:1rem; font-style:italic; color:#64748b; margin-bottom:8px;">Tools I Use Daily</div>
-            <div class="section-title">My Tech Stack</div>
-            <p class="section-desc" style="margin-left:auto; margin-right:auto;">Industry-leading platforms for technical audits, keyword research, analytics, and content optimization.</p>
-            <div class="tools-grid">
-                <span class="tool-chip">Screaming Frog</span>
-                <span class="tool-chip">Ahrefs</span>
-                <span class="tool-chip">SEMrush</span>
-                <span class="tool-chip">SurferSEO</span>
-                <span class="tool-chip">Google Search Console</span>
-                <span class="tool-chip">GA4</span>
-                <span class="tool-chip">Google Tag Manager</span>
-                <span class="tool-chip">Looker Studio</span>
-                <span class="tool-chip">WordPress</span>
-                <span class="tool-chip">Shopify</span>
-                <span class="tool-chip">HubSpot</span>
-                <span class="tool-chip">Claude / OpenCode</span>
-                <span class="tool-chip">Python</span>
-                <span class="tool-chip">Google Indexing API</span>
+    <!-- TECH STACK - Floating Engine -->
+    <section class="tech-stack" id="tech-stack">
+        <div class="tech-container">
+            <div class="tech-heading">
+                <span class="tech-eyebrow">Tools <i></i> Use Daily</span>
+                <h2>My Tech <span>Stack</span></h2>
+                <p>Industry-leading platforms for technical audits, keyword research, analytics, and content optimization.</p>
+            </div>
+            <div class="tech-stage">
+                <div class="tool-column left-tools">
+                    <div class="tool-card"><div class="tool-card-icon">⌕</div><span>Screaming Frog</span></div>
+                    <div class="tool-card"><div class="tool-card-icon">a</div><span>Ahrefs</span></div>
+                    <div class="tool-card"><div class="tool-card-icon">▥</div><span>SEMrush</span></div>
+                    <div class="tool-card"><div class="tool-card-icon">◉</div><span>SurferSEO</span></div>
+                    <div class="tool-card"><div class="tool-card-icon">G</div><span>Google Search Console</span></div>
+                    <div class="tool-card"><div class="tool-card-icon">GA</div><span>GA4</span></div>
+                    <div class="tool-card"><div class="tool-card-icon">◆</div><span>Google Tag Manager</span></div>
+                    <div class="tool-card"><div class="tool-card-icon">W</div><span>Looker Studio</span></div>
+                </div>
+                <div class="tech-engine">
+                    <div class="engine-orbit orbit-a"></div>
+                    <div class="engine-orbit orbit-b"></div>
+                    <div class="engine-stack">
+                        <div class="stack-layer layer-back"></div>
+                        <div class="stack-layer layer-middle"></div>
+                        <div class="stack-layer layer-front">
+                            <div class="code-window">&lt;/&gt;</div>
+                        </div>
+                    </div>
+                    <span class="engine-dot dot-one"></span>
+                    <span class="engine-dot dot-two"></span>
+                    <span class="engine-dot dot-three"></span>
+                </div>
+                <div class="tool-column right-tools">
+                    <div class="tool-card"><div class="tool-card-icon">S</div><span>Shopify</span></div>
+                    <div class="tool-card"><div class="tool-card-icon">W</div><span>WordPress</span></div>
+                    <div class="tool-card"><div class="tool-card-icon">H</div><span>HubSpot</span></div>
+                    <div class="tool-card"><div class="tool-card-icon">&lt;/&gt;</div><span>Claude / OpenCode</span></div>
+                    <div class="tool-card"><div class="tool-card-icon">🐍</div><span>Python</span></div>
+                    <div class="tool-card"><div class="tool-card-icon">G</div><span>Google Indexing API</span></div>
+                </div>
+                <div class="analytics-widget">
+                    <small>PERFORMANCE</small>
+                    <strong>Better Tools<br>Better Results</strong>
+                    <div class="mini-chart">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="gear-widget">⚙</div>
             </div>
         </div>
     </section>
@@ -634,9 +1070,26 @@
         document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; cursorDot.style.left = mouseX - 3 + 'px'; cursorDot.style.top = mouseY - 3 + 'px'; });
         function animateCursor() { cursorX += (mouseX - cursorX) * 0.15; cursorY += (mouseY - cursorY) * 0.15; cursor.style.left = cursorX - 10 + 'px'; cursor.style.top = cursorY - 10 + 'px'; requestAnimationFrame(animateCursor); }
         animateCursor();
-        document.querySelectorAll('a, button, .feature-card, .case-card, .tool-chip, .cert-card, .portfolio-card').forEach(el => {
+        document.querySelectorAll('a, button, .feature-card, .case-card, .tool-chip, .cert-card, .portfolio-card, .expertise-card, .tool-card').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('active'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+        });
+
+        // Expertise Card Tilt Effect
+        document.querySelectorAll('.expertise-card[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
         });
 
     </script>
