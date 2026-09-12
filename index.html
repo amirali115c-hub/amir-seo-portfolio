@@ -415,6 +415,55 @@
             color: #888;
         }
 
+        /* Case Studies Section */
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .case-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 32px;
+            transition: transform 0.3s, border-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+        .case-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(123, 47, 247, 0.3);
+        }
+        .case-card .case-tag-sm {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #7b2ff7;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .case-card h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .case-card p {
+            font-size: 0.9rem;
+            color: #888;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .case-results {
+            display: flex;
+            gap: 20px;
+        }
+        .case-results span {
+            font-size: 0.8rem;
+            color: #00d2ff;
+            font-weight: 700;
+        }
+
         /* CTA Section */
         .cta-section {
             text-align: center;
@@ -478,6 +527,7 @@
         <ul class="nav-links">
             <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
+            <li><a href="#case-studies">Case Studies</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#certifications">Certifications</a></li>
         </ul>
@@ -788,6 +838,46 @@
                     <a href="https://professionallogodesign.net/" target="_blank">Live Site</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies">
+        <div class="section-label">CASE STUDIES</div>
+        <div class="section-title">Results I've Delivered</div>
+        <p class="section-desc">Deep dives into three projects where strategic SEO directly translated into measurable traffic and revenue growth.</p>
+
+        <div class="case-grid">
+            <a href="case-studies/carbon-reprographics.html" class="case-card">
+                <div class="case-tag-sm">E-commerce / Jewelry</div>
+                <h3>Carbon Reprographics</h3>
+                <p>Grew organic traffic from 12K to 180K monthly visitors across jewelry, automotive, and home decor categories in 12 months.</p>
+                <div class="case-results">
+                    <span>180K visitors</span>
+                    <span>15x growth</span>
+                    <span>34% conversion lift</span>
+                </div>
+            </a>
+            <a href="case-studies/three-angle-marketing.html" class="case-card">
+                <div class="case-tag-sm">Real Estate / Tourism / Dubai</div>
+                <h3>Three Angle Marketing</h3>
+                <p>Generated 250K qualified visitors annually for real estate and tourism clients in one of the world's most competitive search markets.</p>
+                <div class="case-results">
+                    <span>250K annual visitors</span>
+                    <span>42 Page 1 rankings</span>
+                    <span>28% bounce drop</span>
+                </div>
+            </a>
+            <a href="case-studies/the-neo-solutions.html" class="case-card">
+                <div class="case-tag-sm">B2B Services / Consultancy</div>
+                <h3>The Neo Solutions</h3>
+                <p>Built online authority from zero — 80 articles, 35 guest posts, and 15K monthly visitors generating enterprise inquiries.</p>
+                <div class="case-results">
+                    <span>80 articles</span>
+                    <span>15K visitors</span>
+                    <span>3.2x DA growth</span>
+                </div>
+            </a>
         </div>
     </section>
 
