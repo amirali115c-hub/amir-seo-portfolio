@@ -153,8 +153,6 @@
         .footer-col a:hover { color: #22c55e; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 40px; padding-top: 24px; text-align: center; font-size: 0.8rem; color: #475569; max-width: 1200px; margin-left: auto; margin-right: auto; }
 
-        #particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-
         @media (max-width: 768px) {
             nav { padding: 0 24px; }
             .nav-links { display: none; }
@@ -184,7 +182,6 @@
 
     <div class="cursor" id="cursor"></div>
     <div class="cursor-dot" id="cursor-dot"></div>
-    <canvas id="particles-canvas"></canvas>
 
     <nav>
         <div class="logo">Amir Ali</div>
@@ -502,32 +499,6 @@
             el.addEventListener('mouseenter', () => cursor.classList.add('active'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
         });
-
-        const pCanvas = document.getElementById('particles-canvas');
-        const pCtx = pCanvas.getContext('2d');
-        pCanvas.width = window.innerWidth;
-        pCanvas.height = window.innerHeight;
-        const particles = [];
-        for (let i = 0; i < 50; i++) {
-            particles.push({ x: Math.random() * pCanvas.width, y: Math.random() * pCanvas.height, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3, size: Math.random() * 1.5 + 0.5 });
-        }
-        function animateParticles() {
-            pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
-            particles.forEach((p, i) => {
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > pCanvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > pCanvas.height) p.vy *= -1;
-                pCtx.beginPath(); pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2); pCtx.fillStyle = 'rgba(34, 197, 94, 0.12)'; pCtx.fill();
-                particles.forEach((p2, j) => {
-                    if (i === j) return;
-                    const dist = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
-                    if (dist < 100) { pCtx.beginPath(); pCtx.moveTo(p.x, p.y); pCtx.lineTo(p2.x, p2.y); pCtx.strokeStyle = `rgba(34, 197, 94, ${0.04 * (1 - dist / 100)})`; pCtx.stroke(); }
-                });
-            });
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
-        window.addEventListener('resize', () => { pCanvas.width = window.innerWidth; pCanvas.height = window.innerHeight; });
 
         gsap.registerPlugin(ScrollTrigger);
         gsap.utils.toArray('.section-light, .section-dark, .section-white, .quote-band, .cta-band').forEach(s => {
